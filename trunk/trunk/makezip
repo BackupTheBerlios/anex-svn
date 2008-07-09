@@ -1,0 +1,3 @@
+#!/bin/bash
+zip -r astronex.zip astronex/* -x astronex/db/\* -x astronex/zoneinfo/\*
+mv astronex.zip /mnt/smb/

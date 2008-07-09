@@ -1,0 +1,9 @@
+include README
+include INSTALL
+include install_cmd
+include nex.py
+include astronex/resources/*
+include astronex/db/*
+recursive-include astronex/locale *
+recursive-include ext *
+include bin/nex

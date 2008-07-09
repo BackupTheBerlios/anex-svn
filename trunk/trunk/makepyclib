@@ -1,0 +1,3 @@
+#!/bin/bash
+zip  library.zip astronex/*.pyc astronex/*/*.pyc
+mv library.zip /mnt/smb/

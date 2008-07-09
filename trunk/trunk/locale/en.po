@@ -1,0 +1,1809 @@
+# English translations for Astro-Nex package.
+# Copyright (C) 2007 ORGANIZATION
+# Jose <jar@astro-nex.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Astro-Nex 0.7\n"
+"POT-Creation-Date: 2008-06-05 13:30+WEST\n"
+"PO-Revision-Date: 2008-06-14 11:28+0100\n"
+"Last-Translator: Jose <jar@astro-nex.com>\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: astronex/drawing/datasheets.py:13
+msgid "Carta Nodal"
+msgstr "Nodal chart"
+
+#: astronex/drawing/datasheets.py:13
+msgid "Radix"
+msgstr "Radix chart"
+
+#: astronex/drawing/datasheets.py:14
+msgid "Carta Clics Radix alma"
+msgstr "Radix-Causal"
+
+#: astronex/drawing/datasheets.py:14
+msgid "Carta de las Casas"
+msgstr "House chart"
+
+#: astronex/drawing/datasheets.py:15
+msgid "Carta Local"
+msgstr "Local chart"
+
+#: astronex/drawing/datasheets.py:15
+msgid "Carta del Alma"
+msgstr "Causal chart"
+
+#: astronex/drawing/datasheets.py:16
+msgid "Carta de Integracion"
+msgstr "Integration chart"
+
+#: astronex/drawing/datasheets.py:16
+msgid "Carta del Perfil"
+msgstr "Profile chart"
+
+#: astronex/drawing/datasheets.py:17
+msgid "Carta Clics Individual"
+msgstr "Single click"
+
+#: astronex/drawing/datasheets.py:17
+msgid "Datos Radix"
+msgstr "Radix data"
+
+#: astronex/drawing/datasheets.py:18
+msgid "Datos C. Casas"
+msgstr "House data"
+
+#: astronex/drawing/datasheets.py:18
+msgid "Datos C. Nodal"
+msgstr "Nodal data"
+
+#: astronex/drawing/datasheets.py:19
+msgid "Progresion E. Nodal"
+msgstr "Nodal AP"
+
+# msgstr "Age Progression"
+#: astronex/drawing/datasheets.py:19
+msgid "Progresion E. Radix"
+msgstr "Radix AP"
+
+# msgstr "Age Progression"
+#: astronex/drawing/datasheets.py:20
+msgid "Progresion E. Alma"
+msgstr "Causal AP"
+
+#: astronex/drawing/datasheets.py:20
+msgid "Progresion E. Local"
+msgstr "Local AP"
+
+#: astronex/drawing/datasheets.py:21
+msgid "Biografia alma"
+msgstr "Causal biography"
+
+#: astronex/drawing/datasheets.py:21
+msgid "Biografia nodal"
+msgstr "Nodal biography"
+
+#: astronex/drawing/datasheets.py:21
+msgid "Biografia radix"
+msgstr "Radix biography"
+
+#: astronex/drawing/datasheets.py:22 astronex/gui/oppanel.py:74
+msgid "Cuadrantes dinamicos"
+msgstr "Dynamic quadrants"
+
+#: astronex/drawing/datasheets.py:22 astronex/gui/oppanel.py:75
+msgid "Clic Cuadrantes dinamicos"
+msgstr "Dynamic quadrants click "
+
+#: astronex/drawing/datasheets.py:23
+msgid "Clics Casas-Casas"
+msgstr "House-House"
+
+#: astronex/drawing/datasheets.py:23
+msgid "Clics Nodal-Nodal"
+msgstr "Nodal-Nodal"
+
+#: astronex/drawing/datasheets.py:24
+msgid "Clics Casas-Nodal"
+msgstr "House-Nodal"
+
+#: astronex/drawing/datasheets.py:24
+msgid "Clics Nodal-Casas"
+msgstr "Nodal-House"
+
+#: astronex/drawing/datasheets.py:25
+msgid "Clics Radix-Radix"
+msgstr "Radix-Radix"
+
+#: astronex/drawing/datasheets.py:26
+msgid "Clic puente"
+msgstr "Subjective click"
+
+#: astronex/drawing/datasheets.py:26 astronex/gui/oppanel.py:76
+msgid "Estrellas dinamicas"
+msgstr "Frust & stress diagrams"
+
+#: astronex/drawing/datasheets.py:27 astronex/gui/config_dlg.py:246
+#: astronex/gui/oppanel.py:88 astronex/surfaces/sdasurface.py:202
+#: astronex/surfaces/sdasurface.py:203 astronex/surfaces/sdasurface.py:335
+msgid "Transitos"
+msgstr "Transits"
+
+#: astronex/drawing/datasheets.py:27 astronex/gui/oppanel.py:89
+msgid "Radix con transitos"
+msgstr "Radix-Transits"
+
+#: astronex/drawing/datasheets.py:28
+msgid "Clic subjetivo"
+msgstr "Subjective click"
+
+#: astronex/drawing/datasheets.py:28 astronex/drawing/paarwabe.py:51
+#: astronex/gui/oppanel.py:67
+msgid "Estrella de ascenso"
+msgstr "Ascension Star"
+
+#: astronex/drawing/datasheets.py:29
+msgid "Comparacion pareja 1"
+msgstr "Partnership analysis I"
+
+#: astronex/drawing/datasheets.py:29
+msgid "Comparacion pareja 2"
+msgstr "Partnership analysis II"
+
+#: astronex/drawing/datasheets.py:30 astronex/gui/oppanel.py:71
+msgid "Panal de la pareja"
+msgstr "Partner Honeycomb"
+
+#: astronex/drawing/datasheets.py:30 astronex/gui/oppanel.py:73
+msgid "Contra horoscopos"
+msgstr "Counter horoscopes"
+
+#: astronex/drawing/datasheets.py:31 astronex/gui/oppanel.py:70
+msgid "Uniones corona"
+msgstr "Crown unions"
+
+#: astronex/drawing/datasheets.py:32 astronex/drawing/paarwabe.py:48
+#: astronex/gui/oppanel.py:69
+msgid "Analisis de polaridades"
+msgstr "Polarities analysis"
+
+#: astronex/drawing/datasheets.py:32 astronex/drawing/paarwabe.py:70
+#: astronex/gui/oppanel.py:68
+msgid "Estrella maravillosa"
+msgstr "Wonderfull Star"
+
+#: astronex/drawing/datasheets.py:33
+msgid "PE de la pareja"
+msgstr "Partners AP"
+
+#: astronex/drawing/datasheets.py:40
+msgid "Domingo"
+msgstr "Sunday"
+
+#: astronex/drawing/datasheets.py:40
+msgid "Jueves"
+msgstr "Thursday"
+
+#: astronex/drawing/datasheets.py:40
+msgid "Lunes"
+msgstr "Monday"
+
+#: astronex/drawing/datasheets.py:40
+msgid "Martes"
+msgstr "Tuesday"
+
+#: astronex/drawing/datasheets.py:40
+msgid "Miercoles"
+msgstr "Wednesday"
+
+#: astronex/drawing/datasheets.py:40
+msgid "Sabado"
+msgstr "Saturday"
+
+#: astronex/drawing/datasheets.py:40
+msgid "Viernes"
+msgstr "Friday"
+
+#: astronex/drawing/datasheets.py:124
+msgid "Carta de Rayos"
+msgstr "Rays"
+
+#: astronex/drawing/datasheets.py:156
+msgid "Calculos dinamicos"
+msgstr "Dynamic calculation"
+
+#: astronex/drawing/datasheets.py:161
+msgid "Card"
+msgstr "Card"
+
+#: astronex/drawing/datasheets.py:161
+msgid "Fija"
+msgstr "Fix"
+
+#: astronex/drawing/datasheets.py:161
+msgid "Mut"
+msgstr "Mut"
+
+#: astronex/drawing/datasheets.py:161 astronex/gui/config_dlg.py:228
+msgid "Fuego"
+msgstr "Fire"
+
+#: astronex/drawing/datasheets.py:161 astronex/gui/config_dlg.py:228
+msgid "Tierra"
+msgstr "Earth"
+
+#: astronex/drawing/datasheets.py:161 astronex/gui/config_dlg.py:229
+msgid "Agua"
+msgstr "Water"
+
+#: astronex/drawing/datasheets.py:161 astronex/gui/config_dlg.py:229
+msgid "Aire"
+msgstr "Air"
+
+#: astronex/drawing/datasheets.py:201
+msgid "s"
+msgstr "S"
+
+#: astronex/drawing/datasheets.py:204
+msgid "c"
+msgstr "H"
+
+#: astronex/drawing/datasheets.py:218
+msgid "Tabla de aspectos"
+msgstr "Aspect table"
+
+#: astronex/drawing/datasheets.py:501 astronex/drawing/datasheets.py:549
+msgid "Casa"
+msgstr "House"
+
+#: astronex/drawing/datasheets.py:501 astronex/drawing/datasheets.py:549
+#: astronex/drawing/datasheets.py:595
+msgid "Planetas"
+msgstr "Planets"
+
+#: astronex/drawing/datasheets.py:549
+msgid "Zona"
+msgstr "Zone"
+
+#: astronex/drawing/datasheets.py:595
+msgid "Casas"
+msgstr "Houses"
+
+#: astronex/drawing/datasheets.py:595
+msgid "P.Inv."
+msgstr "Inv. P."
+
+#: astronex/drawing/datasheets.py:595
+msgid "P.Rep."
+msgstr "Low P."
+
+#: astronex/drawing/diagrams.py:11
+msgid "Conservador"
+msgstr "Conservative"
+
+#: astronex/drawing/diagrams.py:11
+msgid "Desconfiado"
+msgstr "Distrustful"
+
+#: astronex/drawing/diagrams.py:11
+msgid "Duda y critica"
+msgstr "Doubt & critic"
+
+#: astronex/drawing/diagrams.py:11
+msgid "Vacilante"
+msgstr "Unsteady"
+
+#: astronex/drawing/diagrams.py:12
+msgid "Espontaneo"
+msgstr "Spontaneous"
+
+#: astronex/drawing/diagrams.py:12
+msgid "Formacion ideas"
+msgstr "Building of Ideas"
+
+#: astronex/drawing/diagrams.py:12
+msgid "Intuitivo"
+msgstr "Intuitive"
+
+#: astronex/drawing/diagrams.py:12
+msgid "Observador"
+msgstr "Observant"
+
+#: astronex/drawing/diagrams.py:13
+msgid "Contemplativo"
+msgstr "Contemplative"
+
+#: astronex/drawing/diagrams.py:13
+msgid "Investigador"
+msgstr "Researcher"
+
+#: astronex/drawing/diagrams.py:14
+msgid "Formacion"
+msgstr "Will"
+
+#: astronex/drawing/diagrams.py:14
+msgid "Impaciente por rendir"
+msgstr "Impatient to yield"
+
+#: astronex/drawing/diagrams.py:14
+msgid "Planificador"
+msgstr "Planner"
+
+#: astronex/drawing/diagrams.py:15
+msgid "Accion inmediata"
+msgstr "Immediate action"
+
+#: astronex/drawing/diagrams.py:15
+msgid "Afan de rendimiento"
+msgstr "Performance manic"
+
+#: astronex/drawing/diagrams.py:15
+msgid "Ofensivo"
+msgstr "Offensive"
+
+#: astronex/drawing/diagrams.py:15
+msgid "Proceso creativo"
+msgstr "Creative process"
+
+#: astronex/drawing/diagrams.py:16
+msgid "Largo plazo"
+msgstr "Long term"
+
+#: astronex/drawing/diagrams.py:16
+msgid "Prudente"
+msgstr "Prudent"
+
+#: astronex/drawing/diagrams.py:17
+msgid "Consolidacion"
+msgstr "Stabilization"
+
+#: astronex/drawing/diagrams.py:17
+msgid "Economico"
+msgstr "Economic"
+
+#: astronex/drawing/diagrams.py:17
+msgid "Impulso a poseer"
+msgstr "Aim to possession"
+
+#: astronex/drawing/diagrams.py:17
+msgid "Resignado"
+msgstr "Resigned"
+
+#: astronex/drawing/diagrams.py:18
+msgid "Asiduo"
+msgstr "Assiduous"
+
+#: astronex/drawing/diagrams.py:18
+msgid "Organizador"
+msgstr "Organizer"
+
+#: astronex/drawing/diagrams.py:18
+msgid "Pensamiento utilitario"
+msgstr "Profit oriented thinking"
+
+#: astronex/drawing/diagrams.py:18
+msgid "Utilizacion"
+msgstr "Utilization"
+
+#: astronex/drawing/diagrams.py:19
+msgid "Conservacion"
+msgstr "Conservation"
+
+#: astronex/drawing/diagrams.py:19
+msgid "Defensivo"
+msgstr "Defenssive"
+
+#: astronex/drawing/diagrams.py:19
+msgid "Disfrute"
+msgstr "Enjoyment"
+
+#: astronex/drawing/diagrams.py:157
+msgid "Diagrama de barras"
+msgstr "Bar diagram"
+
+#: astronex/drawing/diagrams.py:226
+msgid "Diagrama de energia"
+msgstr "Energy diagram"
+
+#: astronex/drawing/diagrams.py:322
+msgid "Diagrama de diferencias"
+msgstr "Difference diagram"
+
+#: astronex/drawing/diagrams.py:370
+msgid "Diagrama de signos"
+msgstr "Sign diagram"
+
+#: astronex/drawing/diagrams.py:418
+msgid "Diagrama de casas"
+msgstr "House diagram"
+
+#: astronex/drawing/diagrams.py:581
+msgid "Pensamiento"
+msgstr "Thinking"
+
+#: astronex/drawing/diagrams.py:588
+msgid "Energia"
+msgstr "Energy"
+
+#: astronex/drawing/diagrams.py:595
+msgid "Forma"
+msgstr "Form"
+
+#: astronex/drawing/diagrams.py:609
+msgid "Yo"
+msgstr "I"
+
+#: astronex/drawing/diagrams.py:612
+msgid "Col"
+msgstr "Col"
+
+#: astronex/drawing/diagrams.py:615
+msgid "Tu"
+msgstr "You"
+
+#: astronex/drawing/diagrams.py:618
+msgid "Ind"
+msgstr "Ind"
+
+#: astronex/drawing/diagrams.py:718
+msgid "de voluntad"
+msgstr " building"
+
+#: astronex/drawing/paarwabe.py:17
+msgid "A"
+msgstr ""
+
+#: astronex/drawing/paarwabe.py:17
+msgid "R"
+msgstr ""
+
+#: astronex/drawing/paarwabe.py:17 astronex/gui/customloc_dlg.py:287
+msgid "N"
+msgstr ""
+
+#: astronex/drawing/paarwabe.py:34
+msgid "El la idealiza"
+msgstr "He idealizes her"
+
+#: astronex/drawing/paarwabe.py:35
+msgid "Ella lo idealiza"
+msgstr "She idealizes him"
+
+#: astronex/drawing/paarwabe.py:36
+msgid "Proyeccion de padre/madre ideal"
+msgstr "Ideal father/mother proyection"
+
+#: astronex/drawing/paarwabe.py:37
+msgid "Mentalidad coincidente"
+msgstr "Mental agreement"
+
+#: astronex/drawing/paarwabe.py:38
+msgid "Seguridad coincidente"
+msgstr "Security agreement"
+
+#: astronex/drawing/paarwabe.py:39
+msgid "Deseo de ser padres"
+msgstr "Paternity wishes"
+
+#: astronex/drawing/paarwabe.py:40
+msgid "El activa su sentimiento maternal"
+msgstr "He activates her motherly feelings"
+
+#: astronex/drawing/paarwabe.py:41
+msgid "Ella activa su sentimiento paternal"
+msgstr "She activates his fatherly feelings"
+
+#: astronex/drawing/paarwabe.py:42
+msgid "Atraccion erotica"
+msgstr "Erotic atraction"
+
+#: astronex/drawing/paarwabe.py:43
+msgid "Erotismo mutuo"
+msgstr "Mutual erotism"
+
+#: astronex/drawing/paarwabe.py:44
+msgid "Placer mutuo"
+msgstr "Mutual pleasure"
+
+#: astronex/drawing/paarwabe.py:45
+msgid "Compatibilidad sexual"
+msgstr "Sexual compatibility"
+
+#: astronex/drawing/paarwabe.py:46
+msgid "Funcion edipica femenina"
+msgstr "Female edipic function"
+
+#: astronex/drawing/paarwabe.py:47
+msgid "Funcion edipica masculina"
+msgstr "Male edipic function"
+
+#: astronex/drawing/paarwabe.py:52
+msgid "Contactos comunes - Los caminos se cruzan una y otra vez"
+msgstr "Common contacts - Paths cross again and again"
+
+#: astronex/drawing/paarwabe.py:53
+msgid "Conocidos comunes - Los caminos transcurren paralelos"
+msgstr "Common acquaintances - Paths go by in parallel"
+
+#: astronex/drawing/paarwabe.py:54
+msgid "La presencia de ella estimula el desarrollo de el"
+msgstr "Her presence encourages his development"
+
+#: astronex/drawing/paarwabe.py:55
+msgid "\tEl le muestra el camino hacia si misma"
+msgstr "\tHe shows her the way to herself"
+
+#: astronex/drawing/paarwabe.py:56
+msgid "La presencia de el estimula el desarrollo de ella"
+msgstr "His presence encourages her development"
+
+#: astronex/drawing/paarwabe.py:57
+msgid "\tElla le muestra el camino hacia si mismo"
+msgstr "\tShe shows him the way to himself"
+
+#: astronex/drawing/paarwabe.py:58
+msgid "Su tarea del alma. Conexiones cosmicas indefinibles"
+msgstr "His/her soul's job. Indefinable comic relationships"
+
+#: astronex/drawing/paarwabe.py:59
+msgid "Su tarea karmica. Caminos del destino entre ambos, providencia"
+msgstr "His/her karmic job. Destiny paths joins them, providence"
+
+#: astronex/drawing/paarwabe.py:61
+msgid "Encaje maravilloso"
+msgstr "Wonderfull fitting"
+
+#: astronex/drawing/paarwabe.py:62
+msgid "Admiracion"
+msgstr "Admiration"
+
+#: astronex/drawing/paarwabe.py:63
+msgid "Coincidencias maravillosas"
+msgstr "Wonderfull coincidences"
+
+#: astronex/drawing/paarwabe.py:64
+msgid "Sensualidad maravillosa"
+msgstr "Wonderfull sensuality"
+
+#: astronex/drawing/paarwabe.py:65
+msgid "Aspecto de comprension, comprenderlo todo siempre"
+msgstr "Understanding aspct, to understand all always"
+
+#: astronex/drawing/paarwabe.py:66
+msgid "Aspecto de conversacion, te entiendo"
+msgstr "Conversation aspect, I understand you"
+
+#: astronex/drawing/paarwabe.py:67
+msgid "Aspecto de coqueteo, sensualidad emocional"
+msgstr "Flirt aspect, emotional sensuality"
+
+#: astronex/drawing/paarwabe.py:68
+msgid "Aspecto de discusion, desintegrar un tema hablando"
+msgstr "Discussion aspect, to talk about a topic exhausting it"
+
+#: astronex/drawing/paarwabe.py:69
+msgid "Aspecto de charla, acuerdo momentaneo"
+msgstr "Chat aspect, momentary agrement"
+
+#: astronex/drawing/paarwabe.py:71
+msgid "Sensi-estrella"
+msgstr "Sensi-star"
+
+#: astronex/drawing/paarwabe.py:1215
+msgid "Consciente"
+msgstr "Concious"
+
+#: astronex/drawing/paarwabe.py:1220
+msgid "Subconsciente"
+msgstr "Subconscious"
+
+#: astronex/drawing/paarwabe.py:1225
+msgid "Inconsciente"
+msgstr "Unconscious"
+
+#: astronex/drawing/progsheet.py:185
+msgid "Cruce PE - K1: %s  %s"
+msgstr "AP Crossing - K1: %s  %s"
+
+#: astronex/gui/bridgewin.py:28
+msgid "PE Puente"
+msgstr "Bridge AP"
+
+#: astronex/gui/chartbrowser.py:32 astronex/gui/chartbrowser.py:44
+msgid "Explorador"
+msgstr "Explorer"
+
+#: astronex/gui/chartbrowser.py:48
+msgid "Mezclador"
+msgstr "Mixer"
+
+#: astronex/gui/chartbrowser.py:52
+msgid "Importacion AAF"
+msgstr " AAF Import"
+
+#: astronex/gui/chartbrowser.py:56 astronex/surfaces/sdasurface.py:203
+#: astronex/surfaces/sdasurface.py:337
+msgid "Parejas"
+msgstr "Partners"
+
+#: astronex/gui/config_dlg.py:21
+msgid "Tablas"
+msgstr "Tables"
+
+#: astronex/gui/config_dlg.py:21 astronex/gui/config_dlg.py:54
+msgid "Colores"
+msgstr "Colors"
+
+#: astronex/gui/config_dlg.py:21 astronex/gui/customloc_dlg.py:235
+#: astronex/gui/entry_dlg.py:165 astronex/gui/mainnb.py:86
+msgid "Localidad"
+msgstr "Location"
+
+#: astronex/gui/config_dlg.py:22
+msgid "Lenguage"
+msgstr "Language"
+
+#: astronex/gui/config_dlg.py:22
+msgid "PNG"
+msgstr "PNG"
+
+#: astronex/gui/config_dlg.py:22 astronex/gui/config_dlg.py:58
+msgid "Lineas"
+msgstr "Lines"
+
+#: astronex/gui/config_dlg.py:22 astronex/gui/config_dlg.py:62
+msgid "Fuentes"
+msgstr "Fonts"
+
+#: astronex/gui/config_dlg.py:22 astronex/gui/config_dlg.py:66
+msgid "Orbes"
+msgstr "Orbs"
+
+#: astronex/gui/config_dlg.py:29
+msgid "Configuracion"
+msgstr "Settings"
+
+#: astronex/gui/config_dlg.py:46
+msgid "Localidad por defecto"
+msgstr "Default locality"
+
+#: astronex/gui/config_dlg.py:50
+msgid "Tablas por defecto"
+msgstr "Default tables"
+
+#: astronex/gui/config_dlg.py:70
+msgid "Lenguage por defecto"
+msgstr "Default language"
+
+#: astronex/gui/config_dlg.py:74
+msgid "Tamano de imagen PNG"
+msgstr "PNG image size"
+
+#: astronex/gui/config_dlg.py:155
+msgid "Inicio: "
+msgstr "Start:"
+
+#: astronex/gui/config_dlg.py:167
+msgid "Favoritos: "
+msgstr "Favourites: "
+
+#: astronex/gui/config_dlg.py:181
+msgid "N. favoritos: "
+msgstr "N. favourites: "
+
+#: astronex/gui/config_dlg.py:230
+msgid "Herr."
+msgstr "Tool"
+
+#: astronex/gui/config_dlg.py:230
+msgid "Pers."
+msgstr "Pers."
+
+#: astronex/gui/config_dlg.py:231
+msgid "Nodo"
+msgstr "Node"
+
+#: astronex/gui/config_dlg.py:231
+msgid "Trans."
+msgstr "Trans."
+
+#: astronex/gui/config_dlg.py:232
+msgid "Conj."
+msgstr "Conj."
+
+#: astronex/gui/config_dlg.py:232
+msgid "Rojo"
+msgstr "Red"
+
+#: astronex/gui/config_dlg.py:233
+msgid "Azul"
+msgstr "Blue"
+
+#: astronex/gui/config_dlg.py:233
+msgid "Verde"
+msgstr "Green"
+
+#: astronex/gui/config_dlg.py:242
+msgid "Primera pers."
+msgstr "First person"
+
+#: astronex/gui/config_dlg.py:242
+msgid "Segunda pers."
+msgstr "Second person"
+
+#: astronex/gui/config_dlg.py:243
+msgid "P. Inversion"
+msgstr "Invert Point"
+
+#: astronex/gui/config_dlg.py:243
+msgid "P. Reposo"
+msgstr "Low Point"
+
+#: astronex/gui/config_dlg.py:258
+msgid "Restablecer"
+msgstr "Reset"
+
+#: astronex/gui/config_dlg.py:310
+msgid "Base"
+msgstr "Base"
+
+#: astronex/gui/config_dlg.py:334
+msgid "Elige una fuente"
+msgstr "Choose font"
+
+#: astronex/gui/config_dlg.py:422
+msgid "Cambiar lenguage"
+msgstr "Choose language"
+
+#: astronex/gui/config_dlg.py:426
+msgid "espanol"
+msgstr "Spanish"
+
+#: astronex/gui/config_dlg.py:427
+msgid "ingles"
+msgstr "English"
+
+#: astronex/gui/config_dlg.py:428
+msgid "aleman"
+msgstr "German"
+
+#: astronex/gui/config_dlg.py:429
+msgid "catalan"
+msgstr "Catalan"
+
+#: astronex/gui/config_dlg.py:441
+msgid "Los cambios tendran lugar depues de reiniciar la aplicacion"
+msgstr "Changes will be effective after application restart"
+
+#: astronex/gui/config_dlg.py:462
+msgid "Horizontal"
+msgstr "Horizontal"
+
+#: astronex/gui/config_dlg.py:473
+msgid "Vertical"
+msgstr "Vertical"
+
+#: astronex/gui/config_dlg.py:484
+msgid "Etiquetas"
+msgstr "Labels"
+
+#: astronex/gui/couples.py:31 astronex/gui/couples.py:124
+msgid "Crear pareja"
+msgstr "Create partnership"
+
+#: astronex/gui/couples.py:50 astronex/gui/couples.py:102
+#: astronex/gui/mixer.py:115
+msgid "Eliminar"
+msgstr "Delete"
+
+#: astronex/gui/couples.py:305
+msgid "Acontecimiento"
+msgstr "Event"
+
+#: astronex/gui/customloc_dlg.py:19
+msgid "Anadir localidad"
+msgstr "Add location"
+
+#: astronex/gui/customloc_dlg.py:31
+msgid "Eliminar entrada"
+msgstr "Delete entry"
+
+#: astronex/gui/customloc_dlg.py:34
+msgid "Modificar entrada"
+msgstr "Modify entry"
+
+#: astronex/gui/customloc_dlg.py:79
+msgid "Eliminar una localidad puede impedir modificar "
+msgstr "This location may be used in charts. Deleting this"
+
+#: astronex/gui/customloc_dlg.py:80
+msgid "luego una carta con facilidad. Continuar?"
+msgstr "location may cause problems in the charts where it is used. Continue?"
+
+#: astronex/gui/customloc_dlg.py:176 astronex/gui/customloc_dlg.py:345
+#: astronex/gui/localwidget.py:38 astronex/gui/localwidget.py:185
+msgid "Pais"
+msgstr "Country"
+
+#: astronex/gui/customloc_dlg.py:177 astronex/gui/localwidget.py:49
+#: astronex/gui/mainnb.py:90
+msgid "Region"
+msgstr "Region"
+
+#: astronex/gui/customloc_dlg.py:238
+msgid "Longitud"
+msgstr "Longitude"
+
+#: astronex/gui/customloc_dlg.py:241
+msgid "Latitud"
+msgstr "Latitude"
+
+#: astronex/gui/customloc_dlg.py:263
+msgid "E"
+msgstr ""
+
+#: astronex/gui/customloc_dlg.py:264
+msgid "W"
+msgstr ""
+
+#: astronex/gui/customloc_dlg.py:288
+msgid "S"
+msgstr ""
+
+#: astronex/gui/customloc_dlg.py:340 astronex/gui/localwidget.py:38
+#: astronex/gui/localwidget.py:182
+msgid "Estado"
+msgstr "State"
+
+#: astronex/gui/cycle_dlg.py:12
+msgid "Selector de ciclos PE"
+msgstr "AP cycle selector"
+
+#: astronex/gui/cycle_dlg.py:17
+msgid "Ciclos PE"
+msgstr "AP cycle"
+
+#: astronex/gui/datewidget.py:50
+msgid "_Hoy"
+msgstr "_Today"
+
+#: astronex/gui/datewidget.py:51
+msgid "_Cancelar"
+msgstr "_Cancel"
+
+#: astronex/gui/datewidget.py:52
+msgid "_Aceptar"
+msgstr "_Accept"
+
+#: astronex/gui/datewidget.py:247
+msgid "Fecha:"
+msgstr "Date:"
+
+#: astronex/gui/datewidget.py:271
+msgid "Hora:"
+msgstr "Time:"
+
+#: astronex/gui/datewidget.py:305 astronex/gui/datewidget.py:431
+#: astronex/gui/datewidget.py:446 astronex/surfaces/layoutsurface.py:763
+msgid "minutos"
+msgstr "minutes"
+
+#: astronex/gui/datewidget.py:431 astronex/gui/datewidget.py:446
+#: astronex/surfaces/layoutsurface.py:764
+msgid "horas"
+msgstr "hours"
+
+#: astronex/gui/entry_dlg.py:18 astronex/gui/mixer.py:387
+msgid "Nombre:"
+msgstr "Name:"
+
+#: astronex/gui/entry_dlg.py:20
+msgid "Apellidos:"
+msgstr "Surname:"
+
+#: astronex/gui/entry_dlg.py:50
+msgid "Entradas"
+msgstr "Data entry"
+
+#: astronex/gui/entry_dlg.py:58
+msgid "Personal"
+msgstr "Personal data"
+
+#: astronex/gui/entry_dlg.py:115 astronex/state.py:41
+#: astronex/surfaces/sdasurface.py:258
+msgid "Momento actual"
+msgstr "Current time"
+
+#: astronex/gui/entry_dlg.py:158
+msgid "Fecha y hora"
+msgstr "Date and time"
+
+#: astronex/gui/import_dlg.py:258
+msgid "(La importacion puede tardar un poco...)\n"
+msgstr "(Import may take some time...)\n"
+
+#: astronex/gui/import_dlg.py:290
+msgid "Error abriendo el archivo %s"
+msgstr "Error opening file %s"
+
+#: astronex/gui/import_dlg.py:296
+msgid "Creada tabla %s\n"
+msgstr "Table %s created\n"
+
+#: astronex/gui/import_dlg.py:336
+msgid "codigo pais no encontrado: %s\n"
+msgstr "Country code not found: %s\n"
+
+#: astronex/gui/import_dlg.py:358 astronex/gui/import_dlg.py:410
+msgid "Importando %s %s\n"
+msgstr "Importing %s %s\n"
+
+#: astronex/gui/import_dlg.py:424
+msgid "Cartas importadas: %s; dudosas: %s"
+msgstr "Imported charts: %s; doubtful: %s"
+
+#: astronex/gui/import_dlg.py:426
+msgid "Las cartas siguientes fueron importadas sin encontrar\n"
+msgstr "Following charts have been imported without\n"
+
+#: astronex/gui/import_dlg.py:427
+msgid "la localidad correspondiente, y la zona horaria sera\n"
+msgstr "a matching locality. Time zone will be\n"
+
+#: astronex/gui/import_dlg.py:428
+msgid "probablemente incorrrecta. Puede editar este panel,\n"
+msgstr "probably wrong. You can edit this panel,\n"
+
+#: astronex/gui/import_dlg.py:429
+msgid "y copiar su contenido (menu clic derecho)."
+msgstr "and copy/paste its contents (right click menu)."
+
+#: astronex/gui/import_dlg.py:466
+msgid "Archivo AAF"
+msgstr "AAF file"
+
+#: astronex/gui/import_dlg.py:488 astronex/gui/mixer.py:415
+msgid "La tabla %s existe. Reemplazarla, perdiendo los datos?"
+msgstr "Table %s already exists. Overwrite, losing all data?"
+
+#: astronex/gui/import_dlg.py:515
+msgid "Importar archivo: "
+msgstr "Import file: "
+
+#: astronex/gui/import_dlg.py:517 astronex/gui/mixer.py:591
+msgid "Examinar"
+msgstr "Browse"
+
+#: astronex/gui/import_dlg.py:523
+msgid "Nombre tabla: "
+msgstr "Table name: "
+
+#: astronex/gui/import_dlg.py:526
+msgid "Simular"
+msgstr "Simulate"
+
+#: astronex/gui/import_dlg.py:542
+msgid "Importar"
+msgstr "Import"
+
+#: astronex/gui/localwidget.py:41
+msgid "Usa"
+msgstr "USA"
+
+#: astronex/gui/localwidget.py:46
+msgid "Filtro"
+msgstr "Filter"
+
+#: astronex/gui/mainnb.py:58
+msgid "Modificar carta"
+msgstr "Modify chart"
+
+#: astronex/gui/mainnb.py:66
+msgid "Carta del momento"
+msgstr "Now chart"
+
+#: astronex/gui/mainnb.py:80
+msgid "Nombre"
+msgstr "Name"
+
+#: astronex/gui/mainnb.py:83
+msgid "Fecha"
+msgstr "Date"
+
+#: astronex/gui/mainnb.py:103 astronex/gui/mainnb.py:237
+msgid "Exportar carta"
+msgstr "Export chart"
+
+#: astronex/gui/mainnb.py:103 astronex/gui/mainnb.py:252
+msgid "Importar carta"
+msgstr "Import chart"
+
+#: astronex/gui/mainnb.py:129
+msgid "Sobrescribir"
+msgstr "Overwrite"
+
+#: astronex/gui/mainnb.py:272
+msgid "Error importando carta"
+msgstr "Error while importing chart"
+
+#: astronex/gui/mainnb.py:328
+msgid "Explorador/Tablas"
+msgstr "Explorer/Tables"
+
+#: astronex/gui/mainnb.py:351
+msgid "Pegar"
+msgstr "Paste"
+
+#: astronex/gui/mainnb.py:351 astronex/gui/mainnb.py:403
+#: astronex/gui/mainnb.py:408
+msgid "Cortar"
+msgstr "Cut"
+
+#: astronex/gui/mainnb.py:351 astronex/gui/mainnb.py:403
+#: astronex/gui/mixer.py:35
+msgid "Copiar"
+msgstr "Copy"
+
+#: astronex/gui/mainnb.py:410 astronex/gui/mixer.py:671
+msgid "No puedo eliminar una carta con pareja!"
+msgstr "I can't delete a chart in partnership!"
+
+#: astronex/gui/mainnb.py:451 astronex/gui/mixer.py:277
+msgid "Una carta con este nombre: %s %s existe. Sobrescribir?"
+msgstr "A chart with this name: %s %s exist. Overwrite?"
+
+#: astronex/gui/mainnb.py:538
+msgid "Calendario"
+msgstr "Calendar (Ctrl-C)"
+
+#: astronex/gui/mainnb.py:547
+msgid "Punto Edad"
+msgstr "Age Point (Ctrl-A)"
+
+#: astronex/gui/mainnb.py:556
+msgid "Ventana auxiliar"
+msgstr "Window (Ctrl-W)"
+
+#: astronex/gui/mainnb.py:565 astronex/gui/plselector_dlg.py:15
+msgid "Selector de aspectos"
+msgstr "Aspect selector (Ctrl-H)"
+
+#: astronex/gui/mainnb.py:574
+msgid "Selector de ciclos"
+msgstr "Cycle selector (Ctrl-Y)"
+
+#: astronex/gui/mainnb.py:583
+msgid "Diagramas"
+msgstr "Diagrams (Ctrl-D)"
+
+#: astronex/gui/mainnb.py:592
+msgid "PE puente"
+msgstr "Bridge AP (Ctrl-R)"
+
+#: astronex/gui/mixer.py:39
+msgid "Mover"
+msgstr "Move"
+
+#: astronex/gui/mixer.py:120
+msgid "Deshacer"
+msgstr "Undo"
+
+#: astronex/gui/mixer.py:323
+msgid "_Crear tabla"
+msgstr "_Create table"
+
+#: astronex/gui/mixer.py:333
+msgid "E_liminar tabla"
+msgstr "_Delete table"
+
+#: astronex/gui/mixer.py:343
+msgid "_Renombrar"
+msgstr "_Rename"
+
+#: astronex/gui/mixer.py:358
+msgid "_Exportar  tabla"
+msgstr "_Export table"
+
+#: astronex/gui/mixer.py:364
+msgid "_Importar  tabla"
+msgstr "_Import table"
+
+#: astronex/gui/mixer.py:379
+msgid "El nombre de las tablas solo puede comenzar con"
+msgstr "Table names can only begin with '_' or letter,"
+
+#: astronex/gui/mixer.py:380
+msgid "'_' o letra*, seguida de letra*, numero o '_'."
+msgstr "follwed by letter*, number or '_'."
+
+#: astronex/gui/mixer.py:381
+msgid "* A-Z, a-z, sin tildes ni caracteres compuestos"
+msgstr "* A-Z, a-z, no composed characters"
+
+#: astronex/gui/mixer.py:440
+msgid "Eliminar tabla"
+msgstr "Delete table"
+
+#: astronex/gui/mixer.py:465
+msgid "No puedo eliminar una tabla predeterminada."
+msgstr "A default table can't be deleted."
+
+#: astronex/gui/mixer.py:483
+msgid "Desea realmente eliminar la tabla %s?"
+msgstr "Do you really want to delete table %s?"
+
+#: astronex/gui/mixer.py:492
+msgid "Cambiar nombre"
+msgstr "Change table name"
+
+#: astronex/gui/mixer.py:524
+msgid "No puedo cambiar el nombre a una tabla predeterminada."
+msgstr "The name of a default table can't be changed."
+
+#: astronex/gui/mixer.py:535
+msgid "Exportar tabla"
+msgstr "Export table"
+
+#: astronex/gui/mixer.py:580
+msgid "Importar tabla"
+msgstr "Import table"
+
+#: astronex/gui/mixer.py:587
+msgid "Archivo"
+msgstr "File"
+
+#: astronex/gui/mixer.py:593
+msgid "Tabla"
+msgstr "Table"
+
+#: astronex/gui/mixer.py:623
+msgid "Error abriendo el archivo"
+msgstr "Error opening file"
+
+#: astronex/gui/mixer.py:626
+msgid "Error importando la tabla"
+msgstr "Error importing chart"
+
+#: astronex/gui/mixer.py:633
+msgid "%s de %s"
+msgstr "%s of %s"
+
+#: astronex/gui/mixer.py:682
+msgid "No puedo eliminar una tabla con pareja!"
+msgstr "I can't delete a table with partner!"
+
+#: astronex/gui/oppanel.py:20 astronex/gui/oppanel.py:39
+#: astronex/gui/oppanel.py:51
+msgid "CRadix"
+msgstr "Radix"
+
+#: astronex/gui/oppanel.py:21 astronex/gui/oppanel.py:40
+#: astronex/gui/oppanel.py:52
+msgid "CCasas"
+msgstr "House"
+
+#: astronex/gui/oppanel.py:22 astronex/gui/oppanel.py:41
+msgid "Nodal"
+msgstr "Nodal"
+
+#: astronex/gui/oppanel.py:23 astronex/gui/oppanel.py:42
+msgid "Local"
+msgstr "Local"
+
+#: astronex/gui/oppanel.py:24 astronex/gui/oppanel.py:43
+msgid "Alma"
+msgstr "Causal"
+
+#: astronex/gui/oppanel.py:25 astronex/gui/oppanel.py:44
+msgid "Perfil"
+msgstr "Profile"
+
+#: astronex/gui/oppanel.py:26 astronex/gui/oppanel.py:45
+msgid "Integracion"
+msgstr "Integration"
+
+#: astronex/gui/oppanel.py:27
+msgid "Clics Ind."
+msgstr "Single click"
+
+#: astronex/gui/oppanel.py:28
+msgid "Radix Alma"
+msgstr "Radix-Causal"
+
+#: astronex/gui/oppanel.py:29 astronex/gui/oppanel.py:78
+msgid "Casas-Casas"
+msgstr "House-House"
+
+#: astronex/gui/oppanel.py:30 astronex/gui/oppanel.py:79
+msgid "Nodal-Nodal"
+msgstr "Nodal-Nodal"
+
+#: astronex/gui/oppanel.py:31 astronex/gui/oppanel.py:80
+msgid "Casas-Nodal"
+msgstr "House-Nodal"
+
+#: astronex/gui/oppanel.py:32 astronex/gui/oppanel.py:81
+msgid "Nodal-Casas"
+msgstr "Nodal-House"
+
+#: astronex/gui/oppanel.py:33 astronex/gui/oppanel.py:82
+msgid "Alma-Alma"
+msgstr "Causal-Causal"
+
+#: astronex/gui/oppanel.py:34 astronex/gui/oppanel.py:83
+msgid "Radix-Radix"
+msgstr "Radix-Radix"
+
+#: astronex/gui/oppanel.py:35 astronex/gui/oppanel.py:86
+msgid "Clic Subjetivo"
+msgstr "Subjective click"
+
+#: astronex/gui/oppanel.py:46
+msgid "Clic Individual"
+msgstr "Single click"
+
+#: astronex/gui/oppanel.py:47
+msgid "Clic Radix-Alma"
+msgstr "Radix-Causal"
+
+#: astronex/gui/oppanel.py:48
+msgid "Dharma"
+msgstr ""
+
+#: astronex/gui/oppanel.py:53
+msgid "Nodales"
+msgstr "Nodal"
+
+# msgstr "Age Progression"
+#: astronex/gui/oppanel.py:54
+msgid "Progresion de la edad Radix"
+msgstr "Radix AP"
+
+#: astronex/gui/oppanel.py:55
+msgid "Progresion de la edad Carta Nodal"
+msgstr "Nodal AP"
+
+#: astronex/gui/oppanel.py:56
+msgid "Progresion de la edad Carta Local"
+msgstr "Local AP"
+
+#: astronex/gui/oppanel.py:57
+msgid "Progresion de la edad Carta del Alma"
+msgstr "Causal AP"
+
+#: astronex/gui/oppanel.py:60
+msgid "Biografia Radix"
+msgstr "Radix biography"
+
+#: astronex/gui/oppanel.py:61
+msgid "Biografia Nodal"
+msgstr "Nodal biography"
+
+#: astronex/gui/oppanel.py:62
+msgid "Biografia Alma"
+msgstr "Causal biography"
+
+#: astronex/gui/oppanel.py:65
+msgid "Comparacion pareja I"
+msgstr "Partnership analysis I"
+
+#: astronex/gui/oppanel.py:66
+msgid "Comparacion pareja II"
+msgstr "Partnership analysis II"
+
+#: astronex/gui/oppanel.py:72
+msgid "Comparacion PE"
+msgstr "AP comparison"
+
+#: astronex/gui/oppanel.py:84
+msgid "Radix-Alma"
+msgstr "Radix-Causal"
+
+#: astronex/gui/oppanel.py:85
+msgid "Alma-Nodal"
+msgstr "Causal-Nodal"
+
+#: astronex/gui/oppanel.py:87
+msgid "Puente"
+msgstr "Bridge"
+
+#: astronex/gui/oppanel.py:90 astronex/surfaces/sdasurface.py:202
+msgid "Progresion secundaria"
+msgstr "Secundary progression"
+
+#: astronex/gui/oppanel.py:91 astronex/surfaces/sdasurface.py:202
+msgid "Revolucion solar"
+msgstr "Solar revolution"
+
+#: astronex/gui/plselector_dlg.py:21
+msgid "Ocultar"
+msgstr "Hide"
+
+#: astronex/gui/quickhelp.py:18 astronex/surfaces/layoutsurface.py:20
+#: astronex/surfaces/layoutsurface.py:49
+#: astronex/surfaces/layoutsurface.py:317
+msgid "Ayuda"
+msgstr "Help"
+
+#: astronex/gui/quickhelp.py:79
+msgid "Teclado"
+msgstr "Keyboard"
+
+#: astronex/gui/quickhelp.py:107
+msgid "Raton"
+msgstr "Mouse"
+
+#: astronex/gui/quickhelp.py:121
+msgid "Accion"
+msgstr "Action"
+
+#: astronex/gui/quickhelp.py:126
+msgid "Donde"
+msgstr "Where"
+
+#: astronex/gui/quickhelp.py:156
+msgid ": Esta ayuda"
+msgstr ": This help"
+
+#: astronex/gui/quickhelp.py:157
+msgid ": Salir"
+msgstr ": Exit"
+
+#: astronex/gui/quickhelp.py:158
+msgid ": Pantalla completa"
+msgstr ": Full screen"
+
+#: astronex/gui/quickhelp.py:159
+msgid ": Exportar a imagen"
+msgstr ": Export to image"
+
+#: astronex/gui/quickhelp.py:160
+msgid ": Exportar a PDF - Imprimir"
+msgstr ": Export to PDF - Print"
+
+#: astronex/gui/quickhelp.py:161
+msgid ": Cuadro de entradas"
+msgstr ": Data entry dialog"
+
+#: astronex/gui/quickhelp.py:162
+msgid ": Cuadro de configuracion"
+msgstr ": Settings dialog"
+
+#: astronex/gui/quickhelp.py:163
+msgid ": Buscar tecleando en listas"
+msgstr ": Find in lists"
+
+#: astronex/gui/quickhelp.py:164
+msgid ": Cerrar ventana/dialogo"
+msgstr ": Close window/dialog"
+
+#: astronex/gui/quickhelp.py:165
+msgid ": Alternar casillas"
+msgstr ": Alternate slots"
+
+#: astronex/gui/quickhelp.py:166
+msgid ": Calendario"
+msgstr ": Calendar"
+
+#: astronex/gui/quickhelp.py:167
+msgid ": PE"
+msgstr ": PE"
+
+#: astronex/gui/quickhelp.py:168
+msgid ": Ventana auxiliar"
+msgstr ": New window"
+
+#: astronex/gui/quickhelp.py:169
+msgid ": Selector aspectos"
+msgstr ": Aspect selector"
+
+#: astronex/gui/quickhelp.py:170
+msgid ": Diagramas"
+msgstr ": Diagrams"
+
+#: astronex/gui/quickhelp.py:171
+msgid ": Ciclos"
+msgstr ": Cycles"
+
+#: astronex/gui/quickhelp.py:172
+msgid ": PE puente"
+msgstr ": Bridge AP"
+
+#: astronex/gui/quickhelp.py:173
+msgid ": Localidades personalizadas"
+msgstr ": User defined locations"
+
+#: astronex/gui/quickhelp.py:174
+msgid ": Navegador rapido cartas"
+msgstr ": Quick browser"
+
+#: astronex/gui/quickhelp.py:175
+msgid ": Moverse en listas"
+msgstr ": Move on lists"
+
+#: astronex/gui/quickhelp.py:175
+msgid "Cursores"
+msgstr "Cursors"
+
+#: astronex/gui/quickhelp.py:176
+msgid "0-9 Tecl. num."
+msgstr "0-9 Num. Keyb."
+
+#: astronex/gui/quickhelp.py:176
+msgid ": Seleccionar lista"
+msgstr ": Choose list"
+
+#: astronex/gui/quickhelp.py:177
+msgid "+/- Tecl. num."
+msgstr "+/-  Num. Keyb."
+
+#: astronex/gui/quickhelp.py:177
+msgid ": Rotar tambor"
+msgstr ": Rotate persons drum"
+
+#: astronex/gui/quickhelp.py:178
+msgid ": Rotar casas (biografia)"
+msgstr ": Rotate houses (biography)"
+
+#: astronex/gui/quickhelp.py:181
+msgid "Clic simple"
+msgstr "Click"
+
+#: astronex/gui/quickhelp.py:181
+msgid "seleccionar pe"
+msgstr "Position AP"
+
+#: astronex/gui/quickhelp.py:181 astronex/gui/quickhelp.py:187
+msgid "pe, biografia"
+msgstr "AP, biography"
+
+#: astronex/gui/quickhelp.py:182
+msgid "ojo"
+msgstr "Eye"
+
+#: astronex/gui/quickhelp.py:182
+msgid "personas recientes"
+msgstr "Recent persons list"
+
+#: astronex/gui/quickhelp.py:183
+msgid "Clic derecho"
+msgstr "Right click"
+
+#: astronex/gui/quickhelp.py:183
+msgid "menu secundario"
+msgstr "Contextual Menu"
+
+#: astronex/gui/quickhelp.py:183 astronex/gui/quickhelp.py:191
+msgid "area de dibujo"
+msgstr "Drawing area"
+
+#: astronex/gui/quickhelp.py:184
+msgid "ventana auxiliar"
+msgstr "Windows"
+
+#: astronex/gui/quickhelp.py:185 astronex/gui/quickhelp.py:196
+msgid "casillas"
+msgstr "Chart slots"
+
+#: astronex/gui/quickhelp.py:186
+msgid "listas de cartas"
+msgstr "Chart lists"
+
+#: astronex/gui/quickhelp.py:187
+msgid "Doble clic"
+msgstr "Double click"
+
+#: astronex/gui/quickhelp.py:187
+msgid "restaurar fecha"
+msgstr "Date = Today"
+
+#: astronex/gui/quickhelp.py:188
+msgid "carta reloj, transitos"
+msgstr "Clock chart, transits"
+
+#: astronex/gui/quickhelp.py:189
+msgid "selector de casas"
+msgstr "House selector"
+
+#: astronex/gui/quickhelp.py:190
+msgid "Vent.aux."
+msgstr "Windows"
+
+#: astronex/gui/quickhelp.py:190
+msgid "principio de lista"
+msgstr "List beginning"
+
+#: astronex/gui/quickhelp.py:191
+msgid "Arrastrar"
+msgstr "Drag"
+
+#: astronex/gui/quickhelp.py:191
+msgid "guia de grados"
+msgstr "Degree guide"
+
+#: astronex/gui/quickhelp.py:192
+msgid "biografia"
+msgstr "Biography"
+
+#: astronex/gui/quickhelp.py:192
+msgid "mover pe"
+msgstr "Move AP"
+
+#: astronex/gui/quickhelp.py:193
+msgid "panorama"
+msgstr "Panning"
+
+#: astronex/gui/quickhelp.py:193 astronex/gui/quickhelp.py:200
+msgid "acercar"
+msgstr "Zoom in"
+
+#: astronex/gui/quickhelp.py:194
+msgid "entre tablas"
+msgstr "Between tables"
+
+#: astronex/gui/quickhelp.py:194
+msgid "mover registros"
+msgstr "Move registers"
+
+#: astronex/gui/quickhelp.py:195
+msgid "Rueda"
+msgstr "Wheel"
+
+#: astronex/gui/quickhelp.py:195
+msgid "areas de dibujo"
+msgstr "Drawing areas"
+
+#: astronex/gui/quickhelp.py:195
+msgid "rotar lista"
+msgstr "Rotate list"
+
+#: astronex/gui/quickhelp.py:196
+msgid "rotar tambor"
+msgstr "Rotate pers. drum"
+
+#: astronex/gui/quickhelp.py:197
+msgid "Boton rueda"
+msgstr "Wheel button"
+
+#: astronex/gui/quickhelp.py:197
+msgid "lista principal"
+msgstr "Main list"
+
+#: astronex/gui/quickhelp.py:197
+msgid "principio lista"
+msgstr "List beginning"
+
+#: astronex/gui/quickhelp.py:198
+msgid "principio lista principal"
+msgstr "Radix"
+
+#: astronex/gui/quickhelp.py:198
+msgid "ventana de grados"
+msgstr "Degree popup"
+
+#: astronex/gui/quickhelp.py:199
+msgid "alternar posicion"
+msgstr "Alternate position"
+
+#: astronex/gui/quickhelp.py:199
+msgid "listas dobles/triples"
+msgstr "Double/triple lists"
+
+#: astronex/gui/quickhelp.py:200
+msgid "alternar con guia"
+msgstr "Alternate guide"
+
+#: astronex/gui/quickhelp.py:201
+msgid "mover pe "
+msgstr "Move AP "
+
+#: astronex/gui/quickhelp.py:201
+msgid "pe"
+msgstr " AP"
+
+#: astronex/gui/quickhelp.py:202
+msgid "   + Ctlr"
+msgstr ""
+
+#: astronex/gui/quickhelp.py:202
+msgid "mover pe +"
+msgstr "Move AP +"
+
+#: astronex/gui/quickhelp.py:203
+msgid "   + Ctlr-May"
+msgstr "   + Ctlr-Shift"
+
+#: astronex/gui/quickhelp.py:203
+msgid "mover pe -"
+msgstr "Move AP -"
+
+#: astronex/gui/winnex.py:87
+msgid "Salir"
+msgstr "Exit (Ctrl-Q)"
+
+#: astronex/gui/winnex.py:97
+msgid "Terminal"
+msgstr "Console"
+
+#: astronex/gui/winnex.py:107
+msgid "Pantalla completa"
+msgstr "Full screen (F11)"
+
+#: astronex/gui/winnex.py:118
+msgid "Exportar a imagen"
+msgstr "Export to image (Ctrl-G)"
+
+#: astronex/gui/winnex.py:128
+msgid "Exportar a PDF/Imprimir"
+msgstr "Export to PDF/Print (Ctrl-P)"
+
+#: astronex/gui/winnex.py:138
+msgid "TEntradas"
+msgstr "Data entry (Ctrl-E) "
+
+#: astronex/gui/winnex.py:149
+msgid "TConfiguracion"
+msgstr "Settings (Ctrl-S)"
+
+#: astronex/gui/winnex.py:158
+msgid "Acerca de Astro-Nex"
+msgstr "About Astro-Nex"
+
+#: astronex/gui/winnex.py:244
+msgid "Programa de calculo y dibujo de cartas astrologicas segun el metodo API"
+msgstr "Program to calc and plot API astrological charts"
+
+#: astronex/surfaces/layoutsurface.py:20 astronex/surfaces/layoutsurface.py:53
+#: astronex/surfaces/layoutsurface.py:58
+#: astronex/surfaces/layoutsurface.py:319
+#: astronex/surfaces/layoutsurface.py:326
+msgid "Ver zonas PE"
+msgstr "Show AP zones"
+
+#: astronex/surfaces/layoutsurface.py:20
+#: astronex/surfaces/layoutsurface.py:307
+#: astronex/surfaces/layoutsurface.py:316
+msgid "Acercar"
+msgstr "Zoom in"
+
+#: astronex/surfaces/layoutsurface.py:20
+#: astronex/surfaces/layoutsurface.py:333
+#: astronex/surfaces/layoutsurface.py:338
+msgid "Solo EA"
+msgstr "Only AS"
+
+#: astronex/surfaces/layoutsurface.py:21 astronex/surfaces/layoutsurface.py:49
+#: astronex/surfaces/layoutsurface.py:53 astronex/surfaces/layoutsurface.py:56
+#: astronex/surfaces/layoutsurface.py:351
+#: astronex/surfaces/layoutsurface.py:356
+msgid "Ver EA"
+msgstr "Show AS"
+
+#: astronex/surfaces/layoutsurface.py:21 astronex/surfaces/layoutsurface.py:53
+#: astronex/surfaces/layoutsurface.py:60
+#: astronex/surfaces/layoutsurface.py:327
+#: astronex/surfaces/layoutsurface.py:332
+msgid "Ver zonas de casa"
+msgstr "Show house zones"
+
+#: astronex/surfaces/layoutsurface.py:21
+#: astronex/surfaces/layoutsurface.py:339
+#: astronex/surfaces/layoutsurface.py:344
+msgid "Activar goodwill"
+msgstr "Show goodwill"
+
+#: astronex/surfaces/layoutsurface.py:22 astronex/surfaces/layoutsurface.py:54
+#: astronex/surfaces/layoutsurface.py:62
+#: astronex/surfaces/layoutsurface.py:357
+#: astronex/surfaces/layoutsurface.py:362
+msgid "Ver todos los aspectos"
+msgstr "All clicks"
+
+#: astronex/surfaces/layoutsurface.py:22 astronex/surfaces/layoutsurface.py:54
+#: astronex/surfaces/layoutsurface.py:64
+#: astronex/surfaces/layoutsurface.py:363
+#: astronex/surfaces/layoutsurface.py:368
+msgid "Ego-clics"
+msgstr "Ego planets"
+
+#: astronex/surfaces/layoutsurface.py:22
+#: astronex/surfaces/layoutsurface.py:345
+#: astronex/surfaces/layoutsurface.py:350
+msgid "Ocultar unilaterales"
+msgstr "Hide unilateral"
+
+#: astronex/surfaces/layoutsurface.py:311
+#: astronex/surfaces/layoutsurface.py:312
+msgid "Alejar"
+msgstr "Zoom out"
+
+#: astronex/surfaces/layoutsurface.py:322
+#: astronex/surfaces/layoutsurface.py:323
+msgid "Ocultar zonas PE"
+msgstr "Hide AP zones"
+
+#: astronex/surfaces/layoutsurface.py:329
+#: astronex/surfaces/layoutsurface.py:330
+msgid "Ocultar zonas de casa"
+msgstr "Hide house zones"
+
+#: astronex/surfaces/layoutsurface.py:335
+#: astronex/surfaces/layoutsurface.py:336
+msgid "Mostrar todo"
+msgstr "Show all"
+
+#: astronex/surfaces/layoutsurface.py:341
+#: astronex/surfaces/layoutsurface.py:342
+msgid "Desactivar goodwill"
+msgstr "Hide goodwill"
+
+#: astronex/surfaces/layoutsurface.py:347
+#: astronex/surfaces/layoutsurface.py:348
+msgid "Mostrar unilaterales"
+msgstr "Show unilateral"
+
+#: astronex/surfaces/layoutsurface.py:353
+#: astronex/surfaces/layoutsurface.py:354
+msgid "Ocultar EA"
+msgstr "Hide AS"
+
+#: astronex/surfaces/layoutsurface.py:359
+#: astronex/surfaces/layoutsurface.py:360
+msgid "Ver solo clics"
+msgstr "Std. clicks"
+
+#: astronex/surfaces/layoutsurface.py:365
+#: astronex/surfaces/layoutsurface.py:366
+msgid "Clics sin ego"
+msgstr "All planets"
+
+#: astronex/surfaces/layoutsurface.py:765
+msgid "dias"
+msgstr "days"
+
+#: astronex/surfaces/pdfsurface.py:49 astronex/surfaces/pngsurface.py:24
+msgid "Guardar..."
+msgstr "Save..."
+
+#: astronex/surfaces/pdfsurface.py:57
+msgid "Documento Pdf "
+msgstr "PDF Document"
+
+#: astronex/surfaces/pngsurface.py:32
+msgid "Imagen Png"
+msgstr "PNG Image"
+
+#: astronex/surfaces/sdasurface.py:203 astronex/surfaces/sdasurface.py:322
+#: astronex/surfaces/sdasurface.py:323
+msgid "Congelar"
+msgstr "Freeze"
+
+#: astronex/surfaces/sdasurface.py:203 astronex/surfaces/sdasurface.py:326
+msgid "Permutar"
+msgstr "Swap"
+
+#: astronex/surfaces/sdasurface.py:203 astronex/surfaces/sdasurface.py:331
+msgid "DDiagramas"
+msgstr "Diagrams"
+
+#: astronex/surfaces/sdasurface.py:203 astronex/surfaces/sdasurface.py:333
+msgid "Cartas"
+msgstr "Charts"
+
+#: astronex/surfaces/sdasurface.py:203 astronex/surfaces/sdasurface.py:339
+msgid "Biografias"
+msgstr "Biographies"
+
+#: astronex/surfaces/sdasurface.py:320 astronex/surfaces/sdasurface.py:325
+msgid "Descongelar"
+msgstr "Defreeze"
+
+#: astronex/utils.py:10 astronex/utils.py:17
+msgid "sin_nombre%d"
+msgstr "unnamed%d"

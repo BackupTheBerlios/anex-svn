@@ -1,0 +1,9 @@
+#!/bin/bash
+pygettext.py -d astronex -o astronex.pot astronex/*.py astronex/*/*.py
+mv astronex.pot ./locale
+
+cd locale
+for l in *.po;
+do
+	msgmerge -U $l astronex.pot ;
+done
