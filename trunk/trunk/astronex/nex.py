@@ -107,22 +107,22 @@ class Splash (gtk.Window):
         vbox.pack_start(img)
         self.add(vbox)
 
-#def init_ipshell():    
-#    ''' ipython suport (for linux)'''
-#    if sys.platform != 'win32': 
-#        try:
-#            __IPYTHON__
-#        except NameError:
-#            argv = ['']
-#            banner = exit_msg = ''
-#        else:
-#            argv = ['-pi1','In <\\#>:','-pi2','   .\\D.:','-po','Out<\\#>:']
-#            banner = '*** Nested interpreter ***'
-#            exit_msg = '*** Back in main IPython ***'
-#
-#        from IPython.Shell import IPShellEmbed
-#        ipshell = IPShellEmbed(argv,banner=banner,exit_msg=exit_msg)
-#        return ipshell
+def init_ipshell():    
+    ''' ipython suport (for linux)'''
+    if sys.platform != 'win32': 
+        try:
+            __IPYTHON__
+        except NameError:
+            argv = ['']
+            banner = exit_msg = ''
+        else:
+            argv = ['-pi1','In <\\#>:','-pi2','   .\\D.:','-po','Out<\\#>:']
+            banner = '*** Nested interpreter ***'
+            exit_msg = '*** Back in main IPython ***'
+
+        from IPython.Shell import IPShellEmbed
+        ipshell = IPShellEmbed(argv,banner=banner,exit_msg=exit_msg)
+        return ipshell
 
 class application(object):
     """The Nex Application."""
@@ -154,8 +154,8 @@ class application(object):
         state = Current(self)
         init_config(self.home_dir,opts,state)
         boss = Manager(self,opts,state)
-        #boss.ipshell = init_ipshell() 
-        #boss.ipshell()
+        boss.ipshell = init_ipshell() 
+        boss.ipshell()
 
     def setup_app(self):
         opts = read_config(self.home_dir)
@@ -179,9 +179,11 @@ class application(object):
         """Stop Nex."""
         gtk.main_quit()
 
-def main(appath):
+def main(appath,console=False):
     check_home_dir(appath)
     app = application(appath)
-    #app.run_console()
-    app.run()
+    if console:
+        app.run_console()
+    else:
+        app.run()
 
