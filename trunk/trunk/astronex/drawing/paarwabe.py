@@ -2965,7 +2965,7 @@ class PaarWabeMixin(object):
                         diff += 30
                     diffp2.append(diff)
                 cs2 = [30.0,-1]; ci2 = [-30.0,-1]
-                print rplan2, diffp2
+                #print rplan2, diffp2
                 for j,d in enumerate(diffp2):
                     if d > 0 and d < cs2[0]:
                         cs2[0] = d; cs2[1] = j

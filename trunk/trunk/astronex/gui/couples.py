@@ -156,13 +156,14 @@ class CouplesPanel(gtk.HBox):
         vbox.pack_start(tables,False,False)
 
         chartmodel = gtk.ListStore(str,int)
-        personae = gtk.ComboBox(chartmodel)
+        personae = gtk.ComboBoxEntry(chartmodel)
         chartlist = curr.datab.get_chartlist(tables.get_active_text())
 
         for c in chartlist:
             glue = ", "
             if c[2] == '':  glue = ''
             chartmodel.append([c[2]+glue+c[1],int(c[0])])
+        
         
         cell = gtk.CellRendererText()
         personae.pack_start(cell,True)
@@ -174,7 +175,21 @@ class CouplesPanel(gtk.HBox):
         vbox.pack_start(personae,True,True) 
         vbox.set_size_request(210,-1)
         tables.connect('changed',self.on_tables_changed,personae,key)
+        
+        compl = gtk.EntryCompletion()
+        compl.set_text_column(0)
+        compl.set_model(personae.get_model())
+        personae.child.set_completion(compl)
+        compl.connect('match_selected', self.on_person_match,personae)
+        
         return vbox
+    
+    def on_person_match(self,compl,model,iter,personae):
+        sel = unicode(model.get_value(iter,0),"utf-8")
+        for r in personae.get_model():
+            if r[0] == sel:
+                personae.set_active_iter(r.iter)
+                break
     
     def on_persona_changed(self,combo,key):
         if combo.get_active() == -1: return

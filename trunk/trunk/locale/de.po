@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Astro-Nex 0.7\n"
 "POT-Creation-Date: 2008-06-05 13:30+WEST\n"
-"PO-Revision-Date: 2008-06-14 13:02+0100\n"
+"PO-Revision-Date: 2008-07-10 11:31+0100\n"
 "Last-Translator:  Joan <joansole@api-ediciones.com>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -455,7 +455,7 @@ msgstr "   bildung"
 
 #: astronex/drawing/paarwabe.py:17
 msgid "A"
-msgstr ""
+msgstr "K"
 
 #: astronex/drawing/paarwabe.py:17
 msgid "R"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Astro-Nex 0.8\n"
 "POT-Creation-Date: 2008-06-05 13:30+WEST\n"
-"PO-Revision-Date: 2008-06-14 11:25+0100\n"
+"PO-Revision-Date: 2008-07-10 11:24+0100\n"
 "Last-Translator: jose <jar@astro-nex.com>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -455,7 +455,7 @@ msgstr " de voluntad"
 
 #: astronex/drawing/paarwabe.py:17
 msgid "A"
-msgstr ""
+msgstr "K"
 
 #: astronex/drawing/paarwabe.py:17
 msgid "R"
