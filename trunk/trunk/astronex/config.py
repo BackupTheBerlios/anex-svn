@@ -13,7 +13,7 @@ default_colors = {'pers': 'ff5600', 'tool': '0000ff',
         'red': 'ee0000', 'click1': '3300e6', 
         'click2': 'cc001a', 'inv': '7f7f99', 'low': '7f997f','transcol': '7f7f99'}
 COLORS = default_colors
-PNG = {'hsize': 600, 'vsize': 600, 'labels': 'true' , 'pngviewer':'display'}
+PNG = {'hsize': 600, 'vsize': 600, 'labels': 'true' , 'pngviewer':'display', 'resolution': 300 }
 PDF = {'pdfviewer': 'kpdf'}
 LANG = { 'lang': 'es' }
 FONT = { 'font': 'Sans 11' , 'transtyle':  'huber'} #'classic' 

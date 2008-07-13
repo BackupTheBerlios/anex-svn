@@ -23,7 +23,7 @@ setup(
     author_email = author_email ,
     url = url,
     license = license,
-    requires = ['pygtk (>2.8)','pygobject','pycairo','pytz','configobj','ipython'],
+    requires = ['pygtk (>2.8)','pygobject','pycairo','pytz','configobj','ipython','PIL'],
     packages = ['astronex','astronex.gui','astronex.drawing','astronex.surfaces','astronex.extensions','astronex.scripts'],
     package_dir = { 'astronex': 'astronex' },
     package_data = {'astronex':['astronex/db/local.db','astronex/resources/*','astronex/locale/*',]},
