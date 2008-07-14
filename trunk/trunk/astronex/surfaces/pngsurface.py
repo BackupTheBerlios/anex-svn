@@ -42,7 +42,7 @@ class ImageExportDialog(gtk.Dialog):
         filter = gtk.FileFilter()
         filter.add_mime_type("image/png")
         filter.add_mime_type("image/jpeg")
-        filter.add_mime_type("image/tiff")
+        #filter.add_mime_type("image/tiff")
         filter.set_name(_("Imagen"))
         self.chooser.add_filter(filter)
         
@@ -114,7 +114,7 @@ class ImageExportDialog(gtk.Dialog):
         store = gtk.ListStore(str)
         store.append([_('png')])
         store.append([_('jpg')])
-        store.append([_('tiff')])
+        #store.append([_('tiff')])
         combo = gtk.ComboBox(store)
         cell = gtk.CellRendererText()
         combo.pack_start(cell,True)
