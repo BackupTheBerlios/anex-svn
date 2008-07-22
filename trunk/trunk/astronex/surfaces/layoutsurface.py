@@ -36,6 +36,7 @@ class DrawMaster(gtk.Layout):
     rulinepending = None
     bridge = None
     sec_alltimes = False
+    overlay = False
 
     def __init__(self,boss):
         self.boss = boss
@@ -90,6 +91,8 @@ class DrawMaster(gtk.Layout):
 
         self.ha = None
         self.va = None
+        self.m_x = 0
+        self.m_y = 0
     
     def create_special_area(self):
         frame = gtk.Frame()
@@ -237,10 +240,18 @@ class DrawMaster(gtk.Layout):
         elif gtk.gdk.MOTION_NOTIFY:
             if curr.curr_op in bios or curr.opmode != 'simple':
                 return False
+            x, y, state = event.window.get_pointer() 
+            if self.overlay:
+                pixmap = gtk.gdk.Pixmap(None, 1, 1, 1)
+                color = gtk.gdk.Color()
+                cursor = gtk.gdk.Cursor(pixmap, pixmap, color, color, 0, 0)
+                self.window.set_cursor(cursor)
+                self.m_x = x
+                self.m_y = y
+                self.queue_draw()
             if info['button'] < 0 or info['button'] == 100:
                 info['button'] = -1
                 return False
-            x, y, state = event.window.get_pointer() 
             w = da.allocation.width/2; h = da.allocation.height/2
             if self.panning:
                 x = info['click_x'] - x
@@ -545,6 +556,14 @@ class DrawMaster(gtk.Layout):
         self.draw_label(cr,w,h) 
         if self.check_local_label():
             self.d_loclbl(cr,w,h)
+                
+        if self.overlay:
+            cr.set_source_rgba(0.5,0.2,0.5,0.5)
+            radial = cairo.RadialGradient(self.m_x,self.m_y,45,self.m_x,self.m_y,50)
+            radial.add_color_stop_rgba(0.0,0,0,1,0)
+            radial.add_color_stop_rgba(0.9,1,0,0,1)
+            cr.mask(radial)
+
 
     def check_local_label(self):
         if curr.opmode == 'simple' and curr.curr_op == 'draw_local': 

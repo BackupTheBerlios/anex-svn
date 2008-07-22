@@ -199,6 +199,7 @@ def crown_calc(chartobj):
     chartobj.swap_charts()
     he_n = chartobj.get_planets(True)
     he_n = he_n[0:2]+he_n[6:-1] 
+    chartobj.swap_charts()
 
     crown_she = {}
     crown_she['1'] = simple_asp(she_r[9],3,he_s[0],0)

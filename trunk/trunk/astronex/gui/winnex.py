@@ -15,6 +15,7 @@ from localsel import LocSelector
 from aux_dlg import AuxWindow
 from shell_dlg import ShellDialog
 from quickhelp import HelpWindow
+from inieditor import IniEditor
 
 class WinNex(gtk.Window):
 
@@ -43,6 +44,7 @@ class WinNex(gtk.Window):
         accel_group.connect_group(ord('w'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_aux)
         accel_group.connect_group(ord('r'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_pebridge)
         accel_group.connect_group(ord('k'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_shell)
+        accel_group.connect_group(ord('o'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_editor)
         accel_group.connect_group(gtk.keysyms.F2,0,gtk.ACCEL_LOCKED,self.fake_modify_chart)
         accel_group.connect_group(gtk.keysyms.F3,0,gtk.ACCEL_LOCKED,self.fake_click_clock)
         accel_group.connect_group(ord('c'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_calendar)
@@ -310,6 +312,9 @@ class WinNex(gtk.Window):
     
     def launch_shell(self,acgroup,actable,keyval,mod):
         ShellDialog(self.boss)
+    
+    def launch_editor(self,acgroup,actable,keyval,mod):
+        IniEditor(self)
     
     def launch_calendar(self,acgroup,actable,keyval,mod):
         item = self.mpanel.toolbar.get_nth_item(0)

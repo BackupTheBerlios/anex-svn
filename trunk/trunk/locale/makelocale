@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for l in *.po;
+do
+    msgfmt.py $l
+    ll=${l%.po}
+    mv ${ll}.mo ../astronex/locale/${ll}/LC_MESSAGES/astronex.mo
+done
