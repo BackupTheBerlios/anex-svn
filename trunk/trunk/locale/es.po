@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Astro-Nex 0.8\n"
 "POT-Creation-Date: 2008-07-13 14:22+WEST\n"
-"PO-Revision-Date: 2008-07-13 14:34+0100\n"
+"PO-Revision-Date: 2009-01-21 15:10+0000\n"
 "Last-Translator: jose <jar@astro-nex.com>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -250,7 +250,7 @@ msgstr "S"
 
 #: astronex/drawing/datasheets.py:204
 msgid "c"
-msgstr "H"
+msgstr "C"
 
 #: astronex/drawing/datasheets.py:218
 msgid "Tabla de aspectos"

@@ -2,7 +2,9 @@
 import pysw
 from math import sqrt,cos,sin,pi
 from datetime import datetime,timedelta,time
-from utils import parsestrtime
+from pytz import timezone
+from utils import parsestrtime, strdate_to_date
+from nexdate import NeXDate
 from drawing import roundedcharts 
 boss = None
 RAD = pi / 180
@@ -50,7 +52,30 @@ class Chart(object):
         p = pysw.planets(d,epheflag)
         h = pysw.houses(d,lt,lg)
         return p,h
+    
+    def chiron_calc(self,date,epheflag): 
+        d = pysw.julday(*date)
+        chi = pysw.calc(d,15,epheflag)
+        return chi
 
+    def calc_plan_with_retrogression(self,epheflag=4):
+        dt = strdate_to_date(self.date)
+        dt = NeXDate(self,dt,timezone(self.zone))
+        d = pysw.julday(*dt.dateforcalc())
+        signs = []
+        for i in range(12):
+            if i == 10:
+                continue
+            err,l,s,mes = pysw.calc_ut_with_speed(d,i,epheflag)
+            if err < 0:
+                print("error: %s" % mes)
+                return None
+            sg = self.which_sign(l)
+            sg['speed'] = s
+            signs.append((sg))
+        return signs
+
+    
     def calc_localhouses(self):
         curr = boss.get_state()
         d = pysw.julday(*curr.calcdt.dateforcalc())
@@ -70,14 +95,14 @@ class Chart(object):
             splan.append(pos)
         return splan 
     
-    def aspects(self,type='radix'):
-        if type == 'house':
+    def aspects(self,kind='radix'):
+        if kind == 'house':
             pl= self.house_plan_long()
-        elif type == 'soul':
+        elif kind == 'soul':
             pl= self.soulplan()
         else: 
             pl= self.planets[:]
-        if type == 'nodal':
+        if kind == 'nodal':
             pl[10] = self.houses[0]
         chart_orbs = []
         for i in range(len(pl)):
@@ -862,6 +887,8 @@ class Chart(object):
             while ll > zones[i]:
                 i += 1
                 continue
+            if i == 6:
+                h += 1
             l = d - h*30
             secs.append((l,m,h,(i%6)+1))
         return secs 
@@ -1042,6 +1069,95 @@ class Chart(object):
             d = timeObj['begin'] + timedelta(days)
             ageProg.append({'day':d.day,'mon':d.month,'year':d.year,'lab':e['sname'],'cl':e['cl']})
         return ageProg
+
+#######
+    def pers_house_force(self):
+        hspl = self.house_plan_long()
+        pl = []
+        for l in [hspl[0], hspl[1], hspl[6]]:
+            f = l - int(l)
+            p = int(l) % 30 + f
+            if p > 22.35: p = 30 - p 
+            pl.append(p)
+        tups = [(pl[0],"sun"),(pl[1],"moon"),(pl[2],"sat")]
+        tups.sort()
+        phforce = {}
+        for i,t in enumerate(tups):
+            phforce[t[1]] = 3 - i
+        return phforce
+        
+    def pers_sign_force(self):
+        n = 30 - 30*PHI
+        # m = 30*PHI; n/m = PHI
+        # (pl-n)*PHI + n =  pl*PHI - n*(PHI - 1)
+        fac = n * (PHI - 1)
+        sl = self.planets[:]
+        pl = []
+        for l in [sl[0], sl[1], sl[6]]:
+            f = l - int(l)
+            p = int(l) % 30 + f
+            if p > n:
+                p = (p * PHI ) - fac
+            pl.append(abs(n-p))
+        tups = [(pl[0],"sun"),(pl[1],"moon"),(pl[2],"sat")]
+        tups.sort()
+        phforce = {}
+        for i,t in enumerate(tups):
+            phforce[t[1]] = 3 - i
+        return phforce
+
+    def pers_aspects_force(self):
+        asp = self.aspects()
+        pl = [0]*11
+        for a in asp:
+            if a["gw"]:
+                continue
+            f1 = a["f1"]
+            f2 = a["f2"]
+            if f1 > 1: f1 = 0.95
+            if f2 > 1: f2 = 0.95
+            f1 =  2-2*f1
+            f2 =  2-2*f2
+            if a["p1"] == 10 or a["p2"] == 10:
+                f1 /= 2
+                f2 /= 2
+            pl[a["p1"]] += f1
+            pl[a["p2"]] += f2
+        tups = [(pl[0],"sun"),(pl[1],"moon"),(pl[6],"sat")]
+        tups.sort()
+        phforce = {}
+        for i,t in enumerate(tups):
+            phforce[t[1]] = i + 1
+        return phforce
+
+    def pers_zone_force(self):
+        pl = self.house_plan_long()
+        sun = abs(270 - pl[0])
+        if sun > 180: sun = 360 - sun
+        sat = abs(90 - pl[6])
+        if sat > 180: sat = 360 - sat
+        moon = pl[1]
+        if moon > 90 and moon <= 270:
+            moon = abs(180 - moon)
+        elif moon > 270:
+            moon = 360 - moon
+        tups = [(sun,"sun"),(moon,"moon"),(sat,"sat")]
+        tups.sort()
+        phforce = {}
+        for i,t in enumerate(tups):
+            phforce[t[1]] = 3 - i
+        return phforce
+
+    def pers_force(self):
+        h = self.pers_house_force()
+        s = self.pers_sign_force()
+        a = self.pers_aspects_force()
+        z = self.pers_zone_force()
+        sun = h["sun"]*1.5 + s["sun"] + a["sun"]*0.75 + z["sun"]*0.5
+        moon = h["moon"]*1.5 + s["moon"] + a["moon"]*0.75 + z["moon"]*0.5
+        sat = h["sat"]*1.5 + s["sat"] + a["sat"]*0.75 + z["sat"]*0.5
+        #print h,s,a,z
+        return (sun, moon, sat)
 
 #######
 def evcmp(a,b):

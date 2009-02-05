@@ -259,15 +259,16 @@ class CoreMixin(object):
         paint = self.paint[chartob.name]
         pdfsoul = chartob.name == 'soul' and self.surface.__class__.__name__  == 'DrawPdf'
 
-        if pdfsoul:
-            w = self.surface.w; h = self.surface.h 
-            tmp_cr = cr
-            target = cr.get_target()
-            over = target.create_similar(cairo.CONTENT_COLOR_ALPHA,int(w),int(h))
-            over_cr = cairo.Context(over)
-            over_cr.translate(w/2,h/2)
-            over_cr.set_line_width(0.5 * cr.get_line_width())
-            cr = over_cr
+        #if pdfsoul:
+        #    w = self.surface.w; h = self.surface.h 
+        #    tmp_cr = cr
+        #    target = cr.get_target()
+        #    #over = target.create_similar(cairo.CONTENT_COLOR_ALPHA,int(w),int(h))
+        #    over = target.create_similar(cairo.CONTENT_ALPHA,int(w),int(h))
+        #    over_cr = cairo.Context(over)
+        #    over_cr.translate(w/2,h/2)
+        #    over_cr.set_line_width(0.5 * cr.get_line_width())
+        #    cr = over_cr
         
         for z in zodiac:
             cr.save()
@@ -280,10 +281,10 @@ class CoreMixin(object):
             paint(self,cr,z.col,radius)
             cr.restore()
         
-        if pdfsoul:
-            cr = tmp_cr
-            cr.set_source_surface(over,-w/2,-h/2)
-            cr.paint()
+        #if pdfsoul:
+        #    cr = tmp_cr
+        #    cr.set_source_surface(over,-w/2,-h/2)
+        #    cr.paint()
 
     def paint_basic_sign(self,cr,color,radius=None):
         cr.set_source_rgb(*color)

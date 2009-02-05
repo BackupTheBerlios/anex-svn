@@ -236,3 +236,11 @@ class Manager(object):
                 return c['dates']
         return None
 
+    def process(self):
+        from stats import process_zodiac_data
+        process_zodiac_data()
+
+    def retrievecharts(self):
+        from stats import main_survey
+        main_survey()
+

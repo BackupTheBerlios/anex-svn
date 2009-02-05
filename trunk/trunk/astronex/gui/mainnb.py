@@ -303,14 +303,17 @@ class ChartBrowser(gtk.VBox):
         
         liststore = gtk.ListStore(str)
         self.tables = gtk.ComboBoxEntry(liststore)
-        self.tables.get_children()[0].set_editable(False)
+        self.entry = self.tables.get_children()[0]
+        self.entry.set_editable(False)
+        self.entry.connect('activate',self.on_search_activated)
         cell = gtk.CellRendererText()
 
         self.tables.pack_start(cell)
         self.tables.connect('changed',self.on_tables_changed)
         self.tables.set_size_request(120,-1)
         tablelist = curr.datab.get_databases()
-        
+        liststore.append([_('(Buscar)')]) 
+
         for c in tablelist:
             liststore.append([c])
         index = 0
@@ -357,7 +360,7 @@ class ChartBrowser(gtk.VBox):
             self.menu.append(menu_items)
             menu_items.connect("activate", self.on_menuitem_activate, buf)
             menu_items.show()
-        self.chartview.connect("event", self.on_view_clicked)
+        self.chartview.connect('button_press_event',self.on_view_clicked)
 
         self.clip = None
 
@@ -385,8 +388,23 @@ class ChartBrowser(gtk.VBox):
         self.tables.set_model(liststore)
         self.tables.set_active(index)
 
-    def on_view_clicked(self,view, event):
-        if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+    def on_view_clicked(self,view,event):
+        if event.type == gtk.gdk.BUTTON_PRESS and event.button == 2:
+            path = view.get_path_at_pos(int(event.x),int(event.y))[0]
+            view.get_selection().select_path(path)
+            model,iter = view.get_selection().get_selected()
+            if not iter:
+                return True
+            id = model.get_value(iter,1)
+            try:
+                table = model.get_value(iter,2)
+            except ValueError:
+                table = self.tables.get_active_text()
+            chart = curr.newchart()
+            curr.datab.load_chart(table,id,chart)
+            boss.mainwin.launch_aux_from_browser(chart)
+            return True
+        elif event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
             x = int(event.x)
             y = int(event.y)
             pthinfo = view.get_path_at_pos(x, y)
@@ -423,8 +441,29 @@ class ChartBrowser(gtk.VBox):
         else: # paste
             self.new_chart(self.clip)
 
+    def on_search_activated(self,entry):
+        if self.tables.get_active() > 0:
+            return 
+        searchlist = curr.datab.search_by_name_all_tables(entry.get_text())
+        if not self.chartview is None:
+            chartmodel = gtk.ListStore(str,int,str)
+            for c in searchlist :
+                glue = ", "
+                if c[3] == '':  glue = ''
+                chartmodel.append([c[3]+glue+c[2] , int(c[1]), c[0]])
+            self.chartview.set_model(chartmodel)
+
     def on_tables_changed(self,combo): 
         if combo.get_active() == -1: return
+        if combo.get_active() == 0: 
+            self.entry.set_editable(True)
+            self.entry.select_region(0,-1)
+            self.entry.grab_focus()
+            return
+        else:
+            if self.entry.get_editable():
+                self.entry.set_editable(False)
+
         if not self.chartview is None:
             chartmodel = gtk.ListStore(str,int)
             chartlist = curr.datab.get_chartlist(self.tables.get_active_text()) 
@@ -440,12 +479,16 @@ class ChartBrowser(gtk.VBox):
             self.chartview.get_selection().select_path(r)
             self.chartview.scroll_to_cell(r)
             #self.chartview.row_activated(r,self.chartview.get_column(0))
+    
 
     def on_chart_activated(self,view,path,col):
         model,iter = view.get_selection().get_selected()
         id = model.get_value(iter,1)
+        try:
+            table = model.get_value(iter,2)
+        except ValueError:
+            table = self.tables.get_active_text()
         chart = curr.charts[self.slot]
-        table = self.tables.get_active_text()
         curr.datab.load_chart(table,id,chart)
         curr.add_to_pool(copy(chart),Slot.overwrite)
         MainPanel.actualize_pool(self.slot,chart) 

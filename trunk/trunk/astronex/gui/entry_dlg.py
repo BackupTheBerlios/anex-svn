@@ -29,9 +29,9 @@ class PersonTable(gtk.Table):
 
     def on_changed(self,w,curr):
         if w is self.first:
-            curr.person.first = w.get_text()
+            curr.person.first = unicode(w.get_text(),"utf-8")
         elif w is self.last:
-            curr.person.last = w.get_text()
+            curr.person.last = unicode(w.get_text(),"utf-8")
 
 class EntryDlg(gtk.Dialog):
     '''New chart inputs dialog'''

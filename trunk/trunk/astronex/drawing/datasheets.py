@@ -146,7 +146,7 @@ class SheetMixin(object):
         whole = curr.curr_chart.dyncalc_list()
         hm = 50; vm = 680
         ho = 44; vo = 20
-        cols=[(0,0,0),(0.6,0,0),(0,0.5,0),(0,0,0.5),
+        cols=[(0,0,0),(0.6,0,0),(0,0,0.5),(0,0.5,0),
                 self.zod[0].col,self.zod[1].col,
                 self.zod[2].col,self.zod[3].col]
         tcols=[self.zod[0].col,self.zod[1].col,

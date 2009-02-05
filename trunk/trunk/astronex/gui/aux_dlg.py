@@ -3,7 +3,7 @@ import gtk
 from .. surfaces.sdasurface import  DrawAux
 
 class AuxWindow(gtk.Window):
-    def __init__(self,parent):
+    def __init__(self,parent,chart=None):
         self.boss = parent.boss
         gtk.Window.__init__(self)
         self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
@@ -20,10 +20,12 @@ class AuxWindow(gtk.Window):
         accel_group.connect_group(gtk.keysyms.Down,gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.fake_scroll_down)
         self.add_accel_group(accel_group) 
 
-        self.sda = DrawAux(self.boss)
+        self.sda = DrawAux(self.boss,chart)
         self.add(self.sda)
 
-        self.set_default_size(450,450)
+        aux_size = int(self.boss.opts.aux_size)
+        #self.set_size_request(450,450)
+        self.set_default_size(aux_size,aux_size)
         self.connect('destroy', self.cb_exit,parent)
         self.show_all()
 

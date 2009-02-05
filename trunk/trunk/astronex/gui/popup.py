@@ -61,7 +61,8 @@ class PetitArea(gtk.DrawingArea):
             chart = curr.now
         else:
             chart = curr.curr_chart
-        signs = chart.which_all_signs()
+        #signs = chart.which_all_signs()
+        signs = chart.calc_plan_with_retrogression(boss.state.epheflag)
         
         font = pango.FontDescription("Astro-Nex")
         font.set_size(11*pango.SCALE)
@@ -97,6 +98,18 @@ class PetitArea(gtk.DrawingArea):
             layout.set_text(text)
             cr.show_layout(layout)
             cr.new_path()
+
+        cr.set_source_rgb(0,0,0.4)
+        font = pango.FontDescription(boss.opts.font)
+        font.set_size(9*pango.SCALE)
+        layout.set_font_description(font)
+        text = 'r'
+        for i in range(11):
+            if signs[i]['speed'] < 0:
+                cr.move_to(72,10+i*16)
+                layout.set_text(text)
+                cr.show_layout(layout)
+                cr.new_path()
 
 ################################################
 class TextPopup(gtk.Window):

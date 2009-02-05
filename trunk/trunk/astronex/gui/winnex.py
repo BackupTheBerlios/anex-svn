@@ -2,7 +2,7 @@
 import sys,os
 from .. extensions.path import path
 import gtk
-from .. surfaces.layoutsurface import  DrawMaster
+from .. surfaces.layoutsurface import DrawMaster
 from .. surfaces.pngsurface import DrawPng
 from .. surfaces.pdfsurface import DrawPdf
 #from .. surfaces import printsurface
@@ -44,7 +44,8 @@ class WinNex(gtk.Window):
         accel_group.connect_group(ord('w'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_aux)
         accel_group.connect_group(ord('r'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_pebridge)
         accel_group.connect_group(ord('k'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_shell)
-        accel_group.connect_group(ord('o'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_editor)
+        accel_group.connect_group(ord('i'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_editor)
+        accel_group.connect_group(ord('o'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.toggle_overlay)
         accel_group.connect_group(gtk.keysyms.F2,0,gtk.ACCEL_LOCKED,self.fake_modify_chart)
         accel_group.connect_group(gtk.keysyms.F3,0,gtk.ACCEL_LOCKED,self.fake_click_clock)
         accel_group.connect_group(ord('c'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_calendar)
@@ -306,6 +307,9 @@ class WinNex(gtk.Window):
     def launch_aux(self,acgroup,actable,keyval,mod):
         self.da.auxwins.append(AuxWindow(self))
     
+    def launch_aux_from_browser(self,chart):
+        self.da.auxwins.append(AuxWindow(self,chart=chart))
+    
     def launch_pebridge(self,acgroup,actable,keyval,mod):
         item = self.mpanel.toolbar.get_nth_item(6)
         item.set_active(not item.get_active())
@@ -432,3 +436,7 @@ class WinNex(gtk.Window):
     def fake_modify_chart(self,acgroup,actable,keyval,mod):
         slot = self.mpanel.pool[self.mpanel.active_slot]
         slot.mod.emit('clicked')
+
+    def toggle_overlay(self,acgroup,actable,keyval,mod):
+        self.da.toggle_overlay()
+

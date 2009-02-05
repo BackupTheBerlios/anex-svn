@@ -17,6 +17,7 @@ from datetime import datetime, timedelta
 from .. boss import boss
 curr = boss.get_state()
 
+MAGICK_COL = 65535.0
 initmenu = (_('Ayuda'),_('Acercar'),_('Solo EA'),_('Ver zonas PE'),
         _('Ver zonas de casa'),_('Ver EA'),_('Activar goodwill'),
         _('Ocultar unilaterales'),_('Ego-clics'),_('Ver todos los aspectos'))
@@ -241,11 +242,7 @@ class DrawMaster(gtk.Layout):
             if curr.curr_op in bios or curr.opmode != 'simple':
                 return False
             x, y, state = event.window.get_pointer() 
-            if self.overlay:
-                pixmap = gtk.gdk.Pixmap(None, 1, 1, 1)
-                color = gtk.gdk.Color()
-                cursor = gtk.gdk.Cursor(pixmap, pixmap, color, color, 0, 0)
-                self.window.set_cursor(cursor)
+            if DrawMaster.overlay:
                 self.m_x = x
                 self.m_y = y
                 self.queue_draw()
@@ -278,6 +275,17 @@ class DrawMaster(gtk.Layout):
                 self.drawer.ruline = (x-w,y-h)
                 self.queue_draw()
             #self.queue_draw()
+
+    def toggle_overlay(self):
+        DrawMaster.overlay = not DrawMaster.overlay 
+        if DrawMaster.overlay:
+            pixmap = gtk.gdk.Pixmap(None, 1, 1, 1)
+            color = gtk.gdk.Color()
+            cursor = gtk.gdk.Cursor(pixmap, pixmap, color, color, 0, 0)
+            self.window.set_cursor(cursor)
+        else:
+            self.window.set_cursor(None)
+        self.queue_draw()
 
     def on_scroll(self,da,event):
         x, y = event.x,event.y 
@@ -557,13 +565,14 @@ class DrawMaster(gtk.Layout):
         if self.check_local_label():
             self.d_loclbl(cr,w,h)
                 
-        if self.overlay:
-            cr.set_source_rgba(0.5,0.2,0.5,0.5)
+        if DrawMaster.overlay:
+            col = gtk.gdk.color_parse('#'+self.opts.overlay) 
+            ovcol = [col.red/MAGICK_COL,col.green/MAGICK_COL,col.blue/MAGICK_COL,0.5]
+            cr.set_source_rgba(*ovcol)
             radial = cairo.RadialGradient(self.m_x,self.m_y,45,self.m_x,self.m_y,50)
             radial.add_color_stop_rgba(0.0,0,0,1,0)
             radial.add_color_stop_rgba(0.9,1,0,0,1)
             cr.mask(radial)
-
 
     def check_local_label(self):
         if curr.opmode == 'simple' and curr.curr_op == 'draw_local': 

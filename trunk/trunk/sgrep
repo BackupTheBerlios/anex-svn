@@ -1,0 +1,1 @@
+grep -rI  --exclude=*.svn* --exclude=*~ *

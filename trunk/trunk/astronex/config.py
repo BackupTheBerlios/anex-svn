@@ -11,7 +11,8 @@ default_colors = {'pers': 'ff5600', 'tool': '0000ff',
         'water': '0000ff', 'orange': 'ff8000',
         'green': '00cc00', 'blue': '0000f7', 
         'red': 'ee0000', 'click1': '3300e6', 
-        'click2': 'cc001a', 'inv': '7f7f99', 'low': '7f997f','transcol': '7f7f99'}
+        'click2': 'cc001a', 'inv': '7f7f99', 'low': '7f997f',
+        'transcol': '7f7f99', 'overlay': '803480' }
 COLORS = default_colors
 PNG = {'hsize': 600, 'vsize': 600, 'labels': 'true' , 'pngviewer':'display', 'resolution': 300 }
 PDF = {'pdfviewer': 'kpdf'}
@@ -30,7 +31,7 @@ ORBS = { 'transits': [1.0,1.0,1.0,1.0,1.0,2.0,2.0,2.0,2.0,2.0,1.0],
         'pefar' : [1.0,2.0,3.0,4.0,5.0],
         'peuseless' : [1.0,2.0,2.0,3.0,4.0], 
         'discard': []  }#[0,1,2,3,4,5]
-DEFAULT = { 'usa': 'false', 'favourites': '', 'nfav': 3,
+DEFAULT = { 'usa': 'false', 'favourites': '', 'nfav': 3, 'aux_size': 800,
         'database' : 'personal', 'ephepath': 'ephe',
         'country' : 'SP', 'region': 53,
         'locality' :'Las Palmas de Gran Canaria' }
@@ -80,6 +81,45 @@ def read_config(homedir):
         conf.write()
 
     return opts
+
+def reload_config(conf,boss): 
+    global cfgcols
+    opts = boss.opts
+    state = boss.state
+
+    ephepath = path.joinpath(opts.home_dir,opts.ephepath)
+    from pysw import setpath
+    setpath(str(ephepath))
+
+    if opts.favourites:
+        try:
+            tbl = opts.favourites
+            nfav = int(opts.nfav)
+            favs = state.datab.get_favlist(tbl,nfav,state.newchart())
+            state.fav = favs
+        except:
+            pass
+    
+    popts = {}
+    for k in conf.keys():
+        popts.update(conf[k])
+    opts.__dict__.update(popts)
+
+    for keyc in default_colors.keys():
+        val = getattr(opts,keyc)
+        cfgcols[keyc] = ''.join(['#',val])
+
+    from chart import orbs as ch_orbs
+    orbs = [opts.lum,opts.normal,opts.short,opts.far,opts.useless]
+    for l in orbs:
+        state.orbs.append(map(float,l))
+        ch_orbs.append(map(float,l)) 
+    peorbs = [opts.pelum,opts.penormal,opts.peshort,opts.pefar,opts.peuseless]
+    for l in peorbs:
+        state.peorbs.append(map(float,l))
+    for l in opts.transits:
+        state.transits.append(float(l)) 
+    opts.discard = [ int(x) for x in opts.discard ]
 
 def parse_aux_colors():
     auxcol = {}

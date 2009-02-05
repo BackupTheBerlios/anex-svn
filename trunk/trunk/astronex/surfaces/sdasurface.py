@@ -205,7 +205,7 @@ initmenu = (_('Congelar'),_('Permutar'),_('Cartas'),'Clics',_('DDiagramas'),_('B
 class DrawAux(gtk.DrawingArea):
     pepending = [False,None,None]
 
-    def __init__(self,boss):
+    def __init__(self,boss,chart=None):
         self.boss = boss
         self.opts = boss.opts
         self.opcharts = deque(opcharts)
@@ -233,8 +233,12 @@ class DrawAux(gtk.DrawingArea):
         sep_item = gtk.SeparatorMenuItem()
         self.menu.insert(sep_item,2)
         sep_item.show()
-        self.cache = [copy(curr.curr_chart),copy(curr.curr_click)] 
-        self.frozen = False
+        if chart:
+            self.cache = [copy(chart),copy(curr.curr_click)] 
+            self.frozen = True
+        else:
+            self.cache = [copy(curr.curr_chart),copy(curr.curr_click)] 
+            self.frozen = False
         self.permuted = False
         
 

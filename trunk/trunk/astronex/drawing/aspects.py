@@ -81,7 +81,7 @@ class UnilateralAspect(object):
                 y2,y1 = y1,y2
             xx = (x2 + x1)/2; yy = (y2 + y1)/2
             cr.set_source_rgb(*asp.col)
-            cr.set_dash([12,6],2)
+            cr.set_dash([12,6,48,6],0)
             cr.move_to(x1,y1)
             cr.line_to(xx,yy)
             cr.stroke()
@@ -215,7 +215,7 @@ class SimpleAspectManager(object):
                 acl = self.aspclass[nsig]
                 if filter == 'transit':
                     orb1,orb2 = self.orbs[pc1][acl],self.trorbs[j]                
-                    if orb <= orb2*1.1:
+                    if orb <= orb2:#*1.1:
                         aspects.append(asp_obj(p1=i,p2=j,a=nsig,f1=orb/orb1,f2=orb/orb2)) 
                 else:
                     orb1,orb2 = self.orbs[pc1][acl],self.orbs[pc2][acl] 

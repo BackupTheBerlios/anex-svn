@@ -4,8 +4,6 @@ import sqlite3
 from copy import copy
 from extensions.path import path
 from utils import dectodeg,degtodec
-import sqlite3
-import sqlite3
 import locale
 locale.setlocale(locale.LC_ALL,'')
 local_conn = None
@@ -238,8 +236,8 @@ def coalesce_geo(plg,plt):
         lg = lg[:-2].rjust(1,'0')+"E"+lg[-2:]
     
     if lt.startswith('-'):
-        lt = lg[1:]
-        lt = lt[1:-2].rjust(1,'0')+"S"+lt[-2:].rjust(2,'0')
+        lt = lt[1:]
+        lt = lt[:-2].rjust(1,'0')+"S"+lt[-2:].rjust(2,'0')
     else:
         lt = lt[:-2].rjust(1,'0')+"N"+lt[-2:]
 
@@ -579,11 +577,21 @@ def load_chart(tbl, id, chart):
     ch = cursor.execute(sql).next()
     setchart(chart, ch)
 
-def retreive_chart(tbl, id, chart):
+def retrieve_chart(tbl, id, chart):
     cursor = chart_conn.cursor()
     sql = "select * from %s where rowid='%s'" % (tbl, id)
     ch = cursor.execute(sql).next()
     return ch
+
+def retrieve_all_charts(tbl,chart):
+    cursor = chart_conn.cursor()
+    sql = "select rowid from %s" % (tbl)
+    charts = []
+    for row in cursor.execute(sql):
+        ch = copy(chart)
+        load_chart(tbl,row[0],ch)
+        charts.append(ch) 
+    return charts
 
 def load_chart_from_name(tbl, fi, la, chart):
     cursor = chart_conn.cursor()
@@ -639,3 +647,26 @@ def vacuum():
     sql = "pragma vacuum"
     cursor.execute(sql)
 
+def get_datum(tbl,datum):
+    cursor = chart_conn.cursor()
+    sql = "select %s from %s" % (datum,tbl)
+    data = []
+    for row in cursor.execute(sql):
+        data.append(row[0])
+    return data
+
+def search_by_name_all_tables(name):
+    cursor = chart_conn.cursor()
+    sql = "select name from sqlite_master where type='table'"
+    tables = []
+    for row in cursor.execute(sql):
+        table = str(row[0])
+        tables.append(table)
+    nm = name + "%"
+    results = []
+    for tbl in tables:
+        sql = """select rowid, first, last from %s where first like '%s' or
+        last like '%s' order by last, first collate westcoll""" % (tbl,nm,nm)
+        for row in cursor.execute(sql):
+            results.append([tbl] + list(row))
+    return results
