@@ -28,8 +28,11 @@ class PersonTable(gtk.Table):
         self.set_border_width(3) 
 
     def on_changed(self,w,curr):
-        if w is self.first:             t = w.get_text()            curr.person.first = unicode(w.get_text(),"utf-8")            print t, type(t)        elif w is self.last:
+        if w is self.first:      
+            curr.person.first = unicode(w.get_text(),"utf-8")           
+        elif w is self.last:
             curr.person.last =  unicode(w.get_text(),"utf-8")
+
 class EntryDlg(gtk.Dialog):
     '''New chart inputs dialog'''
 
