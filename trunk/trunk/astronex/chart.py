@@ -13,6 +13,10 @@ points = [12,12,8,8,8,8,12,6,6,6,4]
 planames = ['sun','moon','mercury','venus','mars','jupiter','saturn','uranus','neptune','pluto','node']
 zodnames =  ['aries', 'tauro', 'geminis', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagitario', 'capricornio', 'acuario', 'piscis' ]
 aspnames = ['conj','semi','sext','cuad','trig','quinc','opos','quinc','trig','cuad','sext','semi']
+conj_class = [[(0,4),(0,6),(0,9),(3,4),(3,9),(4,6),(4,7),(4,8),(4,9),(6,7),(7,9)],
+            [(0,1),(0,3),(0,5),(0,7),(0,8),(1,3),(1,5),(1,6),(2,6),(2,7),(3,5),(3,6),(3,9),(5,7),(5,9),(6,8),(6,9)],
+            [(0,2),(1,2),(1,4),(1,7),(1,8),(1,9),(2,3),(2,4),(2,5),(2,8),(2,9),(3,7),(4,5),(5,6),(5,8),(7,8),(8,9)]] 
+plan_class = [[0,4,9],[3,6,7],[1,2,5,8]]
 
 orbs = []
 
@@ -223,6 +227,16 @@ class Chart(object):
                     break
         return plinh
 
+    def get_low_points(self):
+        pr = []
+        sz = self.sizes()
+        for h in range(len(self.houses)):
+            d = self.houses[h]
+            g = sz[h]*PHI 
+            l = d + g 
+            pr.append(l)
+        return pr
+
 ######### draw houses
     def sign_sizes(self):
         ss = self.house_sign_long()
@@ -252,19 +266,6 @@ class Chart(object):
             hssg.append(res)
         return hssg
 
-    def nod_sign_long(self):
-        nod = self.planets[10]
-        asc = self.houses[0]
-        sizes = self.sizes()
-        sign,deg = divmod(nod,30)
-        factor = [s/30 for s in sizes]
-        hssg = []
-        for i in range(12):
-            res = self.houses[i] + deg*factor[i]
-            #print res-asc,deg*factor[i]
-            hssg.append(res-asc)
-        return hssg
-    
     def sign_in_house(self):
         signinh = []
         for i in range(12):
@@ -286,6 +287,29 @@ class Chart(object):
         dist = zoddeg - self.houses[house]
         if dist < 0: dist += 360
         return house,dist/self.sizes()[house]
+
+######### node special
+    def nod_sign_long(self):
+        nod = self.planets[10]
+        asc = self.houses[0]
+        sizes = self.sizes()
+        sign,deg = divmod(nod,30)
+        factor = [s/30 for s in sizes]
+        hssg = []
+        for i in range(12):
+            res = self.houses[i] + deg*factor[i]
+            #print res-asc,deg*factor[i]
+            hssg.append(res-asc)
+        return hssg
+    
+    def nodal_cusp_degrees(self):
+        nodasc = self.planets[10]
+        hn = []
+        for i in range(12):
+            c = nodasc - 30*i
+            if c < 0: c += 360.0
+            hn.append(c)
+        return hn
 
 ######### cross points
     def calc_cross_points(self,cross=None):
@@ -546,6 +570,26 @@ class Chart(object):
         dyn[9] = cr['card'] + el['earth']
         dyn[10] = cr['fix'] + el['air']
         dyn[11] = cr['mut'] + el['water']
+        return dyn
+
+    def dyn_span_diff(self):
+        ds = self.signdyn()
+        dh = self.housedyn()
+        scr = ds['cross']; sel = ds['elem']
+        hcr = dh['cross']; hel = dh['elem']
+        dyn = [0]*12
+        dyn[0] = (hcr['card'] + hel['fire'] ) - ( scr['card'] + sel['fire'])
+        dyn[1] = (hcr['fix'] + hel['earth'] ) - ( scr['fix'] + sel['earth'])
+        dyn[2] = (hcr['mut'] + hel['air']   ) - ( scr['mut'] + sel['air'])
+        dyn[3] = (hcr['card'] + hel['water']) - ( scr['card'] + sel['water'])
+        dyn[4] = (hcr['fix'] + hel['fire']  ) - ( scr['fix'] + sel['fire'])
+        dyn[5] = (hcr['mut'] + hel['earth'] ) - ( scr['mut'] + sel['earth'])
+        dyn[6] = (hcr['card'] + hel['air']  ) - ( scr['card'] + sel['air'])
+        dyn[7] = (hcr['fix'] + hel['water'] ) - ( scr['fix'] + sel['water'])
+        dyn[8] = (hcr['mut'] + hel['fire']  ) - ( scr['mut'] + sel['fire'])
+        dyn[9] = (hcr['card'] + hel['earth']) - ( scr['card'] + sel['earth'])
+        dyn[10] =(hcr['fix'] + hel['air']   ) - ( scr['fix'] + sel['air'])
+        dyn[11] =(hcr['mut'] + hel['water'] ) - ( scr['mut'] + sel['water'])
         return dyn
 
 ##############################################
@@ -997,7 +1041,8 @@ class Chart(object):
         sign = int(house/30)
         while scusp < sizeh:
             events.append({'scusp':scusp,'sname': (sign+1+s)%12,'cl':"sign" })
-            s += 1; scusp += s*30
+            #s += 1; scusp += s*30
+            s += 1; scusp += 30
         
         for m in mids:
             dif = abs(sign - m['sign'])
@@ -1069,6 +1114,40 @@ class Chart(object):
             d = timeObj['begin'] + timedelta(days)
             ageProg.append({'day':d.day,'mon':d.month,'year':d.year,'lab':e['sname'],'cl':e['cl']})
         return ageProg
+#######
+    def plagram_asp_analysis(self):
+        asp = self.aspects()
+        colkeys = [0,2,1,0,1,2,0,2,1,0,1,2]
+        nasp = [0] * 11
+        coleval = []
+        for i in range(11):
+            coleval.append([0,0,0])
+        for a in asp:
+            if a["gw"]:
+                continue
+            f1 = a["f1"]
+            f2 = a["f2"]
+            if f1 > 1: f1 = 0.95
+            if f2 > 1: f2 = 0.95
+            f1 =  2-2*f1
+            f2 =  2-2*f2
+            
+            nasp[a['p1']] += 1
+            nasp[a['p2']] += 1
+            if a['a'] > 0:
+                k = colkeys[a['a']]
+                coleval[a['p1']][k] += f1
+                coleval[a['p2']][k] += f2
+            else:
+                for ij,cj in enumerate(conj_class):
+                    if (a['p1'],a['p2']) in cj:
+                        coleval[a['p1']][ij] += f1
+                        coleval[a['p2']][ij] += f2
+                        break
+        ceval = [ s.index(max(s)) for s in coleval ]
+        #ceval = [ (3 - n) % 3 for n in ceval ] # rbg 
+        return nasp, ceval
+
 
 #######
     def pers_house_force(self):

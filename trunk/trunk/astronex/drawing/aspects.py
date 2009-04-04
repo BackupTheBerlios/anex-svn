@@ -14,28 +14,39 @@ ten_colors = [
         (0.9, 0.7, 0.0) ]
 
 class ConjunctioAspect(object):
-    def draw(self,cr,r,aspects,filter):
-        ex = 1.105
+    def draw(self,cr,r,aspects,filter,extend=None):
+        if extend:
+            ex = extend
+            fdivfac = 20
+        else:
+            ex = 1.105
+            fdivfac = 10
+        
         cr.save()
         for asp in aspects:
+            asp.p1 %= 360.0
+            asp.p2 %= 360.0
             x1 = r * math.cos(asp.p1 * RAD)
             y1 = r * math.sin(asp.p1 * RAD)
             x2 = r * math.cos(asp.p2 * RAD)
             y2 = r * math.sin(asp.p2 * RAD) 
-            f1 = 1.1 if asp.f1 > 1 else 1 + asp.f1/10
-            f2 = 1.1 if asp.f2 > 1 else 1 + asp.f2/10
+            f1 = ex*0.99 if asp.f1 > 1 else 1 + asp.f1/fdivfac
+            f2 = ex*0.99 if asp.f2 > 1 else 1 + asp.f2/fdivfac
             dis = abs(asp.p1 - asp.p2)
             dis = min(dis, 360-dis)
             if dis == 0.0 or filter: # zero div when same chart
                 da = 3.0
             else:
                 da = (((dis/asp.f1 + dis/asp.f2) / 2) - dis) / 2 
+            if da < 0: da = -da
             a1 = min(asp.p1,asp.p2) - da
             a2 = max(asp.p1,asp.p2) + da
             if a1 < 0: a1 += 360.0
             if a2 < 0: a2 += 360.0
             a1 %= 360.0
             a2 %= 360.0 
+            if min(asp.p1,asp.p2) != asp.p1:
+                a1,a2 = a2,a1
 
             ebx1 = r * ex * math.cos(a1 * RAD)
             eby1 = r * ex * math.sin(a1 * RAD)
@@ -70,7 +81,7 @@ class UnilateralAspect(object):
     
     def draw(self,cr,r,aspects):
         cr.save()
-        cr.set_line_width(0.8*float(self.lw))
+        cr.set_line_width(0.6*float(self.lw))
         for asp in aspects:
             x1 = r * math.cos(asp.p1 * RAD)
             y1 = r * math.sin(asp.p1 * RAD)
@@ -249,7 +260,7 @@ class SimpleAspectManager(object):
         return aspects
 
 class AspectManager(SimpleAspectManager):
-    def __init__(self,boss,get_gw,get_uni,get_nw,plmanager,colors,baseline):
+    def __init__(self,boss,get_gw,get_uni,get_nw,plmanager,colors,baseline,chartob=None):
         self.boss = boss
         self.plmanager = plmanager
         self.colhues = colors
@@ -297,7 +308,7 @@ class AspectManager(SimpleAspectManager):
             delattr(a,'a')
         ap.draw(cr,r,aspects,pedraw)
     
-    def manage_aspects(self,cr,r,planets,clickplan=None,filter=None):
+    def manage_aspects(self,cr,r,planets,clickplan=None,filter=None,extend=None):
         aspects = set(self.asp_fun(planets,clickplan,filter))
         notwanted = self.get_nw(filter)
         if notwanted:
@@ -320,7 +331,7 @@ class AspectManager(SimpleAspectManager):
             uni = set(a for a in conj if a.f1 > 1 or a.f2 > 1)
             conj.difference_update(uni)
         self.arrange_for_draw(conj,click=clickplan)
-        self.conjunctio.draw(cr,r,conj,filter)
+        self.conjunctio.draw(cr,r,conj,filter,extend)
 
         if filter == 'click': 
             noopos = set(a for a in aspects if a.a != 6)

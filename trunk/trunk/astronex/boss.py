@@ -13,6 +13,7 @@ from directions import solar_rev, sec_prog
 
 suffixes = { 'draw_nat':'rx','draw_nod':'nd','draw_house':'hs','draw_local':'lc',
         'draw_soul':'ca','draw_prof':'pf','draw_int':'in','draw_single':'sn','draw_radsoul':'rsi','draw_dharma':'dh',
+        'draw_planetogram':'pg',
         'click_hh':'hh','click_nn':'nn','click_hn':'hn','click_nh':'nh','click_ss':'ss',
         'click_sn':'sn','click_rs':'rsc','sec_prog':'sp','solar_rev':'sr',
         'click_rr':'rc','draw_transits':'tr','dat_nat':'dr','dat_house':'dh',

@@ -13,6 +13,7 @@ aspcol = None
 labels = { 'draw_nat': _('Radix'), 'draw_nod': _('Carta Nodal'), 
         'draw_house':_('Carta de las Casas'),'draw_radsoul':_('Carta Clics Radix alma'),
             'draw_local': _('Carta Local'), 'draw_soul': _('Carta del Alma'),
+            'draw_dharma': _('Carta del Dharma'),
             'draw_prof': _('Carta del Perfil'), 'draw_int': _('Carta de Integracion'), 
             'draw_single': _('Carta Clics Individual'), 'dat_nat': _('Datos Radix'),
             'dat_nod': _('Datos C. Nodal'), 'dat_house': _('Datos C. Casas'), 

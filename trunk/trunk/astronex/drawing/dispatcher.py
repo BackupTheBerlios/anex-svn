@@ -8,6 +8,7 @@ from biograph import BioMixin
 from diagrams import DiagramMixin
 from datasheets import SheetMixin
 from paarwabe import PaarWabeMixin
+from planetogram import PlanetogramMixin
 import roundedcharts 
 from aspects import AspectManager
 from roundedcharts import *
@@ -25,7 +26,7 @@ AP_DEG = None
 nottranslate = ['dat_nat','dat_house','dat_nod','prog_nat','prog_nod','prog_local','prog_soul','click_bridge',
         'bio_nat','bio_nod','bio_soul','dyn_cuad','dyn_stars','dyn_cuad2','rad_and_transit','comp_pe']
 
-class DrawMixin(CoreMixin,ProgMixin,ProfileMixin,BioMixin,DiagramMixin,SheetMixin,PaarWabeMixin):
+class DrawMixin(CoreMixin,ProgMixin,ProfileMixin,BioMixin,DiagramMixin,SheetMixin,PaarWabeMixin,PlanetogramMixin):
     goodwill = False
     uniaspect = True
     allclick = False
@@ -56,6 +57,7 @@ class DrawMixin(CoreMixin,ProgMixin,ProfileMixin,BioMixin,DiagramMixin,SheetMixi
         BioMixin.__init__(self,opts.zodiac)
         DiagramMixin.__init__(self,opts.zodiac)
         PaarWabeMixin.__init__(self,opts.zodiac)
+        PlanetogramMixin.__init__(self,opts.zodiac)
         self.rightdraw = False
         self.trdiscard = opts.discard
     

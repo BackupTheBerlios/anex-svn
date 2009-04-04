@@ -36,6 +36,7 @@ class OpPanel(gtk.VBox):
 
     buttons = {
             'charts': [
+                (_('Planetograma'),'draw_planetogram'),
                 (_('CRadix'),'draw_nat'),
                 (_('CCasas'),'draw_house'),
                 (_('Nodal'),'draw_nod'),

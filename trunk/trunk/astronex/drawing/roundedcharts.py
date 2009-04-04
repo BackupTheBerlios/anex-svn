@@ -620,3 +620,69 @@ class TransitChart(RadixRadixChart):
         houses = self.chart.houses
         offset = 180 + houses[0]
         return ((offset - h) for h in iter(houses)) 
+
+class Plagram(Basic_Chart,UnequalHousesChart): 
+    R_INNER = 0.48
+    R_RULEDINNER = 0.48 
+    R_RULEDOUTER = 0.6
+    R_LINSET = 0.105 
+    rulecol = (0.4,0.4,0.4)
+    pl_insets = { 'EXT': -0.03, 'INN': 0.06 }
+    pl_radfac = { 'EXT': R_RULEDINNER , 'INN': R_INNER } 
+    sign_fac = 1.005
+
+    def get_name(self):
+        return 'plagram'
+    
+    def get_cross_offset(self):
+        return 180 + self.chart.houses[0] 
+
+    def sup_cross(self,angle):
+        return angle
+    
+    def get_ruled(self):
+        return (self.R_RULEDINNER, self.R_RULEDOUTER)
+    
+    def get_radial_param(self):
+        return (self.R_RULEDINNER, self.R_LINSET,self.R_RULEDOUTER)
+    
+    def get_cusps_offsets(self):
+        houses = self.chart.houses
+        offset = 180 + houses[0]
+        return [(offset - h) for h in iter(houses)]
+    
+    def get_lowp_offsets(self):
+        lp = self.chart.get_low_points()
+        offset = 180 + self.chart.houses[0]
+        return [(offset - h) for h in iter(lp)]
+
+    def get_nod_sign_offsets(self):
+        node = self.chart.planets[10] % 30
+        asc = self.chart.houses[0]
+        sizes = self.chart.sizes()
+        houses = self.chart.houses[:]
+        factors = [s/30 for s in sizes]
+        thish_part = node
+        prevh_part = 30 - node
+        offs = []; hh = []
+        for m in range(0,360,30):
+            d = m + 15.0
+            h = self.chart.which_house_nodal(d)
+            if node > 15.0:
+                this_frac = thish_part*factors[h]
+                prev_frac = prevh_part*factors[(h+11)%12]
+                middle = (this_frac + prev_frac)/2 - prev_frac
+                deg =  houses[h] + middle 
+            else:
+                prev_frac = prevh_part*factors[h]
+                this_frac = thish_part*factors[(h+1)%12]
+                middle = (this_frac + prev_frac)/2 - this_frac
+                deg =  houses[(h+1)%12] - middle 
+            off = (270  - (deg - asc)) % 360.0
+            offs.append(off)
+            midh = self.chart.which_house(deg)
+            hh.append(midh)
+        return offs,hh
+    
+    def get_nod_zod_iter(self):
+        return iter(self.zod)    

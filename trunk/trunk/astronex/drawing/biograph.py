@@ -565,7 +565,8 @@ class BioMixin(object):
                 cr.layout_path(layout)
                 cr.fill() 
             sign = self.zod[t['lab']].let
-            prev_slet = (sign,temp_off+soff)
+            #prev_slet = (sign,temp_off+soff)
+            prev_slet = (sign,hoff+soff)
             col = (self.zod[t['lab']%4].col)
             if chartob.name == 'soul':
                 cr.set_source(sign_col_soul(col,voff))

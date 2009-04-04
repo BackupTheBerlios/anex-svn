@@ -208,8 +208,12 @@ class CoreMixin(object):
         
         default = insets.pop()
         insets = dict(zip((0,5),insets))
+        try:
+            col = chartob.rulecol
+        except AttributeError:
+            col = (0,0,0)
         cr.save()
-        cr.set_source_rgb(0,0,0)
+        cr.set_source_rgb(*col)
         if chartob.name == 'soul':
             cr.set_source_rgb(0.2,0,0.2)
         cr.set_line_width(0.5*cr.get_line_width())
@@ -258,6 +262,10 @@ class CoreMixin(object):
         zodiac = chartob.get_zod_iter()
         paint = self.paint[chartob.name]
         pdfsoul = chartob.name == 'soul' and self.surface.__class__.__name__  == 'DrawPdf'
+        try:
+            sign_fac = chartob.sign_fac
+        except AttributeError:
+            sign_fac = 1.02
 
         #if pdfsoul:
         #    w = self.surface.w; h = self.surface.h 
@@ -269,16 +277,23 @@ class CoreMixin(object):
         #    over_cr.translate(w/2,h/2)
         #    over_cr.set_line_width(0.5 * cr.get_line_width())
         #    cr = over_cr
-        
-        for z in zodiac:
+
+        for i,z in enumerate(zodiac):
             cr.save()
             cr.rotate(offsets.next() * RAD)
             x_bearing,_,width,_,_,_ = z.extents
             sclx = chartob.get_sclx(scly)
-            cr.translate(sclx*(-width/2-x_bearing),-radius*1.02)
-            cr.scale(sclx,scly)
+            cr.translate(sclx*(-width/2-x_bearing),-radius*sign_fac)
+            if chartob.name == 'plagram':
+                sclyy = scly / 2.0
+                col = self.plagramcol[i%4]
+            else:
+                sclyy = scly
+                col = z.col
+            cr.scale(sclx,sclyy)
             rebuild_paths(cr,z.paths)
-            paint(self,cr,z.col,radius)
+            #print z.let, z.col
+            paint(self,cr,col,radius)
             cr.restore()
         
         #if pdfsoul:
@@ -324,7 +339,7 @@ class CoreMixin(object):
         cr.stroke()
 
     paint = {'basic': paint_basic_sign, 'soul': paint_soul_sign, 'nodal':
-            paint_nod_sign, 'radsoul': paint_radsoul_sign }
+            paint_nod_sign, 'radsoul': paint_radsoul_sign, 'plagram': paint_basic_sign}
     
     #### plan and lines
     def set_plots(self,chartob,plot="plot1"):

@@ -12,7 +12,7 @@ dialist =  deque(['dyn_cuad','dyn_cuad2','dyn_stars'])
 biolist =  deque(['bio_nat','bio_nod','bio_soul'])
 tranlist = deque(['draw_transits','rad_and_transit'])
 clicklist = deque(['click_hh','click_nn','click_hn','click_nh','subject_click','click_rr','click_bridge'])
-opdouble = deque(['draw_nat', 'draw_house', 'draw_nod','draw_local','draw_soul', 'draw_prof', 'draw_int', 'draw_single', 'draw_radsoul'])
+opdouble = deque(['draw_nat', 'draw_house', 'draw_nod','draw_local','draw_soul', 'draw_prof', 'draw_int', 'draw_single', 'draw_radsoul', 'draw_planetogram'])
 optriplepair = deque(['click_hh', 'click_nn', 'click_hn', 'click_nh',
     'click_ss', 'click_rr','subject_click'])
 listlabels = { 'opdouble': opdouble,'charts': opdouble, 'data':datlist,'clicks':clicklist,'bio':biolist,'diagram':dialist,'transit':tranlist,'double1':opdouble,'double2':opdouble,'triple1':opdouble,'triple2':optriplepair} 
