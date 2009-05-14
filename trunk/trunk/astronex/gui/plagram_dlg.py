@@ -21,7 +21,7 @@ class PlagramWindow(gtk.Window):
     def __init__(self,parent,chart=None):
         self.boss = parent.boss
         gtk.Window.__init__(self)
-        self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
+        self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
         self.set_transient_for(parent)
         self.set_destroy_with_parent(True)
         self.set_title("Planetograma")
