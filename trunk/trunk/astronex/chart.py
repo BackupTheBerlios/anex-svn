@@ -98,6 +98,20 @@ class Chart(object):
             if pos > 360: pos -= 360
             splan.append(pos)
         return splan 
+
+    def urnodplan(self):
+        sizes = self.sizes()
+        plans = self.planets[:]
+        plans[10] = self.houses[0]
+        nod = self.planets[10]
+        n = nod % 30.0
+        uplan = []
+        for p in iter(plans):
+            h = 11 - int(((p-nod)/30.0)%12)
+            dist = (n - p % 30.0) % 30.0
+            uplan.append((self.houses[h] + dist*sizes[h]/30.0) % 360)
+        return uplan
+
     
     def aspects(self,kind='radix'):
         if kind == 'house':
@@ -412,6 +426,10 @@ class Chart(object):
             if point > h1 and point <= h2:
                 return (11 - i)
         return None
+
+    def planline(self):
+        return [ (p%30)*12 for p in self.planets ]
+            
 
 ###########################################
 #dynamics
@@ -769,6 +787,19 @@ class Chart(object):
             self.houses = oldhouses[:] 
         return ageProg
     
+    def birthday_frac(self):
+        date,_,time = self.date.partition('T')
+        date = [int(d) for d in reversed(date.split('-'))]
+        time = time.split(":")
+        day, month, year = date
+        hour = int(time[0]); minutes = int(time[1])
+        birhdate = datetime(year,month,day,hour,minutes,0)
+        byear = datetime(year,1,1,0,0,0)
+        eyear = datetime(year+1,1,1,0,0,0)
+        ylapsus = eyear - byear
+        bdlapsus = birhdate - byear
+        return bdlapsus.days/float(ylapsus.days)
+
     def house_time_lapsus(self,h,playagain=False):
         date,_,time = self.date.partition('T')
         date = [int(d) for d in reversed(date.split('-'))]
@@ -1131,7 +1162,7 @@ class Chart(object):
             if f2 > 1: f2 = 0.95
             f1 =  2-2*f1
             f2 =  2-2*f2
-            
+
             nasp[a['p1']] += 1
             nasp[a['p2']] += 1
             if a['a'] > 0:
@@ -1148,6 +1179,18 @@ class Chart(object):
         #ceval = [ (3 - n) % 3 for n in ceval ] # rbg 
         return nasp, ceval
 
+    def plagram_cusps_analysis(self):
+        hh = { 'c':[0]*12, 'l': [0]*12 }
+        sz = self.sizes()
+        for h in range(len(self.houses)):
+            c = self.houses[h]
+            g = sz[h]*PHI 
+            l = c + g 
+            c = int(c/30) % 12
+            hh['c'][c] += 1
+            l = int(l/30) % 12
+            hh['l'][l] += 1
+        return hh
 
 #######
     def pers_house_force(self):
@@ -1164,7 +1207,42 @@ class Chart(object):
         for i,t in enumerate(tups):
             phforce[t[1]] = 3 - i
         return phforce
+    
+    def house_force_all(self):
+        hspl = self.house_plan_long()
+        n = 30 * PHI
+        pl = []
+        for l in hspl:
+            f = l - int(l)
+            p = int(l) % 30 + f
+            if p <= n:
+                force = n - p
+            else:
+                force = (p - n) * (PHI+1)
+            pl.append(force)
+        lw_fac = 3.6 / n
+        lw = []
+        for w in pl:
+            lw.append(w * lw_fac + 1.4)
+        return lw
         
+    def sign_force_all(self):
+        n = 30 - 30*PHI
+        fac = n * (PHI - 1)
+        sl = self.planets[:]
+        pl = []
+        for l in sl:
+            f = l - int(l)
+            p = int(l) % 30 + f
+            if p > n:
+                p = 2*n - ((p * PHI ) - fac)
+            pl.append(p)
+        lw_fac = 6.0 / n
+        lw = []
+        for w in pl:
+            lw.append(w * lw_fac + 2.2)
+        return lw
+
     def pers_sign_force(self):
         n = 30 - 30*PHI
         # m = 30*PHI; n/m = PHI

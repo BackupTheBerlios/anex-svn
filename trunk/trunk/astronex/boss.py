@@ -22,7 +22,7 @@ suffixes = { 'draw_nat':'rx','draw_nod':'nd','draw_house':'hs','draw_local':'lc'
         'subject_click':'cs', 'dyn_cuad2':'d2', 'click_bridge':'br',
         'compo_one':'c1','compo_two':'c2','ascent_star':'as','polar_star':'ps',
         'wundersensi_star':'ws','crown_comp':'cr','paarwabe_plot':'pw',
-        'click_counterpanel': 'ch', 'comp_pe': 'pe'  } 
+        'click_counterpanel': 'ch', 'comp_pe': 'pe', 'draw_ur_nodal': 'un'  } 
 
 class Manager(object):
     "manage component interactions"
@@ -85,8 +85,12 @@ class Manager(object):
     def reset_colors(self):
         config.reset_colors(self.opts) 
 
-    def redraw(self):
-        self.da.redraw()
+    def redraw(self,both=True):
+        if both:
+            self.da.redraw()
+        if self.mainwin.plagram:
+            self.mainwin.plagram.sda.redraw()
+
 
     def get_state(self):
         return self.state

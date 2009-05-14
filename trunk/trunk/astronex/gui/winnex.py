@@ -10,6 +10,7 @@ from mainnb import MainPanel
 from config_dlg import ConfigDlg
 from customloc_dlg import CustomLocDlg
 from chartbrowser import ChartBrowserWindow
+from plagram_dlg import PlagramWindow
 from entry_dlg import EntryDlg
 from localsel import LocSelector
 from aux_dlg import AuxWindow
@@ -28,6 +29,7 @@ class WinNex(gtk.Window):
         self.locsel = None
         self.locselflag = False
         self.browser = None
+        self.plagram = None
         self.set_title("Astro-Nex")
         self.connect('destroy', self.cb_exit)
         self.connect('key-press-event', self.on_key_press_event) 
@@ -42,6 +44,7 @@ class WinNex(gtk.Window):
         accel_group.connect_group(ord('l'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.customloc_cb)
         accel_group.connect_group(ord('b'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_chartbrowser)
         accel_group.connect_group(ord('w'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_aux)
+        accel_group.connect_group(ord('e'),gtk.gdk.MOD1_MASK,gtk.ACCEL_LOCKED,self.launch_plagram) 
         accel_group.connect_group(ord('r'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_pebridge)
         accel_group.connect_group(ord('k'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_shell)
         accel_group.connect_group(ord('i'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_editor)
@@ -303,6 +306,10 @@ class WinNex(gtk.Window):
     def launch_chartbrowser_from_mpanel(self):
         if not self.browser:
             self.browser = ChartBrowserWindow(self)
+    
+    def launch_plagram(self,acgroup,actable,keyval,mod):
+        if not self.plagram:
+            self.plagram = PlagramWindow(self)
 
     def launch_aux(self,acgroup,actable,keyval,mod):
         self.da.auxwins.append(AuxWindow(self))

@@ -216,7 +216,7 @@ class Slot(gtk.VBox):
                 other.eye.hide() 
                 curr.curr_chart,curr.curr_click = curr.curr_click,curr.curr_chart
                 curr.crossed = not(curr.crossed)
-                boss.da.redraw()
+                boss.redraw()
                 boss.da.redraw_auxwins()
             elif self.chart_id == 'now':
                 chart = curr.charts[self.wname]
@@ -334,6 +334,15 @@ class ChartBrowser(gtk.VBox):
         self.tooltips.set_tip(opbut,_('Explorador/Tablas'))
         opbut.connect('clicked',self.on_opbut_clicked)
         hbox.pack_start(opbut,False,False) 
+
+        opbut = gtk.Button()
+        img = gtk.Image()
+        imgfile = path.joinpath(appath,"resources/pgram.png")
+        img.set_from_file(imgfile)
+        opbut.set_image(img) 
+        #self.tooltips.set_tip(opbut,_('Planetograma'))
+        opbut.connect('clicked',self.on_plagram_clicked)
+        hbox.pack_start(opbut,False,False) 
         self.pack_start(hbox,False,False)
         
         self.chartmodel = gtk.ListStore(str,int)
@@ -372,6 +381,9 @@ class ChartBrowser(gtk.VBox):
 
     def on_opbut_clicked(self,but):
         boss.mainwin.launch_chartbrowser_from_mpanel() 
+    
+    def on_plagram_clicked(self,but):
+        boss.mainwin.launch_plagram(None,None,None,None) 
 
     def relist(self,new):
         liststore = gtk.ListStore(str)
@@ -772,7 +784,7 @@ class MainPanel(gtk.VBox):
         if curr.curr_op == "sec_prog":
             boss.da.panel.nowbut.emit('clicked')
 
-        boss.da.redraw()
+        boss.redraw()
         boss.da.redraw_auxwins()
 
     @staticmethod

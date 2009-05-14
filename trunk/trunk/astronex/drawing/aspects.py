@@ -336,8 +336,10 @@ class AspectManager(SimpleAspectManager):
         if filter == 'click': 
             noopos = set(a for a in aspects if a.a != 6)
             aspects.difference_update(noopos) 
-        
-        ea = self.boss.get_showEA()
+        try:
+            ea = self.boss.get_showEA()
+        except AttributeError:
+            ea = None
         uni = set(a for a in aspects if a.f1 > 1 or a.f2 > 1)
         aspects.difference_update(uni)
         if self.get_uni():

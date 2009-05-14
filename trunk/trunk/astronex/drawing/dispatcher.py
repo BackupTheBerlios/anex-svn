@@ -57,7 +57,7 @@ class DrawMixin(CoreMixin,ProgMixin,ProfileMixin,BioMixin,DiagramMixin,SheetMixi
         BioMixin.__init__(self,opts.zodiac)
         DiagramMixin.__init__(self,opts.zodiac)
         PaarWabeMixin.__init__(self,opts.zodiac)
-        PlanetogramMixin.__init__(self,opts.zodiac)
+        #PlanetogramMixin.__init__(self,opts.zodiac)
         self.rightdraw = False
         self.trdiscard = opts.discard
     
@@ -150,6 +150,28 @@ class DrawMixin(CoreMixin,ProgMixin,ProfileMixin,BioMixin,DiagramMixin,SheetMixi
         self.make_plines(cr,radius*0.89,chartob,'INN')
         self.d_inner_circles(cr,radius*0.8)
         chartob.pl_insets['INN'] = 0.09 
+
+    def draw_ur_nodal(self,cr,width,height,chartob=None):
+        chartob.__class__ = UrNodal 
+        cx,cy = width/2,height/2
+        radius = min(cx,cy)
+
+        self.d_urnod_radial_lines(cr,radius,chartob)
+        self.make_all_urn_rulers(cr,radius,chartob)
+        self.draw_urnod_signs(cr,radius,chartob)
+        self.draw_planets(cr,radius,chartob)
+        self.make_plines(cr,radius,chartob,'EXT')
+        self.draw_cusps(cr,radius,chartob)
+        self.d_year_lines(cr,radius,chartob)
+        self.d_golden_points(cr,radius,chartob)
+        self.d_cross_points(cr,radius,chartob)
+        if showAP:
+            self.draw_ap_aspects(cr,radius*R_ASP,chartob,self.aspmanager,self.get_AP(chartob))
+        self.aspmanager.manage_aspects(cr,radius*R_ASP,chartob.get_planets())
+        self.make_plines(cr,radius,chartob,'INN')
+        self.d_inner_circles(cr,radius)
+        if self.ruline:
+            self.d_ruline(cr,chartob)
 
     def draw_house(self,cr,width,height,chartob=None):
         chartob.__class__ = HouseChart

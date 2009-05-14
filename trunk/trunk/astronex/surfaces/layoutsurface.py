@@ -237,6 +237,7 @@ class DrawMaster(gtk.Layout):
                         dt = datetime.combine(dt.date(),dt.time())
                         self.hsel.child.set_house_from_date(dt)
                     self.redraw()
+                    boss.redraw(both=False)
                     self.redraw_auxwins()
         elif gtk.gdk.MOTION_NOTIFY:
             if curr.curr_op in bios or curr.opmode != 'simple':
@@ -325,12 +326,16 @@ class DrawMaster(gtk.Layout):
 
     def on_menuitem_activate(self,menuitem): 
         if menuitem.child.get_text() == _('Acercar'):
-            self.set_size_request(720*2,720*2)
+            scrw, scrh = self.get_size_request()
+            #self.set_size_request(720*2,720*2)
+            self.set_size_request(scrw*2,scrh*2)
             self.zoom_in = True
             self.panning = True
             menuitem.child.set_text(_('Alejar'))
         elif menuitem.child.get_text() == _('Alejar'):
-            self.set_size_request(720,720)
+            scrw, scrh = self.get_size_request()
+            #self.set_size_request(720,720)
+            self.set_size_request(scrw/2,scrh/2)
             self.zoom_in = False
             self.panning = False
             menuitem.child.set_text(_('Acercar'))
@@ -505,7 +510,7 @@ class DrawMaster(gtk.Layout):
         op = curr.curr_op
         if self.fullscreen:
             DrawMixin.extended_canvas = False
-            self.set_size_request(720,720)
+            #self.set_size_request(720,720)
         elif op in extended and curr.opmode == 'simple' :
             if not DrawMixin.extended_canvas:
                 DrawMixin.extended_canvas = True

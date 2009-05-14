@@ -23,8 +23,8 @@ class Basic_Chart(object):
     pl_insets = { 'EXT': -0.03, 'INN': 0.09 }
     pl_line_width = { 'EXT': 0.85, 'INN': 0.55 }
     pl_radfac = { 'EXT': R_RULEDINNER , 'INN': R_INNER } 
-    dx = [-1.3 ,-1.5,1.5,   1,  1, 1.5,  0.5, -1, -2,-1.5,-2.5,-1.7]
-    dy = [  2 ,  2,   2,  1.5,  1,  -1,  -1, -1.5,-1.2,-1.1, 1.5, 1.5]
+    dx = [-1.3 ,-1.5,1.0,   0.5,2.0, 1.5,  0.5, -0.5, -1.5,   -1.5,-2.0,-1.7]
+    dy = [  2 ,  2,   2,   1.5,  1, -0.5,  -1, -1.0,-1.2,   -1.1, 1.0, 1.5]
     scl = 0.0038
     plan_scale = 0.0024
     plan_factor = [0.93,1.07] 
@@ -39,10 +39,13 @@ class Basic_Chart(object):
             'teal' :(0.3,0.6,0.8), 'darkgreen' :(0,0.95,0.4), 
             'pink' :(1,0.85,1), 'darkblue':(0.6,0.6,1) }
 
-    def __init__(self,chart,click):
+    def __init__(self,chart,click,plmanager=None):
         self.chart = chart
         self.click = click
-        self.plmanager = planetmanager
+        if plmanager:
+            self.plmanager = plmanager
+        else:
+            self.plmanager = planetmanager
         self.zod = zodiac.zod
         self.name = self.get_name()
 
@@ -147,13 +150,18 @@ class Basic_Chart(object):
         slo.db = diag[2]+diag[4]+diag[8]+diag[10]
         return slo
 
-    def inject_plan_degrees(self):
+    def inject_plan_degrees(self,shadow=False):
         jail = self.marshall_planets()
         plots = [None] * 11
         class plot_obj(object): pass
         for cell in jail:
+            name = self.__class__.__name__
             num_plans = len(cell)
             fac = self.plan_factor[:]
+            if shadow:
+                fac = self.shadow_plan_factor[:]
+            #fac.reverse()
+            gen_corr = 6.5
             witness = self.joinsort(cell)
             for pos,pl in enumerate(witness):
                 po = plot_obj()
@@ -175,6 +183,17 @@ class Basic_Chart(object):
                             diff = -(diff - 353.5)
                             po.fac = fac[0] 
                     po.corr = self.correct_shift(-faraway * (6.5 - diff)/2.5) 
+                if shadow:
+                    plots[pl[1]] = po 
+                    continue
+                if name == "Plagram" and num_plans == 2:
+                    po.fac = 1.0
+                    diff = witness[1][0] - witness[0][0]
+                    if gen_corr < 0:
+                        po.corr = (gen_corr + diff) / 1.8
+                    else:
+                        po.corr = (gen_corr - diff) / 1.8
+                    gen_corr = -gen_corr
                 plots[pl[1]] = po 
         return plots
 
@@ -380,6 +399,49 @@ class CounterChart(RadixChart):
     def offsets_plan_degree(self,degree):
         '''Get offset for planet drawing.'''
         return (180 + self.click.houses[0]) - degree
+
+class UrNodal(RadixChart):
+    #R_INNER = 0.45 
+    #R_RULEDINNER = 0.6 
+    #R_RULEDOUTER = 0.78
+    #R_RULEDMID   = 0.86
+
+    def get_planets(self,click=False):
+        return self.chart.urnodplan()
+    
+    def get_sign_radfac(self):
+        return 0.61
+    
+    def get_nod_sign_offsets(self):
+        node = self.chart.planets[10] % 30
+        asc = self.chart.houses[0]
+        sizes = self.chart.sizes()
+        houses = self.chart.houses[:]
+        factors = [s/30 for s in sizes]
+        thish_part = node
+        prevh_part = 30 - node
+        offs = []; hh = []
+        for m in range(0,360,30):
+            d = m + 15.0
+            h = self.chart.which_house_nodal(d)
+            if node > 15.0:
+                this_frac = thish_part*factors[h]
+                prev_frac = prevh_part*factors[(h+11)%12]
+                middle = (this_frac + prev_frac)/2 - prev_frac
+                deg =  houses[h] + middle 
+            else:
+                prev_frac = prevh_part*factors[h]
+                this_frac = thish_part*factors[(h+1)%12]
+                middle = (this_frac + prev_frac)/2 - this_frac
+                deg =  houses[(h+1)%12] - middle 
+            off = (270  - (deg - asc)) % 360.0
+            offs.append(off)
+            midh = self.chart.which_house(deg)
+            hh.append(midh)
+        return offs,hh
+    
+    def get_nod_zod_iter(self):
+        return iter(self.zod)    
 
 class SoulChart(Basic_Chart,UnequalHousesChart):
     R_INNER = Basic_Chart.R_INNER
@@ -622,14 +684,15 @@ class TransitChart(RadixRadixChart):
         return ((offset - h) for h in iter(houses)) 
 
 class Plagram(Basic_Chart,UnequalHousesChart): 
-    R_INNER = 0.48
-    R_RULEDINNER = 0.48 
-    R_RULEDOUTER = 0.6
-    R_LINSET = 0.105 
+    R_INNER = 0.455
+    R_RULEDINNER = 0.455 
+    R_RULEDOUTER = 0.564
+    R_LINSET = 0.12 
     rulecol = (0.4,0.4,0.4)
-    pl_insets = { 'EXT': -0.03, 'INN': 0.06 }
+    pl_insets = { 'EXT': -0.03, 'INN': 0.055 }
     pl_radfac = { 'EXT': R_RULEDINNER , 'INN': R_INNER } 
     sign_fac = 1.005
+    shadow_plan_factor = [0.99,1.01] 
 
     def get_name(self):
         return 'plagram'

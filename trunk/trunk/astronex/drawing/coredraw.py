@@ -3,6 +3,7 @@ import cairo, pango
 import math
 from itertools import izip,cycle
 from math import pi as PI
+from roundedcharts import RadixChart, NodalChart
 from .. boss import boss
 
 PHI = 1 / ((1+math.sqrt(5))/2)
@@ -49,9 +50,13 @@ class CoreMixin(object):
         cr.line_to(radius*math.cos(angle),radius*math.sin(angle))
         cr.stroke()
     
-    def set_font(self,cr,size):
+    def set_font(self,cr,size,bold=False):
         font = self.opts.font.split(" ")[0].rstrip()
-        cr.select_font_face(font)
+        slant = cairo.FONT_SLANT_NORMAL
+        weight =cairo.FONT_WEIGHT_NORMAL
+        if bold:
+            weight =cairo.FONT_WEIGHT_BOLD
+        cr.select_font_face(font,slant,weight)
         cr.set_font_size(size)
 
     def d_radial_text(self,cr,radius,angle,text):
@@ -261,7 +266,7 @@ class CoreMixin(object):
         offsets = chartob.get_sign_offsets()
         zodiac = chartob.get_zod_iter()
         paint = self.paint[chartob.name]
-        pdfsoul = chartob.name == 'soul' and self.surface.__class__.__name__  == 'DrawPdf'
+        #pdfsoul = chartob.name == 'soul' and self.surface.__class__.__name__  == 'DrawPdf'
         try:
             sign_fac = chartob.sign_fac
         except AttributeError:
@@ -373,6 +378,39 @@ class CoreMixin(object):
                 cr.set_source_rgb(*glyph.col) 
             cr.fill()
             cr.restore() 
+    
+    def draw_urnodal_planets(self,cr,radius,chartob,plot="plot1"):
+        cusps = chartob.get_cusps_offsets()
+        cusps = [ c % 360 for c in cusps ] 
+        sizes = chartob.get_sizes()
+        chartob.check_moons()
+        chartob.__class__ = NodalChart
+        
+        plots = self.set_plots(chartob,plot)
+        glyphs = chartob.plmanager.glyphs 
+        scl = radius * chartob.plan_scale
+        r_pl = radius *  chartob.get_rpl()
+        for glyph,plot in izip(glyphs,plots):
+            cr.save()
+            rpl = r_pl * plot.fac
+            
+            plot.degree %= 360.0
+            h = (5 - int(plot.degree/30)) % 12
+            dist = 30.0 - plot.degree % 30.0
+            degree = (cusps[h] - dist*sizes[h]/30.0) % 360
+            corr =  plot.corr*sizes[h]/30.0
+            angle = (degree + corr) * RAD
+
+            x_b,_,w,h,_,_ = glyph.extents
+            shiftx = scl*(w+x_b)/2; shifty = scl*h/2
+            cr.translate(rpl*math.cos(angle) - shiftx, rpl*math.sin(angle) + shifty)
+            cr.scale(scl,scl)
+            rebuild_paths(cr,glyph.paths)
+            cr.set_source_rgb(*glyph.col) 
+            cr.fill()
+            cr.restore() 
+        chartob.__class__ = RadixChart
+
 
     def make_plines(self,cr,radius,chartob,pos='EXT',plot="plot1"):
         radius = radius * chartob.pl_radfac[pos]
@@ -698,4 +736,68 @@ class CoreMixin(object):
         cr.restore()
 
 
+    def draw_urnod_signs(self,cr,radius,chartob):
+        radius = radius * chartob.get_sign_radfac()
+        scly = chartob.scl * radius
+        offsets,sclhouses = chartob.get_nod_sign_offsets()
+        sizes = chartob.chart.sizes()
+        zodiac = chartob.get_nod_zod_iter()
+        sign_fac = 1.13
+        cr.set_source_rgb(0.7,0.65,0.7)
 
+        for i,z in enumerate(zodiac):
+            cr.save()
+            cr.rotate(offsets[i] * RAD)
+            x_bearing,_,width,_,_,_ = z.extents
+            sclx_fac = sizes[sclhouses[i]]/30
+            if sclx_fac > 1.6: sclx_fac = 1.6
+            sclx = sclx_fac * scly
+            cr.translate(sclx*(-width/2-x_bearing),-radius*sign_fac)
+            cr.scale(sclx,scly/2.1)
+            rebuild_paths(cr,z.paths)
+            _,_,w,_ = cr.fill_extents()
+            cr.new_path()
+            mtr = cairo.Matrix(-1,0,0,1,w*0.8,0)
+            cr.transform(mtr)
+            rebuild_paths(cr,z.paths)
+            cr.fill()
+            cr.restore()
+
+    def d_urnod_radial_lines(self,cr,radius,chartob):
+        sign_cusps = chartob.chart.nod_sign_long()
+        fac,ins,_ = chartob.get_radial_param()
+        radius = radius * fac
+        cr.save()
+        cr.set_source_rgb(0.5,0.5,0.5)
+        cr.set_line_width(0.5*cr.get_line_width())
+        inset = ins * radius
+        for i in sign_cusps:
+            angle = (180-i) * RAD
+            self.d_radial_line(cr,radius+inset,radius,angle)
+        cr.restore()
+    
+    def make_spec_ruler(self,cr,radius,chartob,rule,rules,offset):
+        cols = [(0.55,0,0),(0,0.5,0),(0.9,0.4,0),(0,0.0,0.6)]
+        asc =   chartob.get_ascendant() % 4
+        insets = [radius * i for i in rules[rule]]
+        radius = radius * rule 
+        default = insets.pop()
+        insets = dict(zip((0,5),insets))
+        cr.save()
+        cr.set_line_width(0.5*cr.get_line_width())
+        for i in xrange(360):
+            if i % 30 == 0: 
+                cr.set_source_rgb(*cols[(asc + i/30)%4])
+            angle = (180+offset-i) * RAD
+            inset = radius - insets.get(i%10,default)
+            self.d_radial_line(cr,radius,inset,angle)
+        cr.restore()
+    
+    def make_all_urn_rulers(self,cr,radius,chartob):
+        R_RULEDINNER, R_RULEDOUTER, R_RULEDMID = chartob.get_ruled()
+        rules = { R_RULEDOUTER: [0.016,0.010,0.004], 
+                R_RULEDMID: [0.014,0.010,0.004],
+                R_RULEDINNER:  [-0.018,-0.012,-0.004]}
+        offset = chartob.get_offset()
+        self.make_spec_ruler(cr,radius,chartob,R_RULEDOUTER,rules,offset)
+        self.make_spec_ruler(cr,radius,chartob,R_RULEDINNER,rules,offset)

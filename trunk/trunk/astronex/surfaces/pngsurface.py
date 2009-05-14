@@ -20,7 +20,7 @@ suffixes = boss.suffixes
 class ImageExportDialog(gtk.Dialog):
     '''Save image config dialog'''
 
-    def __init__(self):
+    def __init__(self,pg=False):
         gtk.Dialog.__init__(self,
                 _("Exportar como imagen"), None,
                 gtk.DIALOG_DESTROY_WITH_PARENT,
@@ -46,7 +46,11 @@ class ImageExportDialog(gtk.Dialog):
         filter.set_name(_("Imagen"))
         self.chooser.add_filter(filter)
         
-        name = curr.curr_chart.first + "_" + suffixes[curr.curr_op]
+        if pg:
+            name = curr.curr_chart.first + "_" + curr.curr_chart.last + "_pg"
+        else:
+            name = curr.curr_chart.first + "_" + suffixes[curr.curr_op]
+
         ext =  self.typefile_chooser.get_active_text()
         self.chooser.set_current_name(name+"."+ext)
         if sys.platform == 'win32':
@@ -206,6 +210,39 @@ class DrawPng(object):
         else: 
             os.system("%s '%s' &" % (opts.pngviewer,filename))
 
+    @staticmethod
+    def simple_batch():
+        global opts
+        opts = boss.opts
+        w = 1280 
+        h = 1020
+        if sys.platform == 'win32':
+            import winshell
+            folder = winshell.my_documents()
+        else: 
+            folder = os.path.expanduser("~")
+        curr.curr_op = "draw_planetogram"
+        table = "plagram"
+        chlist = curr.datab.get_chartlist(table)
+        chart = curr.curr_chart
+        
+        for id, name,sur in chlist:
+            surface = cairo.ImageSurface(cairo.FORMAT_ARGB32,w,h)
+            cr = pangocairo.CairoContext(cairo.Context(surface))
+            cr.set_source_rgb(1.0,1.0,1.0)
+            cr.rectangle(0,0,w,h)
+            cr.fill()
+            cr.set_line_join(cairo.LINE_JOIN_ROUND) 
+            cr.set_line_width(float(opts.base))
+            dr = DrawMixin(opts,DrawPng())
+            curr.datab.load_chart(table,id,chart)
+            dr.dispatch_pres(cr,w,h)
+            wname = "_".join([name,sur,"pg"])
+            filename = ".".join([wname,'png'])
+            filename = os.path.join(folder,filename)
+            #d_name(cr,w,h)
+            surface.write_to_png(filename) 
+
 #im.save("itest.jpg", dpi=im.info['dpi'])
 #im.save("itest.tiff", dpi=im.info['dpi'])
 
@@ -254,7 +291,7 @@ def compo_name(cr,w,h):
 def d_name(cr,w,h,kind='radix'):
     layout = cr.create_layout()
     font = pango.FontDescription(opts.font)
-    font.set_size(int(7*pango.SCALE*minim*MAGICK_SCALE))
+    font.set_size(int(6*pango.SCALE*minim*MAGICK_SCALE))
     layout.set_font_description(font)
     h *= 0.995
     
