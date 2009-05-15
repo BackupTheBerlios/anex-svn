@@ -220,7 +220,6 @@ class DrawPlagram(gtk.DrawingArea):
             #print (self.pan_x,self.pan_y),cr.device_to_user(self.pan_x,self.pan_y)
             cr.translate(*cr.device_to_user_distance(self.pan_x,self.pan_y))
         cr.set_line_join(cairo.LINE_JOIN_ROUND) 
-        cr.set_line_cap(cairo.LINE_CAP_ROUND) 
         cr.set_line_width(float(self.opts.base)) 
         self.drawer.dispatch_simple(cr,w,h) 
         return False
