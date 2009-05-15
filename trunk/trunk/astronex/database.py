@@ -605,7 +605,7 @@ def setchart(chart, ch):
     chart.category = ch[2]
     chart.date = ch[3]
     chart.city = ch[4]
-    chart.region = ch[5].replace(',',' -')
+    chart.region = ch[5]
     chart.country = ch[6]
     chart.longitud = ch[7]
     chart.latitud = ch[8]
