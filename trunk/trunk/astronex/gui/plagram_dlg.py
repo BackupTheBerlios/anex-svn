@@ -78,10 +78,10 @@ class DrawPlagram(gtk.DrawingArea):
         self.menu.append(menu_item)
         menu_item.connect("activate", self.on_menuitem_activate)
         menu_item.show()
-        #menu_item = gtk.MenuItem(_('Exportar a PDF/Imprimir'))
-        #self.menu.append(menu_item)
-        #menu_item.connect("activate", self.on_menuitem_activate)
-        #menu_item.show()
+        menu_item = gtk.MenuItem(_('Exportar a PDF/Imprimir'))
+        self.menu.append(menu_item)
+        menu_item.connect("activate", self.on_menuitem_activate)
+        menu_item.show()
         sep_item = gtk.SeparatorMenuItem()
         self.menu.append(sep_item)
         sep_item.show()
@@ -119,8 +119,8 @@ class DrawPlagram(gtk.DrawingArea):
             self.png_export()
         elif menuitem.child.get_text() == _('Commutar años/edad'):
             self.drawer.useagecircle = not self.drawer.useagecircle 
-        #elif menuitem.child.get_text() == _('Exportar a PDF/Imprimir'):
-        #    self.pdf_export()
+        elif menuitem.child.get_text() == _('Exportar a PDF'):
+            self.pdf_export()
         self.redraw()
 
     def on_check_toggled(self,menuitem):
