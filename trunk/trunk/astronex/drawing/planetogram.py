@@ -1016,17 +1016,25 @@ class PlanetogramMixin(object):
         cr.save()
         cr.set_line_width(0.5*cr.get_line_width())
         self.set_font(cr,font_size)
+        ysize = sizes[11] / 6
+        corr_prev = yfrac * ysize
         for off,size in izip(offsets,sizes):
             ysize = size / 6
             corr = yfrac * ysize
             cr.set_source_rgb(0.5,0.8,0.4)
             for j in range(0,6):
-                angle = (off - ysize * j + corr)
-                self.d_radial_line(cr,radius,inset,angle*RAD)
+                angle = off - ysize * j
+                if j == 0:
+                    self.d_radial_line(cr,radius,inset,(angle+corr_prev)*RAD)
+                else:
+                    self.d_radial_line(cr,radius,inset,(angle+corr)*RAD)
                 year += 1 
                 if j  in [0,3]:
                     cr.save()
-                    rot = (90+180+angle-ysize/2) % 360
+                    if j == 0:
+                        rot = (90+180+angle+corr-((ysize+corr-corr_prev)/2)) % 360
+                    else:
+                        rot = (90+180+angle+corr-ysize/2) % 360
                     cr.rotate(rot*RAD)
                     cr.translate(0,radius)
                     yr = str(year)[2:]
@@ -1039,6 +1047,7 @@ class PlanetogramMixin(object):
                     cr.set_source_rgb(0.0,0.7,0.0)
                     cr.show_text(yr)
                     cr.restore()
+            corr_prev = corr
         cr.restore()
     
     def plagram_age_lines(self,cr,radius,chartob):
