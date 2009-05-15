@@ -742,7 +742,8 @@ class PlanetogramMixin(object):
                 ly = radius * HC[house_circles[h][0]-1] * math.sin(this_cusp*RAD)
                 thirdpoint = lx,ly 
             else:
-                print h, inf_ang, sup_ang, this_cusp
+                raise Exception, "Bad angle:%s %d %f %f %f" % (chart.last, h, inf_ang, sup_ang, this_cusp)
+                #print 
                 #print "must not reach here!"
             
             pat = cairo.LinearGradient(bx_inf,by_inf,bx_sup,by_sup)
