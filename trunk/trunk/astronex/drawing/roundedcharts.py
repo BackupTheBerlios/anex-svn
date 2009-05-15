@@ -188,7 +188,7 @@ class Basic_Chart(object):
                     continue
                 if name == "Plagram" and num_plans == 2:
                     po.fac = 1.0
-                    diff = witness[1][0] - witness[0][0]
+                    diff = (witness[1][0] - witness[0][0]) % 360.0
                     if gen_corr < 0:
                         po.corr = (gen_corr + diff) / 1.8
                     else:

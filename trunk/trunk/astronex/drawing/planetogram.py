@@ -694,7 +694,8 @@ class PlanetogramMixin(object):
                     eu.Point2(zcusps[(h+1)%12][0],zcusps[(h+1)%12][1]))
             
             this_cusp = cusps[h] % 360.0
-            if this_cusp == 0.0: this_cusp = 360.0
+            if 0.0 <= this_cusp < 0.001: this_cusp = 360.0
+            #if this_cusp == 0.0: this_cusp = 360.0
             next_cusp = cusps[(h+1)%12] % 360.0
             lowp = lowps[h] % 360
             if inf_ang > sup_ang: inf_ang -= 360.0
