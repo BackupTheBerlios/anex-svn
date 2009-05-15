@@ -78,7 +78,7 @@ class DrawPlagram(gtk.DrawingArea):
         self.menu.append(menu_item)
         menu_item.connect("activate", self.on_menuitem_activate)
         menu_item.show()
-        menu_item = gtk.MenuItem(_('Exportar a PDF/Imprimir'))
+        menu_item = gtk.MenuItem(_('Exportar a PDF'))
         self.menu.append(menu_item)
         menu_item.connect("activate", self.on_menuitem_activate)
         menu_item.show()
