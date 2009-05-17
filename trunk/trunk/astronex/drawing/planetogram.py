@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sys
 import cairo, pango
 import math
 from math import pi as PI
@@ -696,6 +697,7 @@ class PlanetogramMixin(object):
             this_cusp = cusps[h] % 360.0
             if 0.0 <= this_cusp < 0.001: this_cusp = 360.0
             #if this_cusp == 0.0: this_cusp = 360.0
+            
             next_cusp = cusps[(h+1)%12] % 360.0
             lowp = lowps[h] % 360
             if inf_ang > sup_ang: inf_ang -= 360.0
@@ -742,8 +744,7 @@ class PlanetogramMixin(object):
                 ly = radius * HC[house_circles[h][0]-1] * math.sin(this_cusp*RAD)
                 thirdpoint = lx,ly 
             else:
-                raise Exception, "Bad angle:%s %d %f %f %f" % (chart.last, h, inf_ang, sup_ang, this_cusp)
-                #print 
+                print >> sys.stderr, "Bad angle:%s %d %f %f %f %f" % (chart.last, h, inf_ang, sup_ang, this_cusp, next_cusp)
                 #print "must not reach here!"
             
             pat = cairo.LinearGradient(bx_inf,by_inf,bx_sup,by_sup)
