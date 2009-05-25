@@ -183,6 +183,7 @@ class DrawPlagram(gtk.DrawingArea):
             x -= info['click_x']
             y -= info['click_y']
             self.pan_x, self.pan_y = x,y
+            #self.zx, self.zy = x,y
             self.redraw()
 
     

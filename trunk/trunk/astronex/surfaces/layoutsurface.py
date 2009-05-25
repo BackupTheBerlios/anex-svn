@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import gtk,gobject
 import cairo,pango
-import time
 import math
 from .. drawing.dispatcher import DrawMixin
 from .. gui.plselector_dlg import PlanSelector
