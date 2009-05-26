@@ -912,13 +912,13 @@ class BioMixin(object):
             acl = aspclass[asp]
             if charttype == 'nodal':
                 orb = nodorb[acl] 
-                halfdays = orb * 6 /self.sizes[bh] * 365
+                halfdays = (orb * 6 /self.sizes[(bh+11)%12]) * 365
             elif charttype == 'basic':
                 if pl < 10:
                     orb = orbs[planclass[pl]][acl]
                 else:
                     orb = 1.0
-                halfdays = orb * 6 /self.sizes[bh] * 365
+                halfdays = (orb * 6 /self.sizes[(bh+11)%12]) * 365
             else:
                 halfdays = 365/2
             inf = phoff.days - halfdays

@@ -699,6 +699,7 @@ class PlanetogramMixin(object):
             #if this_cusp == 0.0: this_cusp = 360.0
             
             next_cusp = cusps[(h+1)%12] % 360.0
+            if next_cusp == 360.0: next_cusp =0.0
             lowp = lowps[h] % 360
             if inf_ang > sup_ang: inf_ang -= 360.0
             if inf_ang < 0 and h == 6: this_cusp = 0.0
