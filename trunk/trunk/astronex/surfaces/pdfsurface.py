@@ -6,6 +6,7 @@ import cairo
 import pango
 import pangocairo
 from .. drawing.dispatcher import DrawMixin
+from .. gui.plagram_dlg import PgMixin
 from .. drawing.datasheets import labels
 from math import pi as PI
 from .. utils import parsestrtime
@@ -183,6 +184,52 @@ class DrawPdf(object):
             cr.show_page()
         curr.curr_op = op 
         surface.finish()
+    
+    @staticmethod
+    def pg_table_batch(table="plagram"):
+        w = PDFH
+        h = PDFW
+        if sys.platform == 'win32':
+            import winshell
+            folder = winshell.my_documents()
+        else: 
+            folder = os.path.expanduser("~")
+        curr.curr_op = "draw_planetogram"
+        chlist = curr.datab.get_chartlist(table)
+        chart = curr.curr_chart
+        DrawPdf.shadow = True
+        DrawPdf.personlines = False
+        DrawPdf.turnpoints = True
+        DrawPdf.crosspoints = True
+        DrawPdf.useagecircle = False
+        DrawPdf.extended = False
+        class Da(object):
+            class E(object): 
+                def get_showAP(self): return False
+            def __init__(self):
+                self.drawer = Da.E()
+        boss.da = Da()        
+        
+        for id, name,sur in chlist:
+            wname = "_".join([name,sur,"pg"])
+            filename = ".".join([wname,'pdf'])
+            filename = os.path.join(folder,filename)
+            surface = cairo.PDFSurface(filename,w,h)
+            surface.set_fallback_resolution(300,300)
+            cr = pangocairo.CairoContext(cairo.Context(surface))
+            cr.set_source_rgb(1.0,1.0,1.0)
+            cr.rectangle(0,0,w,h)
+            cr.fill()
+            cr.set_line_join(cairo.LINE_JOIN_ROUND) 
+            cr.set_line_width(float(opts.base))
+            dr = PgMixin(boss,DrawPdf())
+            DrawPdf.w = w
+            DrawPdf.h = h 
+            curr.datab.load_chart(table,id,chart)
+            dr.dispatch_simple(cr,w,h)
+            cr.show_page()
+            surface.finish()
+
 
     @staticmethod
     def format_name():

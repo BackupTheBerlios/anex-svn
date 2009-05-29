@@ -211,7 +211,7 @@ class DrawPng(object):
             os.system("%s '%s' &" % (opts.pngviewer,filename))
 
     @staticmethod
-    def simple_batch():
+    def simple_batch(table="plagram"):
         global opts
         opts = boss.opts
         w = 1280 
@@ -222,7 +222,6 @@ class DrawPng(object):
         else: 
             folder = os.path.expanduser("~")
         curr.curr_op = "draw_planetogram"
-        table = "plagram"
         chlist = curr.datab.get_chartlist(table)
         chart = curr.curr_chart
         
