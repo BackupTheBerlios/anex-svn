@@ -34,7 +34,7 @@ class PlanSelector(gtk.Dialog):
         font = pango.FontDescription("Astro-Nex")
         vbuttonbox = gtk.VButtonBox() 
         for let in self.plet:
-            but = gtk.ToggleButton(let,None)
+            but = gtk.ToggleButton(let)
             but.child.modify_font(font)
             but.set_mode(True)
             but.connect("toggled",self.on_but_toggled)
