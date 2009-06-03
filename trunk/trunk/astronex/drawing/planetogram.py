@@ -826,6 +826,7 @@ class PlanetogramMixin(object):
         ecusp = radius * H_6 * 1.1 
         pre_scl = radius * 0.0022 # chartob.plan_scale
         zplans = chartob.chart.planets[:]
+	rpfacs = [ 0, 0.2, 0.23, 0.26, 0.29, 0.32, 0.34  ] 
 
         for plot,hp,glyph,xtra,slw,hlw,zpl in zip(plots,hplan,glyphs,extra,s_lwidths,h_lwidths,zplans):
             pl = plot.degree % 360.0
@@ -844,8 +845,10 @@ class PlanetogramMixin(object):
             ip = horl.intersect(verl)
             r = ip.x/math.cos(pl*RAD)
             ring = bisect_left(HC,r/radius) + 1
-            ring_fac =  (1.0 + (ring-1)/10.0)
-            ring_fac =  (0.7 + ring/4.0)
+            #ring_fac =  (1.0 + (ring-1)/10.0)
+            #ring_fac =  (0.7 + ring/4.0)
+            ring_fac =  (0.7 + ring*rpfacs[ring])
+	    print ring, ring_fac
             scl =  pre_scl * ring_fac
             cr.save()
             #fac = 1.02 if plot.fac <= 1.0 else 1.055
