@@ -395,7 +395,7 @@ class BioMixin(object):
         if chartob.name == 'soul':
             return
         if chartob.name == 'basic':
-            cdeg = (cdeg - self.chart.houses[bh]) % 30
+            cdeg = (cdeg - self.chart.houses[bh]) % 360
             cr.set_source_rgb(1,0.9,1) 
         else:
             cusp = (self.chart.planets[10]-30*bh)%360

@@ -22,7 +22,6 @@ class Slot(gtk.VBox):
 
         self.imgfile1 = path.joinpath(appath,"astronex/resources/stock_inbox-24.png")
         self.imgfile2 = path.joinpath(appath,"astronex/resources/gtk-folder-24.png")
-        self.tooltips = gtk.Tooltips()
         
         self.wname = id 
         self.chart_id = None
@@ -57,7 +56,7 @@ class Slot(gtk.VBox):
         but.set_image(img)
         but.connect('clicked',self.on_entry_clicked)
         self.mod = but
-        self.tooltips.set_tip(but,_('Modificar carta'))
+        but.set_tooltip_text(_('Modificar carta'))
         hbutbox.pack_end(but,False,False)
         but = gtk.Button()
         img = gtk.Image()
@@ -66,7 +65,7 @@ class Slot(gtk.VBox):
         but.set_image(img)
         but.connect('clicked',self.on_clock_clicked)
         self.clock = but
-        self.tooltips.set_tip(but,_('Carta del momento'))
+        but.set_tooltip_text(_('Carta del momento'))
         hbutbox.pack_end(but,False,False)
         ev = gtk.EventBox()
         img = gtk.Image()
@@ -297,7 +296,6 @@ class ChartBrowser(gtk.VBox):
     def __init__(self,ap_path,font):
         gtk.VBox.__init__(self)
         self.chartview = None
-        self.tooltips = gtk.Tooltips()
         self.font = font
         appath = path.joinpath(ap_path,'astronex')
         
@@ -331,7 +329,7 @@ class ChartBrowser(gtk.VBox):
         imgfile = path.joinpath(appath,"resources/folder-convert24.png")
         img.set_from_file(imgfile)
         opbut.set_image(img) 
-        self.tooltips.set_tip(opbut,_('Explorador/Tablas'))
+        opbut.set_tooltip_text(_('Explorador/Tablas'))
         opbut.connect('clicked',self.on_opbut_clicked)
         hbox.pack_start(opbut,False,False) 
 
@@ -340,7 +338,7 @@ class ChartBrowser(gtk.VBox):
         imgfile = path.joinpath(appath,"resources/pgram.png")
         img.set_from_file(imgfile)
         opbut.set_image(img) 
-        #self.tooltips.set_tip(opbut,_('Planetograma'))
+        #opbut.set_tooltip_text(_('Planetograma'))
         opbut.connect('clicked',self.on_plagram_clicked)
         hbox.pack_start(opbut,False,False) 
         self.pack_start(hbox,False,False)
@@ -579,8 +577,6 @@ class MainPanel(gtk.VBox):
 
     def make_toolbar(self,appath,boss):
         appath = path.joinpath(appath,'astronex')
-        tooltips = gtk.Tooltips()
-        self.tooltips = tooltips
         tb = gtk.Toolbar()
         tb.set_orientation(gtk.ORIENTATION_VERTICAL)
         tb.set_size_request(-1,24)
@@ -594,7 +590,7 @@ class MainPanel(gtk.VBox):
         imgfile = path.joinpath(appath,"resources/cal.png")
         img.set_from_file(str(imgfile))
         tcal.set_icon_widget(img)
-        tcal.set_tooltip(tooltips,_("Calendario"))
+        tcal.set_tooltip_text(_("Calendario"))
         tb.insert(tcal,-1)
     
         tpe = gtk.ToggleToolButton()
@@ -603,7 +599,7 @@ class MainPanel(gtk.VBox):
         imgfile = path.joinpath(appath,"resources/ap.png")
         img.set_from_file(str(imgfile))
         tpe.set_icon_widget(img)
-        tpe.set_tooltip(tooltips,_("Punto Edad"))
+        tpe.set_tooltip_text(_("Punto Edad"))
         tb.insert(tpe,-1)
     
         twin = gtk.ToolButton()
@@ -612,7 +608,7 @@ class MainPanel(gtk.VBox):
         imgfile = path.joinpath(appath,"resources/new-win.png")
         img.set_from_file(str(imgfile))
         twin.set_icon_widget(img)
-        twin.set_tooltip(tooltips,_("Ventana auxiliar"))
+        twin.set_tooltip_text(_("Ventana auxiliar"))
         tb.insert(twin,-1)
     
         tasp = gtk.ToggleToolButton()
@@ -621,7 +617,7 @@ class MainPanel(gtk.VBox):
         imgfile = path.joinpath(appath,"resources/aspects.png")
         img.set_from_file(str(imgfile))
         tasp.set_icon_widget(img)
-        tasp.set_tooltip(tooltips,_("Selector de aspectos"))
+        tasp.set_tooltip_text(_("Selector de aspectos"))
         tb.insert(tasp,-1)
 
         tcyc = gtk.ToggleToolButton()
@@ -630,7 +626,7 @@ class MainPanel(gtk.VBox):
         imgfile = path.joinpath(appath,"resources/cycles2.png")
         img.set_from_file(str(imgfile))
         tcyc.set_icon_widget(img)
-        tcyc.set_tooltip(tooltips,_("Selector de ciclos"))
+        tcyc.set_tooltip_text(_("Selector de ciclos"))
         tb.insert(tcyc,-1)
 
         tdia = gtk.ToggleToolButton()
@@ -639,7 +635,7 @@ class MainPanel(gtk.VBox):
         imgfile = path.joinpath(appath,"resources/subdia.png")
         img.set_from_file(str(imgfile))
         tdia.set_icon_widget(img)
-        tdia.set_tooltip(tooltips,_("Diagramas"))
+        tdia.set_tooltip_text(_("Diagramas"))
         tb.insert(tdia,-1)
 
         tdia = gtk.ToggleToolButton()
@@ -648,7 +644,7 @@ class MainPanel(gtk.VBox):
         imgfile = path.joinpath(appath,"resources/bridge.png")
         img.set_from_file(str(imgfile))
         tdia.set_icon_widget(img)
-        tdia.set_tooltip(tooltips,_("PE puente"))
+        tdia.set_tooltip_text(_("PE puente"))
         tb.insert(tdia,-1)
 
         #for but in tb:

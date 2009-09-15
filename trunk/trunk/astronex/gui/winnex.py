@@ -44,7 +44,7 @@ class WinNex(gtk.Window):
         accel_group.connect_group(ord('l'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.customloc_cb)
         accel_group.connect_group(ord('b'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_chartbrowser)
         accel_group.connect_group(ord('w'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_aux)
-        accel_group.connect_group(ord('e'),gtk.gdk.MOD1_MASK,gtk.ACCEL_LOCKED,self.launch_plagram) 
+        #accel_group.connect_group(ord('e'),gtk.gdk.MOD1_MASK,gtk.ACCEL_LOCKED,self.launch_plagram) 
         accel_group.connect_group(ord('r'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_pebridge)
         accel_group.connect_group(ord('k'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_shell)
         accel_group.connect_group(ord('i'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_editor)
@@ -79,9 +79,6 @@ class WinNex(gtk.Window):
         accel_group.connect_group(gtk.keysyms.Menu,0,gtk.ACCEL_LOCKED,self.popup_menu)
         self.add_accel_group(accel_group)
 
-        tooltips = gtk.Tooltips()
-        self.tooltips = tooltips
-        
         hbox = gtk.HBox(False,3)
         self.add(hbox)
         
@@ -98,7 +95,7 @@ class WinNex(gtk.Window):
         img.set_from_file(str(imgfile))
         ti.set_icon_widget(img)
         ti.add_accelerator('clicked',accel_group,ord('q'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED)
-        ti.set_tooltip(tooltips,_("Salir"))
+        ti.set_tooltip_text(_("Salir"))
         self.tb.insert(ti,0)
         
         #if 'DEBUG_NEX' in os.environ and sys.platform != 'win32': 
@@ -108,7 +105,7 @@ class WinNex(gtk.Window):
         #    img.set_from_file(imgfile)
         #    tkon.set_icon_widget(img)
         #    tkon.connect('clicked',self.on_kon_clicked)
-        #    tkon.set_tooltip(tooltips,_("Terminal"))
+        #    tkon.set_tooltip_text(_("Terminal"))
         #    self.tb.insert(tkon,-1) 
 
         tfull = gtk.ToolButton()
@@ -118,7 +115,7 @@ class WinNex(gtk.Window):
         tfull.set_icon_widget(img)
         tfull.connect('clicked',self.on_fullscreen_clicked)
         tfull.toggled = True
-        tfull.set_tooltip(tooltips,_("Pantalla completa"))
+        tfull.set_tooltip_text(_("Pantalla completa"))
         self.tb.insert(tfull,-1) 
         self.add_mnemonic(gtk.keysyms.F11,tfull)
 
@@ -129,7 +126,7 @@ class WinNex(gtk.Window):
         timg.set_icon_widget(img)
         timg.connect('clicked',self.on_png_clicked)
         timg.add_accelerator('clicked',accel_group,ord('g'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED)
-        timg.set_tooltip(tooltips,_("Exportar a imagen"))
+        timg.set_tooltip_text(_("Exportar a imagen"))
         self.tb.insert(timg,-1) 
 
         tpdf = gtk.ToolButton()
@@ -139,7 +136,7 @@ class WinNex(gtk.Window):
         tpdf.set_icon_widget(img)
         tpdf.connect('clicked',self.on_pdf_clicked)
         tpdf.add_accelerator('clicked',accel_group,ord('p'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED)
-        tpdf.set_tooltip(tooltips,_("Exportar a PDF/Imprimir"))
+        tpdf.set_tooltip_text(_("Exportar a PDF/Imprimir"))
         self.tb.insert(tpdf,-1) 
 
         tentry = gtk.ToolButton()
@@ -149,7 +146,7 @@ class WinNex(gtk.Window):
         tentry.set_icon_widget(img)
         tentry.connect('clicked',self.on_entry_clicked)
         tentry.add_accelerator('clicked',accel_group,ord('e'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED)
-        tentry.set_tooltip(tooltips,_("TEntradas"))
+        tentry.set_tooltip_text(_("TEntradas"))
         self.tentry = tentry
         self.tb.insert(tentry,-1) 
         
@@ -160,7 +157,7 @@ class WinNex(gtk.Window):
         thelp.set_icon_widget(img)
         thelp.connect('clicked',self.on_props_clicked)
         thelp.add_accelerator('clicked',accel_group,ord('s'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED)
-        thelp.set_tooltip(tooltips,_("TConfiguracion"))
+        thelp.set_tooltip_text(_("TConfiguracion"))
         self.tb.insert(thelp,-1) 
         
         tabout = gtk.ToolButton()
@@ -169,7 +166,7 @@ class WinNex(gtk.Window):
         img.set_from_file(imgfile)
         tabout.set_icon_widget(img)
         tabout.connect('clicked',self.on_about_clicked,appath)
-        tabout.set_tooltip(tooltips,_("Acerca de Astro-Nex"))
+        tabout.set_tooltip_text(_("Acerca de Astro-Nex"))
         self.tb.insert(tabout,-1) 
 
         self.mpanel = MainPanel(self.boss)

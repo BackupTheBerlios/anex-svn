@@ -31,7 +31,8 @@ labels = { 'draw_nat': _('Radix'), 'draw_nod': _('Carta Nodal'),
             'click_counterpanel': _('Contra horoscopos'), 'paarwabe_plot': _('Panal de la pareja'),
             'crown_comp': _('Uniones corona'),
             'wundersensi_star': _('Estrella maravillosa'),'polar_star':_('Analisis de polaridades'),
-            'comp_pe': _('PE de la pareja') }
+            'comp_pe': _('PE de la pareja'),
+            'solar_rev': _('Revolución Solar'), 'sec_prog': 'Progresión Secundaria' }
 
 conj_class = [[(0,4),(0,6),(0,9),(3,4),(3,9),(4,6),(4,7),(4,8),(4,9),(6,7),(7,9)],
             [(0,1),(0,3),(0,5),(0,7),(0,8),(1,3),(1,5),(1,6),(2,6),(2,7),(3,5),(3,6),(3,9),(5,7),(5,9),(6,8),(6,9)],

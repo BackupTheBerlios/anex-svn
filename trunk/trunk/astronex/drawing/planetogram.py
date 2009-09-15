@@ -848,8 +848,8 @@ class PlanetogramMixin(object):
             #ring_fac =  (1.0 + (ring-1)/10.0)
             #ring_fac =  (0.7 + ring/4.0)
             ring_fac =  (0.7 + ring*rpfacs[ring])
-	    print ring, ring_fac
             scl =  pre_scl * ring_fac
+            #print ring, ring_fac
             cr.save()
             #fac = 1.02 if plot.fac <= 1.0 else 1.055
             angle = (plot.degree + plot.corr) * RAD

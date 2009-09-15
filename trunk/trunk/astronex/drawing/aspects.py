@@ -21,7 +21,8 @@ class ConjunctioAspect(object):
         else:
             ex = 1.105
             fdivfac = 10
-        
+
+            
         cr.save()
         for asp in aspects:
             asp.p1 %= 360.0
