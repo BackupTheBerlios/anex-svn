@@ -45,9 +45,13 @@ class NexConf(object):
         for sec  in self.sections.values():
             self.__dict__.update(sec)
         import locale
-        lang = locale.getdefaultlocale()[0].split('_')[0]
-        if lang not in ['es','de','ca']:
-            lang = 'en'
+        lang = locale.getdefaultlocale()[0]
+        if lang:
+            lang = lang.split('_')[0]
+            if lang not in ['es','de','ca']:
+                lang = 'en'
+        else:
+            lang = 'es'
         self.lang = lang
 
     def opts_to_config(self,config):
