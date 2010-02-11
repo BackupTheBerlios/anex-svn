@@ -230,20 +230,29 @@ class DiagramMixin(object):
         if chartob: 
             dyns = chartob.chart.dynstar_signs()
             dynh = chartob.chart.dynstar_houses()
+            stress = chartob.chart.dyncalc_stress()
         else:
             dyns = st.curr_chart.dynstar_signs() 
             dynh = st.curr_chart.dynstar_houses() 
+            stress = st.curr_chart.dyncalc_stress()
+        stress = abs(stress)
+        if stress > 100:
+            stress = 100
+        #stress -= 10
+        if stress < 3:
+            stress = 3
         cx,cy = w/2,h/2
         radius = min(cx,cy)
         cr.save()
         cr.translate(cx,cy)
-        r = radius*0.6
-        ro = radius*0.67
-        ri = radius*0.53
-        rui = (r-ri)/20
-        ruo = (ro-r)/20
+        fac = 0.7
+        r = radius*fac
+        ro = radius * (fac + (stress/450.0))
+        ri = radius * (fac - (stress/450.0))
+        rui = (r - ri)/stress
+        ruo = (ro - r)/stress
         lw = cr.get_line_width()
-        cr.set_line_width(0.6*lw)
+        cr.set_line_width(0.4*lw)
         cr.set_source_rgb(0,0,0)
         cr.new_path()
         cr.arc(0,0,ri,0,180*PI)
@@ -255,10 +264,12 @@ class DiagramMixin(object):
         
         for i in range(12):
             off = 180 - i*30
-            col = self.zodcols[i%4]
             ps = dyns[i]; ph = dynh[i]
             dif = ph - ps
-            cr.set_source_rgb(0.7,0.7,0.7)
+            if stress > 15:
+                cr.set_source_rgb(0.7,0.7,0.7)
+            else:
+                cr.set_source_rgb(0.8,0.56,1.0)
             cr.move_to((r+dif*ruo)*math.cos(off*RAD),(r+dif*ruo)*math.sin(off*RAD))
             cr.line_to(r*math.cos((off+13)*RAD),r*math.sin((off+13)*RAD))
             cr.arc_negative(0,0,r,(off+13)*RAD,(off-13)*RAD)
@@ -316,6 +327,9 @@ class DiagramMixin(object):
             cr.arc(xo,yo,2,0,180*PI)
             cr.fill()
             cr.arc(xi,yi,2,0,180*PI)
+            cr.fill()
+            cr.set_source_rgb(0.7,0.7,0.7)
+            cr.arc(r*math.cos(off*RAD),r*math.sin(off*RAD),2,0,180*PI)
             cr.fill()
         
         cr.move_to(-cx+3,+cy-13)

@@ -447,7 +447,7 @@ class SoulChart(Basic_Chart,UnequalHousesChart):
     R_INNER = Basic_Chart.R_INNER
     R_RULEDINNER = Basic_Chart.R_RULEDINNER
     R_PL_CLICK = R_INNER + (R_RULEDINNER - R_INNER)/3.5 
-    click_col_other = 'click2'
+    click_col_other = 'clicksoul'
     plan_click_scale = 0.0021
     plan_click_factor = [0.96,1.04]
     
@@ -478,7 +478,8 @@ class LocalChart(Basic_Chart,UnequalHousesChart):
         return self.chart.calc_house_agep(plan,h,local=True) 
 
 
-class DharmaChart(Basic_Chart,UnequalHousesChart): 
+#class DharmaChart(Basic_Chart,UnequalHousesChart): 
+class DharmaChart(SoulChart): 
     def get_cross_offset(self):
         return 180 + self.chart.houses[0] 
 
@@ -487,6 +488,10 @@ class DharmaChart(Basic_Chart,UnequalHousesChart):
     
     def get_planets(self):
         return self.chart.house_plan_long()
+    
+    #def set_clickvals(self):
+    #    self.plan_scale = SoulChart.plan_click_scale
+    #    self.plan_factor = SoulChart.plan_click_factor
 
 class HouseChart(Basic_Chart,EqualHousesChart):
     def get_offset(self):
@@ -662,13 +667,28 @@ class OneCircle(ClickChart):
         return self.fixed_offset
 
 class RadixRadixChart(OneCircle,RadixChart):
-    pass
+    R_INNER = 0.585 
+    R_RULEDINNER = 0.7
+    R_RULEDOUTER = 0.82
+    cuspfac = 1.47
+    click_col_other = 'clicksoul'
+    get_cusps_offsets = RadixChart.get_cusps_offsets
+    #pass
+
+class RadixDharmaChart(OneCircle,RadixChart):
+    #R_INNER = ClickChart.R_INNER
+    R_INNER = 0.585 
+    R_RULEDINNER = 0.7
+    R_RULEDOUTER = 0.82
+    cuspfac = 1.47
+    click_col_other = 'clicksoul'
+    get_cusps_offsets = RadixChart.get_cusps_offsets
 
 class SoulSoulChart(OneCircle,SoulChart):
-    click_col_other = 'click2'
+    click_col_other = 'clicksoul'
 
 
-class TransitChart(RadixRadixChart):
+class TransitChart(OneCircle,RadixChart):
     click_col_other = 'transcol'
     click_col = None
     

@@ -12,7 +12,7 @@ default_colors = {'pers': 'ff5600', 'tool': '0000ff',
         'green': '00cc00', 'blue': '0000f7', 
         'red': 'ee0000', 'click1': '3300e6', 
         'click2': 'cc001a', 'inv': '7f7f99', 'low': '7f997f',
-        'transcol': '7f7f99', 'overlay': '803480' }
+        'transcol': '7f7f99', 'overlay': '803480' ,'clicksoul': 'c227ff' }
 COLORS = default_colors
 PNG = {'hsize': 600, 'vsize': 600, 'labels': 'true' , 'pngviewer':'display', 'resolution': 300 }
 PDF = {'pdfviewer': 'kpdf'}
@@ -127,7 +127,7 @@ def reload_config(conf,boss):
 
 def parse_aux_colors():
     auxcol = {}
-    for cl in 'click1','click2','inv','low','transcol':
+    for cl in 'click1','click2','clicksoul','inv','low','transcol':
         col = gtk.gdk.color_parse(cfgcols[cl]) 
         auxcol[cl] =(col.red/MAGICK_COL,col.green/MAGICK_COL,col.blue/MAGICK_COL)
     return auxcol

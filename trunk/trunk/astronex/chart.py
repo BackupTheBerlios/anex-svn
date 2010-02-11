@@ -535,6 +535,13 @@ class Chart(object):
                cross['fix'] += dinary[i] 
         return { 'elem': elem, 'cross': cross }
 
+    def dyncalc_stress(self):
+        ds = self.signdyn()
+        dh = self.housedyn()
+        tots = ds['cross']['card']+ds['cross']['fix']+ds['cross']['mut']
+        toth = dh['cross']['card']+dh['cross']['fix']+dh['cross']['mut']
+        return toth - tots
+
     def dyncalc_list(self):
         ds = self.signdyn()
         dh = self.housedyn()

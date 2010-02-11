@@ -116,7 +116,7 @@ class Zodiac(object):
     def set_auxcolors(self):
         auxcol = config.parse_aux_colors()
         if not self.auxcolors: self.auxcolors = {}
-        for cl in 'click1','click2','inv','low','transcol':
+        for cl in 'click1','click2','clicksoul','inv','low','transcol':
             self.auxcolors[cl] = auxcol[cl]
     
     def get_crosscolors(self):

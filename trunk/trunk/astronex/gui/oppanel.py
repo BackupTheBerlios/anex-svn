@@ -19,13 +19,16 @@ class OpPanel(gtk.VBox):
 
     opdoubles = [ (_('CRadix'),'draw_nat'),
                 (_('CCasas'),'draw_house'),
-                (_('Nodal'),'draw_nod'),
-                (_('Local'),'draw_local'),
+                (_('Nodal de Casas'),'draw_nod'),
                 (_('Alma'),'draw_soul'), 
+                (_('Dharma'),'draw_dharma'),
+                (_('Nodal'),'draw_ur_nodal'),
+                (_('Local'),'draw_local'),
                 (_('Perfil'),'draw_prof'),
                 (_('Integracion'),'draw_int'),
                 (_('Clics Ind.'),'draw_single'),
                 (_('Radix Alma'),'draw_radsoul')]
+    
     optriples = [(_('Casas-Casas'),'click_hh'),
             (_('Nodal-Nodal'),'click_nn'),
             (_('Casas-Nodal'),'click_hn'),
@@ -38,15 +41,16 @@ class OpPanel(gtk.VBox):
             'charts': [
                 (_('CRadix'),'draw_nat'),
                 (_('CCasas'),'draw_house'),
-                (_('Nodal'),'draw_nod'),
-                (_('Local'),'draw_local'),
+                (_('Nodal de Casas'),'draw_nod'),
                 (_('Alma'),'draw_soul'), 
+                (_('Dharma'),'draw_dharma'),
+                (_('Nodal'),'draw_ur_nodal'),
+                (_('Local'),'draw_local'),
                 (_('Perfil'),'draw_prof'),
                 (_('Integracion'),'draw_int'),
                 (_('Clic Individual'),'draw_single'),
                 (_('Clic Radix-Alma'),'draw_radsoul'),
-                (_('Dharma'),'draw_dharma'),
-                (_('UrNodal'),'draw_ur_nodal')
+                (_('Radix-Dharma'),'draw_raddharma')
                 ],
             'data': [
                 (_('CRadix'),'dat_nat'),
@@ -60,7 +64,8 @@ class OpPanel(gtk.VBox):
             'bio': [
                 (_('Biografia Radix'),'bio_nat'),
                 (_('Biografia Nodal'),'bio_nod'),
-                (_('Biografia Alma'),'bio_soul')
+                (_('Biografia Alma'),'bio_soul'),
+                (_('Biografia Dharma'),'bio_dharma')
                 ],
             'diagram': [
                 (_('Comparacion pareja I'),'compo_one'),

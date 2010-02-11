@@ -7,7 +7,7 @@ from datetime import datetime,timedelta
 from math import pi as PI
 import math
 from .. chart import planclass,aspclass,orbs
-from roundedcharts import NodalChart,SoulChart,LocalChart,RadixChart
+from roundedcharts import NodalChart,SoulChart,LocalChart,RadixChart,DharmaChart
 from .. boss import boss
 curr = boss.get_state()
 
@@ -119,6 +119,11 @@ class BioMixin(object):
     def bio_soul(self,cr,w,h,chartob):
         chartob.__class__ = SoulChart
         chartob.name = 'soul'
+        self.draw_bio(cr,w,h,chartob)
+    
+    def bio_dharma(self,cr,w,h,chartob):
+        chartob.__class__ = DharmaChart
+        chartob.name = 'dharma'
         self.draw_bio(cr,w,h,chartob)
     
     def draw_bio(self,cr,width,height,chartob):
@@ -537,6 +542,8 @@ class BioMixin(object):
         sign = self.zod[prev_sign['lab']].let
         if chartob.name == 'soul':
             cr.set_source(sign_col_soul(col,voff))
+        elif chartob.name == 'dharma':
+            cr.set_source(sign_col_dharma(col,voff))
         else:
             cr.set_source_rgba(*(list(col)+[0.9]))
         
@@ -570,6 +577,8 @@ class BioMixin(object):
             col = (self.zod[t['lab']%4].col)
             if chartob.name == 'soul':
                 cr.set_source(sign_col_soul(col,voff))
+            elif chartob.name == 'dharma':
+                cr.set_source(sign_col_dharma(col,voff))
             else:
                 cr.set_source_rgba(*(list(col)+[0.9]))
             prev_sign = t
@@ -730,7 +739,7 @@ class BioMixin(object):
                 col = aspcol[asp] 
                 cr.set_source_rgb(*col)
             else:
-                if charttype == 'soul':
+                if charttype == 'soul' or charttype == 'dharma' : 
                     set_soul_source(cr,list(aspcol[asp]),path,pl,hoff,asplength)
                 elif charttype == 'nodal':
                     col = aspcol[asp]
@@ -857,7 +866,7 @@ class BioMixin(object):
                     col = aspcol[asp] 
                     cr.set_source_rgb(*col)
                 else:
-                    if charttype == 'soul':
+                    if charttype == 'soul' or charttype == 'dharma' : 
                         set_soul_source(cr,list(aspcol[asp]),path,pl,hoff,asplength)
                     elif charttype == 'nodal':
                         col = aspcol[asp]
@@ -979,7 +988,7 @@ class BioMixin(object):
                     col = aspcol[asp] 
                     cr.set_source_rgb(*col)
                 else:
-                    if charttype == 'soul':
+                    if charttype == 'soul' or charttype == 'dharma' : 
                         set_soul_source(cr,list(aspcol[asp]),path,pl,hoff,asplength)
                     elif charttype == 'nodal':
                         col = aspcol[asp]
@@ -1045,6 +1054,18 @@ def sign_col_soul(col,voff):
     pat.add_color_stop_rgba(*colin)
     colin = list(col)
     colin = [1.0] + list(col) + [0.8]
+    pat.add_color_stop_rgba(*colin)
+    return pat
+
+def sign_col_dharma(col,voff):
+    colin = list(col)
+    pat = cairo.LinearGradient(0,voff*1.4,0,voff*1.4+voff/8) 
+    colin = [0.0] + list(col) + [0.3]
+    pat.add_color_stop_rgba(*colin)
+    colin = [0.5] + list(col) + [0.8]
+    pat.add_color_stop_rgba(*colin)
+    colin = list(col)
+    colin = [1.0] + list(col) + [0.3]
     pat.add_color_stop_rgba(*colin)
     return pat
 

@@ -799,5 +799,6 @@ class CoreMixin(object):
                 R_RULEDMID: [0.014,0.010,0.004],
                 R_RULEDINNER:  [-0.018,-0.012,-0.004]}
         offset = chartob.get_offset()
+        #print offset
         self.make_spec_ruler(cr,radius,chartob,R_RULEDOUTER,rules,offset)
         self.make_spec_ruler(cr,radius,chartob,R_RULEDINNER,rules,offset)

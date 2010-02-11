@@ -20,7 +20,7 @@ MAGICK_COL = 65535.0
 initmenu = (_('Ayuda'),_('Acercar'),_('Solo EA'),_('Ver zonas PE'),
         _('Ver zonas de casa'),_('Ver EA'),_('Activar goodwill'),
         _('Ocultar unilaterales'),_('Ego-clics'),_('Ver todos los aspectos'))
-bios = ['bio_nat','bio_nod','bio_soul']
+bios = ['bio_nat','bio_nod','bio_soul','bio_dharma']
 peops = ['draw_nat','draw_nod','draw_soul','draw_local']
 sheetops = ['dat_nat', 'dat_nod', 'dat_house', 'prog_nat', 'prog_nod', 'prog_local', 'prog_soul' ]
 extended = ['prog_nat','prog_nod','prog_soul','prog_local','compo_one','compo_two']

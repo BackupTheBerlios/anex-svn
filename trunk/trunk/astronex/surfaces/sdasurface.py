@@ -193,10 +193,11 @@ class HouseSelector(gtk.DrawingArea):
         self.window.invalidate_rect(gtk.gdk.Rectangle(0,0,w,h),False)
 
 ##################################################
-opcharts = ['draw_nat', 'draw_house', 'draw_nod','draw_local','draw_soul', 'draw_prof', 'draw_int', 'draw_single', 'draw_radsoul']
+opcharts = ['draw_nat', 'draw_house',
+        'draw_nod','draw_soul','draw_dharma','draw_ur_nodal','draw_local','draw_prof', 'draw_int', 'draw_single', 'draw_radsoul']
 opclicks = ['click_hh', 'click_nn', 'click_hn', 'click_nh','click_ss','click_rr','click_rs','click_sn','subject_click']
 opdia = ['dyn_bars','dyn_energy','dyn_differences','dyn_houses','dyn_signs']
-opbio = ['bio_nat','bio_nod','bio_soul']
+opbio = ['bio_nat','bio_nod','bio_soul','bio_dharma']
 optrans = ['draw_transits','sec_prog','solar_rev']
 opcoup = [ 'ascent_star','wundersensi_star','polar_star','crown_comp','paarwabe_plot','comp_pe'] 
 tradtrans = {'draw_transits': _('Transitos'),'sec_prog': _('Progresion secundaria'), 'solar_rev':_('Revolucion solar')}

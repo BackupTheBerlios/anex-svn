@@ -24,7 +24,7 @@ showAP = None
 AP_DEG = None
 
 nottranslate = ['dat_nat','dat_house','dat_nod','prog_nat','prog_nod','prog_local','prog_soul','click_bridge',
-        'bio_nat','bio_nod','bio_soul','dyn_cuad','dyn_stars','dyn_cuad2','rad_and_transit','comp_pe']
+        'bio_nat','bio_nod','bio_soul','bio_dharma','dyn_cuad','dyn_stars','dyn_cuad2','rad_and_transit','comp_pe']
 
 class DrawMixin(CoreMixin,ProgMixin,ProfileMixin,BioMixin,DiagramMixin,SheetMixin,PaarWabeMixin,PlanetogramMixin):
     goodwill = False
@@ -459,7 +459,8 @@ class DrawMixin(CoreMixin,ProgMixin,ProfileMixin,BioMixin,DiagramMixin,SheetMixi
         self.d_radial_lines(cr,radius,chartob)
         self.make_all_rulers(cr,radius,chartob) 
         self.draw_signs(cr,radius,chartob)
-        self.draw_double_cusp(cr,radius*0.82,chartob)
+        #self.draw_double_cusp(cr,radius*0.82,chartob)
+        self.draw_cusps(cr,radius*0.82,chartob)
         
         chartob.prepare_params1()
         self.draw_planets(cr,radius,chartob)
@@ -481,6 +482,40 @@ class DrawMixin(CoreMixin,ProgMixin,ProfileMixin,BioMixin,DiagramMixin,SheetMixi
         self.aspmanager.manage_aspects(cr,radius*R_ASP,plan1,plan2,filter='click')
         self.d_inner_circles(cr,radius)
         
+    def draw_raddharma(self,cr,width,height,chartob=None):
+        chartob.click = chartob.chart
+        
+        chartob.__class__ = RadixDharmaChart
+        chartob.name = 'soul' 
+        cx,cy = width/2,height/2
+        radius = min(cx,cy)
+        
+        self.d_radial_lines(cr,radius,chartob)
+        self.make_all_rulers(cr,radius,chartob) 
+        self.draw_signs(cr,radius,chartob)
+        #self.draw_double_cusp(cr,radius*0.82,chartob)
+        self.draw_cusps(cr,radius*0.82,chartob)
+        
+        chartob.prepare_params1()
+        self.draw_planets(cr,radius,chartob)
+        self.make_plines(cr,radius,chartob,'EXT',plot='plot1')
+        self.make_plines(cr,radius,chartob,'INN',plot='plot1')
+        plan1 = chartob.get_planets()
+        
+        chartob.swap_charts()
+        chartob.prepare_params2()
+        chartob.__class__ = DharmaChart
+        plan2 = chartob.get_planets()
+        chartob.set_clickvals()
+        self.draw_planets(cr,radius,chartob,plot='plot2')
+        chartob.__class__ = RadixRadixChart
+        self.make_plines(cr,radius,chartob,'EXT',plot='plot2')
+        self.make_plines(cr,radius,chartob,'INN',plot='plot2')
+        chartob.swap_charts()
+        
+        self.aspmanager.manage_aspects(cr,radius*R_ASP,plan1,plan2,filter='click')
+        self.d_inner_circles(cr,radius)
+
     def click_rr(self,cr,width,height,chartob=None):
         chartob.__class__ = RadixRadixChart
         cx,cy = width/2,height/2
