@@ -338,7 +338,7 @@ class ChartBrowser(gtk.VBox):
         imgfile = path.joinpath(appath,"resources/pgram.png")
         img.set_from_file(imgfile)
         opbut.set_image(img) 
-        #opbut.set_tooltip_text(_('Planetograma'))
+        opbut.set_tooltip_text(_('Planetograma'))
         opbut.connect('clicked',self.on_plagram_clicked)
         hbox.pack_start(opbut,False,False) 
         self.pack_start(hbox,False,False)

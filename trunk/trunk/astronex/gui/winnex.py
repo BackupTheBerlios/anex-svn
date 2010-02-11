@@ -44,7 +44,7 @@ class WinNex(gtk.Window):
         accel_group.connect_group(ord('l'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.customloc_cb)
         accel_group.connect_group(ord('b'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_chartbrowser)
         accel_group.connect_group(ord('w'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_aux)
-        #accel_group.connect_group(ord('e'),gtk.gdk.MOD1_MASK,gtk.ACCEL_LOCKED,self.launch_plagram) 
+        accel_group.connect_group(ord('e'),gtk.gdk.MOD1_MASK,gtk.ACCEL_LOCKED,self.launch_plagram) 
         accel_group.connect_group(ord('r'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_pebridge)
         accel_group.connect_group(ord('k'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_shell)
         accel_group.connect_group(ord('i'),gtk.gdk.CONTROL_MASK,gtk.ACCEL_LOCKED,self.launch_editor)

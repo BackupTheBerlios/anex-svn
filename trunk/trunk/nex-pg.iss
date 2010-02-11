@@ -1,17 +1,17 @@
 [Setup] 
 AppName=Astro-Nex 
-AppVerName=Astro-Nex 1.2.2
+AppVerName=Astro-Nex 1.2.3
 AppPublisherURL=http://astro-nex.com
-DefaultDirName={pf}\Astro-Nex-1.2.2
+DefaultDirName={pf}\Astro-Nex-1.2.3
 DefaultGroupName=Astro-Nex
 DisableProgramGroupPage=true 
-OutputBaseFilename=Astro-Nex-1.2.2p
+OutputBaseFilename=Astro-Nex-1.2.3p
 Compression=lzma 
 SolidCompression=true 
 WizardImageFile=Styles\Office2007Gray.bmp
 WizardSmallImageFile=compiler:WizModernSmallImage-IS.bmp
 AllowUNCPath=false 
-VersionInfoVersion=1.2.2
+VersionInfoVersion=1.2.3
 PrivilegesRequired=admin
 AllowNoIcons=yes
 AlwaysShowDirOnReadyPage=no
