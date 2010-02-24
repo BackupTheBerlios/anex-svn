@@ -62,6 +62,11 @@ class Chart(object):
         chi = pysw.calc(d,15,epheflag)
         return chi
 
+    def vulcan_calc(self,date,epheflag): 
+        d = pysw.julday(*date)
+        vulc = pysw.calc_ut(d,55)
+        return vulc
+    
     def calc_plan_with_retrogression(self,epheflag=4):
         dt = strdate_to_date(self.date)
         dt = NeXDate(self,dt,timezone(self.zone))

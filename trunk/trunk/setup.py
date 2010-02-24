@@ -6,7 +6,7 @@ from distutils.core import setup
 name = 'Astro-Nex'
 desc = 'GPL API Software' 
 longdesc = 'Program to calculate and draw astrological charts in API method style.'
-version='1.2.2'
+version='1.2.3'
 author='Jose Antonio Rodríguez'
 author_email='jar@eideia.net'
 url = 'http://astro-nex.com'

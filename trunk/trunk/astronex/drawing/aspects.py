@@ -93,7 +93,9 @@ class UnilateralAspect(object):
                 y2,y1 = y1,y2
             xx = (x2 + x1)/2; yy = (y2 + y1)/2
             cr.set_source_rgb(*asp.col)
-            cr.set_dash([12,6,48,6],0)
+            #cr.set_dash([12,6,24,6,36,6,48,6,60,6],0)
+            cr.set_dash([4,3,12,4,18,5,24,6,30,6,36,6,48,6,60,6],0)
+            #cr.set_dash([6,6,60,6,48,6,36,6,30,6,24,6,18,6,12,6,6,0],0)
             cr.move_to(x1,y1)
             cr.line_to(xx,yy)
             cr.stroke()

@@ -348,6 +348,16 @@ class Current(object):
         print chi
         #return nxdate
 
+    def vulcan(self,ch):
+        from directions import strdate_to_date
+        import datetime
+        from pytz import timezone
+        dt = strdate_to_date(ch.date) 
+        dt = datetime.datetime.combine(dt.date(),dt.time())
+        nxdate = NeXDate(self,dt,timezone(ch.zone))
+        vulc = ch.vulcan_calc(nxdate.dateforcalc(),self.epheflag)
+        print vulc
+        #return nxdate
 
 
 class Locality(object):
