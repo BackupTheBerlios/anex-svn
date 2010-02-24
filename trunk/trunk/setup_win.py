@@ -41,7 +41,10 @@ setup(
     license = license,
     windows = [{'script':'nex.py',
         'icon_resources': [(1,'astronex/resources/nex.ico')]}], 
-    options = {'py2exe':{ 'packages':'encodings,pytz,cairo,PIL,IPython,astronex', 'includes': 'configobj,winshell,pango,atk,pangocairo,gobject,pysw','excludes':'Numeric,numpy,Tkinter,tk'}},
+    options = {'py2exe':{
+        'packages':'encodings,pytz,cairo,PIL,IPython,astronex', 'includes':
+        'configobj,winshell,pango,atk,pangocairo,gobject,pysw','excludes':'Numeric,numpy,Tkinter,tk,PyQt4,_ssl',
+        'dll_excludes': 'tk85.dll,tcl85.dll'}},
     data_files=[('astronex/db',['astronex/db/local.db',]),('astronex/resources',glob.glob('astronex/resources/*')),
         ('astronex/locale/ca/LC_MESSAGES',glob.glob('astronex/locale/ca/LC_MESSAGES/*')),
         ('astronex/locale/es/LC_MESSAGES',glob.glob('astronex/locale/es/LC_MESSAGES/*')),
