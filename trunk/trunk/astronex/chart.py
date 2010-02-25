@@ -338,8 +338,9 @@ class Chart(object):
         h = 0
         hn = self.which_house(nnode)
         while hn > h:
-            #if h == 0 and hn == 1:
             if hn - h == 1 and hn < self.which_house((nnode - 30) % 360):
+                break
+            if h == 0 and hn == 1:
                 break
             h = (h+1)%12
             hasc = self.houses[h]
