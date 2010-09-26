@@ -168,13 +168,13 @@ class PlanetogramMixin(object):
         nnode = chart.planets[10]
         sizes = chart.sizes()
         houses = chart.houses[:]
-        h = chart.which_house(cross) + 1
+        h = (chart.which_house(cross) + 1) % 12
         i = 0
         hs = houses[h]
         acch = 0.0; accn = 0.0
         n = nnode - h*30
         while (acch + accn) < 180.0:
-            am = (houses[h+i] - hs) % 360.0
+            am = (houses[(h+i)%12] - hs) % 360.0
             if 30*i + acch + am > 180.0:
                 break
             acch += am
