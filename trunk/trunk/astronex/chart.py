@@ -347,13 +347,18 @@ class Chart(object):
             nnode = (nnode - 30) % 360
             hn = self.which_house(nnode)
         dist = nnode - hasc
-            
 
         if dist < 0:
             if dist < -30: # aries pisces
                 dist += 360 
             else:
                 h = (h-1)%12 # cp in prev h.
+        else:
+            if h > hn:
+                dist -= 360
+                h = (h-1)%12 # cp in prev h.
+
+
         va = sizes[h] / 6
         vn = 5.0
         la = dist * va / (va + vn)
