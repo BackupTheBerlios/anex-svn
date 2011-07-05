@@ -981,7 +981,7 @@ class Chart(object):
             while ll > zones[i]:
                 i += 1
                 continue
-            if i == 6:
+            if i == 6 and h < 11:
                 h += 1
             l = d - h*30
             secs.append((l,m,h,(i%6)+1))
